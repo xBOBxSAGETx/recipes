@@ -2,8 +2,11 @@
 
 Single-source HTML recipes rendered to print-ready, validated PDFs. One recipe =
 one file in `recipes/`. `template.html` is the design system; `LESSONS.md` is the
-rulebook. **Read `LESSONS.md` before editing any recipe, `template.html`, or
-`build.py`** — every rule there exists because ignoring it broke something.
+recipe rulebook; `LESSONS_LEARNED.md` is the process/gotchas log. **Read both
+`LESSONS.md` and `LESSONS_LEARNED.md` before editing any recipe, `template.html`, or
+`build.py`** — every rule there exists because ignoring it broke something. When a new
+"gotcha" bites (a repeated mistake, a rendering quirk), add an entry to
+`LESSONS_LEARNED.md` so it doesn't happen twice.
 
 ## Build & validate
 

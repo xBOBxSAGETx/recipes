@@ -12,7 +12,10 @@
   }
   @page{ size:letter; margin:0; }
   *{ margin:0; padding:0; box-sizing:border-box; }
-  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  /* Lead with Segoe UI for the WHOLE doc: it carries the Vietnamese glyphs (ở, ạ, ê…)
+     in every weight, so nothing ever falls back to a mismatched serif. Fixing the font
+     stack once beats patching individual words — you always miss one. See LESSONS_LEARNED.md. */
+  body{ font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
   .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
   .page:last-child{ page-break-after:auto; }
 
@@ -102,25 +105,30 @@
   </div>
 
   <h2>The Seasoning Curve <span class="note">season in waves &mdash; go under, overshoot, then balance to target</span></h2>
-  <div style="background:#efe9dd; border:1px solid #d8d0c4; padding:8px 12px 4px; margin-top:6px;">
-    <svg viewBox="0 0 620 115" width="100%" style="display:block;">
-      <line x1="75" y1="48" x2="548" y2="48" stroke="#1a1714" stroke-width="2"/>
-      <polyline points="75,40 169,70 263,66 357,60 451,20 545,48" fill="none" stroke="#c8941e" stroke-width="2.5" stroke-linejoin="round"/>
-      <circle cx="75" cy="40" r="4.5" fill="#c8941e"/>
-      <circle cx="169" cy="70" r="4.5" fill="#c8941e"/>
-      <circle cx="263" cy="66" r="4.5" fill="#c8941e"/>
-      <circle cx="357" cy="60" r="4.5" fill="#c8941e"/>
-      <circle cx="451" cy="20" r="4.5" fill="#c8941e"/>
-      <circle cx="545" cy="48" r="4.5" fill="#c8941e"/>
-      <text x="4" y="20" font-size="11" font-weight="700" fill="#6b6560" letter-spacing="1.2">SWEET</text>
-      <text x="4" y="94" font-size="11" font-weight="700" fill="#6b6560" letter-spacing="1.2">SALTY</text>
-      <text x="552" y="52" font-size="10" font-weight="700" fill="#1a1714" letter-spacing="1">TARGET</text>
-      <text x="75" y="110" font-size="10" fill="#6b6560" text-anchor="middle">Base</text>
-      <text x="169" y="110" font-size="10" fill="#6b6560" text-anchor="middle">Pre-season</text>
-      <text x="263" y="110" font-size="10" fill="#6b6560" text-anchor="middle">Infuse</text>
-      <text x="357" y="110" font-size="10" fill="#6b6560" text-anchor="middle">+Broth</text>
-      <text x="451" y="110" font-size="10" fill="#6b6560" text-anchor="middle">+Sugar</text>
-      <text x="545" y="110" font-size="10" fill="#6b6560" text-anchor="middle">+Fish</text>
+  <div style="background:#f3efe7; border:1px solid #d8d0c4; padding:6px 12px 4px; margin-top:6px;">
+    <svg viewBox="0 0 620 132" width="100%" style="display:block;">
+      <!-- faint SWEET / SALTY gridlines, bold TARGET line between -->
+      <line x1="75" y1="36" x2="548" y2="36" stroke="#d8d0c4" stroke-width="1"/>
+      <line x1="75" y1="100" x2="548" y2="100" stroke="#d8d0c4" stroke-width="1"/>
+      <line x1="75" y1="68" x2="556" y2="68" stroke="#1a1714" stroke-width="2.5"/>
+      <!-- curve: Base above -> dip salty -> rise -> +Sugar peak -> +Fish back above target -->
+      <polyline points="75,58 169,90 263,86 357,81 451,42 545,57" fill="none" stroke="#c8941e" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="75" cy="58" r="5" fill="#c8941e"/>
+      <circle cx="169" cy="90" r="5" fill="#c8941e"/>
+      <circle cx="263" cy="86" r="5" fill="#c8941e"/>
+      <circle cx="357" cy="81" r="5" fill="#c8941e"/>
+      <circle cx="451" cy="42" r="5" fill="#c8941e"/>
+      <circle cx="545" cy="57" r="5" fill="#c8941e"/>
+      <text x="6" y="39" font-size="10" font-weight="700" fill="#6b6560" letter-spacing="1">SWEET</text>
+      <text x="6" y="103" font-size="10" font-weight="700" fill="#6b6560" letter-spacing="1">SALTY</text>
+      <text x="560" y="72" font-size="10" font-weight="700" fill="#1a1714" letter-spacing="1">TARGET</text>
+      <!-- stage labels alternate top (2,4,6) / bottom (1,3,5), matching the source -->
+      <text x="169" y="15" font-size="10" fill="#6b6560" text-anchor="middle">Pre-season</text>
+      <text x="357" y="15" font-size="10" fill="#6b6560" text-anchor="middle">+Broth</text>
+      <text x="545" y="15" font-size="10" fill="#6b6560" text-anchor="middle">+Fish sauce</text>
+      <text x="75" y="127" font-size="10" fill="#6b6560" text-anchor="middle">Base</text>
+      <text x="263" y="127" font-size="10" fill="#6b6560" text-anchor="middle">Infuse</text>
+      <text x="451" y="127" font-size="10" fill="#6b6560" text-anchor="middle">+Sugar</text>
     </svg>
   </div>
   <p class="lead mut" style="margin:5px 0 0;"><b>Pre-season</b> deliberately salty to find the floor (salt pulls the 24-hr bone flavor forward); <b>rock sugar</b> overshoots sweet; <b>fish sauce</b> settles it back to the 8.7 target while adding umami.</p>
