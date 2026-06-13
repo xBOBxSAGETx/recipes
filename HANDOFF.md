@@ -3,6 +3,23 @@
 Context bridge so a new Claude Code session (or future-you) can pick up without loss.
 Last updated: 2026-06-13.
 
+## 🎯 THE GOAL (north star)
+A **seamless workflow: Claude app on the phone → laptop → GitHub as the landing zone.**
+- **Phone (capture + drive):** snap/read a recipe in the Claude iOS app; issue
+  instructions from anywhere.
+- **Laptop (engine):** runs the real work — `build.py` + Chromium render and validate
+  the PDF. Reached from the phone via Claude Code **Remote Control**.
+- **GitHub (landing zone / source of truth):** every recipe (HTML) and its validated
+  PDF live here. The phone reads PDFs back from `pdfs/` via the GitHub mobile app.
+
+The point: capture a recipe on the phone, have the laptop convert/critique/upgrade it
+into a normalized, validated PDF, and land everything in GitHub — with the phone able
+to both kick off the work and retrieve the finished PDF. No copy-paste babysitting,
+laptop-independent storage, one durable home.
+
+Everything below is in service of that loop. The ONLY thing not yet working is the
+phone↔laptop link (Remote Control auth) — see the open task.
+
 ## What this repo is
 Aguillon House Kitchen — single-source HTML recipes in `recipes/`, rendered to
 validated print PDFs by `build.py`. Design system = `template.html`. Rulebook =
