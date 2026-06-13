@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:27pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.06em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:90px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:22%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Colorado Green Chile</h1>
+  <div class="sub">Chicharr&oacute;n-enriched &middot; fire-roasted &middot; breakfast-burrito-ready</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~6 cups &middot; 8&ndash;10</div></div>
+    <div><div class="lab">Time</div><div class="val">45 min / 1.5 hr</div></div>
+    <div><div class="lab">Peppers</div><div class="val">2:1 Anaheim:chilaca</div></div>
+    <div><div class="lab">Chicharr&oacute;n</div><div class="val">115&ndash;170 g</div></div>
+  </div>
+
+  <h2>Key Targets <span class="note">char it hard, leave some fleck &mdash; brown the onion for fond</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Pepper char</td><td>85&ndash;90% blackened</td><td class="sym">Onion</td><td>Deep golden, fond forming</td></tr>
+    <tr><td class="sym">Char retention</td><td>10&ndash;15% flecks left after peel</td><td class="sym">Sauce</td><td>Coats a spoon, mounds on the plate</td></tr>
+    <tr><td class="sym">Chicharr&oacute;n</td><td>Bends, doesn&rsquo;t snap or dissolve</td><td class="sym">Final</td><td>Sits on a burrito without running</td></tr>
+  </table>
+
+  <h2>Ingredients <span class="note">peppers at room temp &mdash; cold peppers char unevenly</span></h2>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">Peppers &mdash; 1.3&ndash;1.5 kg</span>
+      <table class="ing">
+        <tr><td>Anaheim <span class="mut">~8&ndash;10</span></td><td class="amt">900 g</td></tr>
+        <tr><td>Chilaca <span class="mut">~4&ndash;5</span></td><td class="amt">450 g</td></tr>
+        <tr><td>Serrano <span class="mut">to taste</span></td><td class="amt">5&ndash;7</td></tr>
+      </table>
+      <span class="tag">Aromatics</span>
+      <table class="ing">
+        <tr><td>White onion <span class="mut">fine dice</span></td><td class="amt">1 large</td></tr>
+        <tr><td>Garlic <span class="mut">minced</span></td><td class="amt">6&ndash;8 cloves</td></tr>
+        <tr><td>Mexican oregano</td><td class="amt">1 g</td></tr>
+        <tr><td>Cumin</td><td class="amt">0.5 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Base</span>
+      <table class="ing">
+        <tr><td>Beef tallow or lard</td><td class="amt">30 g</td></tr>
+        <tr><td>Chicken stock</td><td class="amt">900&ndash;1000 ml</td></tr>
+        <tr><td>AP flour <span class="mut">to consistency</span></td><td class="amt">16&ndash;32 g</td></tr>
+        <tr><td>Kosher salt <span class="mut">by weight</span></td><td class="amt">14 g</td></tr>
+      </table>
+      <span class="tag">Pork + Finish</span>
+      <table class="ing">
+        <tr><td>Chicharr&oacute;n <span class="mut">plain, thick-cut</span></td><td class="amt">115&ndash;170 g</td></tr>
+        <tr><td>White vinegar or lime <span class="mut">finish</span></td><td class="amt">5&ndash;10 ml</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Mise before the flame:</b> peppers at room temp (cold chars unevenly), stock measured and ready, onion diced + garlic minced, chicharr&oacute;n broken into rough <b>1&Prime; pieces</b>, a heavy pot (Dutch oven) hot, and a bowl + cover to steam the peppers. This one cooks fast once the onion hits the fat &mdash; have it all set.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Colorado Green Chile v1.0 &middot; targets + ingredients</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Char &middot; Build &middot; Simmer</div>
+  <h1 class="sm">Roast &amp; Build</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">char aromatics too (onion halved + garlic, 30&ndash;40% char) for a deeper upgrade</span></h2>
+  <ol class="steps">
+    <li><b>Char:</b> fire-roast all peppers over flame or under the broiler, rotating to <b>85&ndash;90% blackened</b>. Steam covered in a bowl <b>15 min</b>, then peel &mdash; leave <b>10&ndash;15% charred flecks</b> &mdash; and stem/seed. <b>Rough-chop half</b> (body), leave half in big pieces (texture).</li>
+    <li><b>Build base:</b> heat the tallow over medium-high, add the onion and cook to <b>deep golden with fond, 8&ndash;10 min</b>. Add garlic + oregano + cumin, <b>30 sec</b> until fragrant.</li>
+    <li><b>Add peppers:</b> stir them in to coat, pour in the stock, bring to a simmer.</li>
+    <li><b>Thicken:</b> sprinkle flour <b>~8 g at a time</b>, stirring constantly, until it coats a spoon and holds when drizzled (usually <b>16&ndash;32 g</b>).</li>
+    <li><b>Chicharr&oacute;n:</b> add the rough 1&Prime; pieces, simmer <b>30&ndash;45 min</b>. Most melts in for richness; the bigger pieces stay. Done when they <b>bend, not snap</b>.</li>
+    <li><b>Finish:</b> <b>salt aggressively</b> &mdash; it needs more than you think. Optional <b>5&ndash;10 ml vinegar or lime</b> at the end for brightness. Final texture: thick enough to <b>sit on a burrito without running</b>.</li>
+  </ol>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Thin / runny</td><td>Under-thickened</td><td>Flour slurry: 8 g flour + 30 ml water</td></tr>
+    <tr><td class="sym">Bitter</td><td>Over-charred peppers</td><td>Pinch of sugar; can&rsquo;t fully fix</td></tr>
+    <tr><td class="sym">Bland</td><td>Under-salted</td><td>Season aggressively; acid helps too</td></tr>
+    <tr><td class="sym">No pork depth</td><td>Chicharr&oacute;n too thin</td><td>Thicker cut; add extra lard</td></tr>
+    <tr><td class="sym">Chicharr&oacute;n mushy</td><td>Simmered too long</td><td>Add half early, half in the last 10 min</td></tr>
+    <tr><td class="sym">Too thick</td><td>Over-floured</td><td>Thin with stock, re-adjust salt</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>The chicharr&oacute;n is seasoning, not bulk</b> &mdash; most dissolves into the sauce for richness; the few intact pieces you find are a bonus, so don&rsquo;t over-add. <b>Poblano sub:</b> no chilaca? Use poblano, char harder, and add 1&ndash;2 extra serranos. <b>Pork-forward upgrade:</b> roast 1 kg pork neck (220&deg;C / 425&deg;F, 45 min), simmer in 2 L water 3&ndash;4 hr, and use that as the stock. <b>Storage:</b> best same or next day; the chicharr&oacute;n version keeps ~48 hr &mdash; for longer, freeze the base <i>without</i> chicharr&oacute;n (3 months) and stir it in fresh on reheat.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Colorado Green Chile v1.0 &middot; method + troubleshoot</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>
