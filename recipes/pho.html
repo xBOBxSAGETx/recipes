@@ -19,6 +19,10 @@
   .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
   h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
   h1.sm{ font-size:23pt; }
+  /* Vietnamese glyphs (ở, ạ…) have no bold form in Helvetica/Arial and fall back to
+     a mismatched serif. Segoe UI carries them with a real bold weight. Scope it to
+     the word that needs it so the rest of the page stays in the house face. */
+  .vn{ font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif; }
   .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
   .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
   .rule.gold{ background:var(--broth-gold); }
@@ -75,7 +79,7 @@
 <!-- PAGE 1 — THE SYSTEM -->
 <div class="page">
   <div class="kicker">Professional Guide &middot; Blend Method &nbsp;/&nbsp; v6.0</div>
-  <h1>Phở</h1>
+  <h1><span class="vn">Phở</span></h1>
   <div class="sub">Northern-Southern cross (70/30) &middot; strong, rich, natural beef sweetness &middot; after Leighton Pho, 2024 Science Edition</div>
   <div class="rule"></div>
 
@@ -98,14 +102,29 @@
     <b>The blend method:</b> make the bone broth in advance (a weekend project), store it in the fridge or freezer, then transform it into finished ph&#7903; any weeknight in <b>30&ndash;45 min</b> &mdash; long extraction separated from quick assembly. <b>Dilution principle:</b> extract hard, season to ratio, dilute at service. A concentrated base diluted down keeps full flavor and body; an under-extracted broth is missing compounds you <i>can&rsquo;t</i> add back.
   </div>
 
-  <h2>The Seasoning Curve <span class="note">season in waves &mdash; go under, overshoot, then balance</span></h2>
-  <table class="diag">
-    <tr><th>Stage</th><th>Move</th><th>Why</th></tr>
-    <tr><td class="sym">Base</td><td>At target</td><td>The 24-hr broth flavor &mdash; the floor you build on</td></tr>
-    <tr><td class="sym">Pre-season</td><td>Dip <b>under</b> (salty)</td><td>Salt + sugar + h&#7841;t n&ecirc;m, deliberately salty &mdash; salt pulls the bone flavor forward and finds the floor</td></tr>
-    <tr><td class="sym">+ Sugar</td><td>Overshoot <b>sweet</b></td><td>Rock sugar pushes past the target on purpose</td></tr>
-    <tr><td class="sym">+ Fish sauce</td><td>Settle to <b>target</b></td><td>Umami cuts the sweet back down to 8.7 Brix</td></tr>
-  </table>
+  <h2>The Seasoning Curve <span class="note">season in waves &mdash; go under, overshoot, then balance to target</span></h2>
+  <div style="background:#efe9dd; border:1px solid #d8d0c4; padding:8px 12px 4px; margin-top:6px;">
+    <svg viewBox="0 0 620 115" width="100%" style="display:block;">
+      <line x1="75" y1="48" x2="548" y2="48" stroke="#1a1714" stroke-width="2"/>
+      <polyline points="75,40 169,70 263,66 357,60 451,20 545,48" fill="none" stroke="#c8941e" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="75" cy="40" r="4.5" fill="#c8941e"/>
+      <circle cx="169" cy="70" r="4.5" fill="#c8941e"/>
+      <circle cx="263" cy="66" r="4.5" fill="#c8941e"/>
+      <circle cx="357" cy="60" r="4.5" fill="#c8941e"/>
+      <circle cx="451" cy="20" r="4.5" fill="#c8941e"/>
+      <circle cx="545" cy="48" r="4.5" fill="#c8941e"/>
+      <text x="4" y="20" font-size="11" font-weight="700" fill="#6b6560" letter-spacing="1.2">SWEET</text>
+      <text x="4" y="94" font-size="11" font-weight="700" fill="#6b6560" letter-spacing="1.2">SALTY</text>
+      <text x="552" y="52" font-size="10" font-weight="700" fill="#1a1714" letter-spacing="1">TARGET</text>
+      <text x="75" y="110" font-size="10" fill="#6b6560" text-anchor="middle">Base</text>
+      <text x="169" y="110" font-size="10" fill="#6b6560" text-anchor="middle">Pre-season</text>
+      <text x="263" y="110" font-size="10" fill="#6b6560" text-anchor="middle">Infuse</text>
+      <text x="357" y="110" font-size="10" fill="#6b6560" text-anchor="middle">+Broth</text>
+      <text x="451" y="110" font-size="10" fill="#6b6560" text-anchor="middle">+Sugar</text>
+      <text x="545" y="110" font-size="10" fill="#6b6560" text-anchor="middle">+Fish</text>
+    </svg>
+  </div>
+  <p class="lead mut" style="margin:5px 0 0;"><b>Pre-season</b> deliberately salty to find the floor (salt pulls the 24-hr bone flavor forward); <b>rock sugar</b> overshoots sweet; <b>fish sauce</b> settles it back to the 8.7 target while adding umami.</p>
 
   <h2>With or Without Brisket <span class="note">the one branch in the method</span></h2>
   <table class="diag">
