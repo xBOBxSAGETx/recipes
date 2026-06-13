@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.06em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+  .cols3{ display:flex; gap:18px; }
+  .cols3 .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:80px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:22%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 — THE SYSTEM -->
+<div class="page">
+  <div class="kicker">Professional Guide &middot; Blend Method &nbsp;/&nbsp; v6.0</div>
+  <h1>Phở</h1>
+  <div class="sub">Northern-Southern cross (70/30) &middot; strong, rich, natural beef sweetness &middot; after Leighton Pho, 2024 Science Edition</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">3 L &middot; 6 bowls</div></div>
+    <div><div class="lab">Assembly</div><div class="val">30&ndash;45 min</div></div>
+    <div><div class="lab">Bones</div><div class="val">1:1 + 30% water</div></div>
+    <div><div class="lab">Finish</div><div class="val">8.7 Brix</div></div>
+  </div>
+
+  <h2>Brix Targets <span class="note">a refractometer is your quality control &mdash; these are the numbers</span></h2>
+  <table class="diag">
+    <tr><th>Stage</th><th>Brix</th><th>Meaning</th></tr>
+    <tr><td class="sym">Unseasoned bone broth</td><td>7.0%</td><td>Confirms a proper 24-hr extraction</td></tr>
+    <tr><td class="sym">Finished seasoned ph&#7903;</td><td>8.7%</td><td>Your serving target</td></tr>
+    <tr><td class="sym">Over 8.7</td><td>dilute</td><td>Hot water per bowl at service (e.g. 10.5 &rarr; ~83% broth + ~17% water)</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>The blend method:</b> make the bone broth in advance (a weekend project), store it in the fridge or freezer, then transform it into finished ph&#7903; any weeknight in <b>30&ndash;45 min</b> &mdash; long extraction separated from quick assembly. <b>Dilution principle:</b> extract hard, season to ratio, dilute at service. A concentrated base diluted down keeps full flavor and body; an under-extracted broth is missing compounds you <i>can&rsquo;t</i> add back.
+  </div>
+
+  <h2>The Seasoning Curve <span class="note">season in waves &mdash; go under, overshoot, then balance</span></h2>
+  <table class="diag">
+    <tr><th>Stage</th><th>Move</th><th>Why</th></tr>
+    <tr><td class="sym">Base</td><td>At target</td><td>The 24-hr broth flavor &mdash; the floor you build on</td></tr>
+    <tr><td class="sym">Pre-season</td><td>Dip <b>under</b> (salty)</td><td>Salt + sugar + h&#7841;t n&ecirc;m, deliberately salty &mdash; salt pulls the bone flavor forward and finds the floor</td></tr>
+    <tr><td class="sym">+ Sugar</td><td>Overshoot <b>sweet</b></td><td>Rock sugar pushes past the target on purpose</td></tr>
+    <tr><td class="sym">+ Fish sauce</td><td>Settle to <b>target</b></td><td>Umami cuts the sweet back down to 8.7 Brix</td></tr>
+  </table>
+
+  <h2>With or Without Brisket <span class="note">the one branch in the method</span></h2>
+  <table class="diag">
+    <tr><th></th><th>With brisket</th><th>Without brisket</th></tr>
+    <tr><td class="sym">Simmer</td><td>~3 hours</td><td>30&ndash;45 min</td></tr>
+    <tr><td class="sym">Doneness</td><td>Probe-tender, not by the clock</td><td>Spice / aromatic infusion only</td></tr>
+    <tr><td class="sym">Intensity</td><td>Moderate &mdash; the meat absorbs broth</td><td>More concentrated</td></tr>
+    <tr><td class="sym">At service</td><td>Ice-bath &rarr; slice thin</td><td>Raw steak (t&aacute;i) in the hot broth</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Ph&#7903; v6.0 &middot; the system</span><span>Page 1 / 3</span></div>
+</div>
+
+<!-- PAGE 2 — BONE BROTH BASE -->
+<div class="page">
+  <div class="kicker">Stage 0 &middot; Make Ahead &middot; 24 Hours</div>
+  <h1 class="sm">Bone Broth Base</h1>
+  <div class="rule gold"></div>
+
+  <p class="lead"><b>The base is everything.</b> Use <b>marrow bones</b> (flavor) + <b>knuckle bones</b> (gelatin). The ratio is <b>1:1 bones to final volume</b> &mdash; add <b>30% extra water</b> to cover evaporation over the long simmer. This is the weekend project; the weeknight assembly (page 3) is fast because this is done.</p>
+
+  <h2>Bone Roasting <span class="note">reserve the rendered fat &mdash; it&rsquo;s your tallow for the spice bloom</span></h2>
+  <ol class="steps">
+    <li><b>Straight from frozen:</b> bones go from freezer to oven &mdash; <b>no thaw, no parboil</b>.</li>
+    <li><b>Roast hot:</b> <b>425&ndash;450&deg;F for ~1 hour</b>.</li>
+    <li><b>Color target:</b> <b>golden-mahogany with dark spots</b> &mdash; dark spots are fine, black is not.</li>
+    <li><b>Save the fat:</b> reserve the rendered tallow for blooming the spices at assembly.</li>
+  </ol>
+
+  <h2>Color &amp; Char Cues <span class="note">judged by eye &mdash; over-charring turns it bitter</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Bone color</td><td>Golden-mahogany. Dark spots OK, <b>not black</b>.</td></tr>
+    <tr><td class="sym">Aromatics char</td><td>30&ndash;40% black spots. <b>Not</b> full char &mdash; full char causes bitterness.</td></tr>
+  </table>
+
+  <h2>24-Hour Simmer <span class="note">gentle bubbles, never a rolling boil &mdash; that&rsquo;s what keeps it clear</span></h2>
+  <ol class="steps">
+    <li><b>Set it:</b> roasted bones + water (the 30% extra for evaporation).</li>
+    <li><b>Hold the heat:</b> simmer at <b>~94&deg;C / 200&deg;F</b> &mdash; gentle bubbles, <b>no rolling boil</b> (a hard boil emulsifies fat and turns it murky).</li>
+    <li><b>Finish to number:</b> top up to the target volume at the end, strain. <b>Target: 7.0 Brix.</b></li>
+    <li><b>Store:</b> fridge up to <b>1 week</b>, or freezer for <b>months</b>.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Body comes from gelatin, not luck.</b> If the chilled broth doesn&rsquo;t set to a wobble, you&rsquo;re short on knuckle bones or the simmer was cut early &mdash; the full 24 hr at a gentle 200&deg;F is what converts collagen to the gelatin that gives ph&#7903; its weight on the tongue.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Ph&#7903; v6.0 &middot; bone broth base</span><span>Page 2 / 3</span></div>
+</div>
+
+<!-- PAGE 3 — WEEKNIGHT ASSEMBLY -->
+<div class="page">
+  <div class="kicker">From Broth to Bowl &middot; 30&ndash;45 min</div>
+  <h1 class="sm">Weeknight Assembly</h1>
+  <div class="rule gold"></div>
+
+  <h2>Ingredients <span class="note">Base: 3 L bone broth @ 7.0 Brix (from page 2)</span></h2>
+  <div class="cols3">
+    <div class="col">
+      <span class="tag">Aromatics</span>
+      <table class="ing">
+        <tr><td>Brown onion</td><td class="amt">&frac12;</td></tr>
+        <tr><td>Shallots <span class="mut">halved</span></td><td class="amt">2&ndash;3</td></tr>
+        <tr><td>Ginger <span class="mut">skin on</span></td><td class="amt">1 knob</td></tr>
+        <tr><td>Garlic cloves</td><td class="amt">4&ndash;5</td></tr>
+      </table>
+      <span class="tag">Meat</span>
+      <table class="ing">
+        <tr><td>Brisket <span class="mut">optional</span></td><td class="amt">500 g</td></tr>
+        <tr><td>&mdash; or raw steak <span class="mut">for t&aacute;i</span></td><td class="amt">&mdash;</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Spices</span>
+      <table class="ing">
+        <tr><td>Cinnamon <span class="mut">cassia</span></td><td class="amt">12 g</td></tr>
+        <tr><td>Black cardamom</td><td class="amt">14 g</td></tr>
+        <tr><td>Star anise</td><td class="amt">20 g</td></tr>
+        <tr><td>Clove</td><td class="amt">2 g</td></tr>
+      </table>
+      <span class="tag">X-Factor</span>
+      <table class="ing">
+        <tr><td>Oxtail concentrate <span class="mut">optional, adds depth</span></td><td class="amt">250 ml</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Pre-Seasoning</span>
+      <table class="ing">
+        <tr><td>Salt <span class="mut">1.17%</span></td><td class="amt">35 g</td></tr>
+        <tr><td>Rock sugar <span class="mut">1.83%</span></td><td class="amt">55 g</td></tr>
+        <tr><td>H&#7841;t n&ecirc;m / LSP <span class="mut">0.67%</span></td><td class="amt">20 g</td></tr>
+      </table>
+      <span class="tag">Final Adjustment</span>
+      <table class="ing">
+        <tr><td>Fish sauce <span class="mut">to 8.7 Brix</span></td><td class="amt">8&ndash;15 ml</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Method <span class="note">bloom in the reserved tallow off-heat &mdash; the broth quenches it</span></h2>
+  <ol class="steps">
+    <li><b>Char aromatics:</b> high broil &mdash; onion halves, shallots, ginger (skin on), garlic. Flip for even char. Target <b>30&ndash;40% black spots</b>, not full char (bitter).</li>
+    <li><b>Bloom spices:</b> beef tallow in the pot, get it hot, <b>kill the heat</b>. Add the spices ~30 sec until fragrant, then the charred aromatics &mdash; they sizzle in the residual heat.</li>
+    <li><b>Add broth + pre-season:</b> pour in the <b>3 L bone broth</b> (it quenches everything), bring to a gentle simmer. Add salt (35 g), rock sugar (55 g), h&#7841;t n&ecirc;m (20 g); stir to dissolve. Taste &mdash; 95% there, slightly salty.</li>
+    <li><b>Infuse:</b> without brisket <b>30&ndash;45 min</b>; with brisket <b>~3 hr</b> to probe-tender. Maintain the volume &mdash; big loss means the heat&rsquo;s too high.</li>
+    <li><b>Final adjustment:</b> strain out the aromatics + spices. Add <b>fish sauce (8&ndash;15 ml)</b> until you catch a slight fishiness; optional 250 ml oxtail concentrate. <b>Target 8.7 Brix</b> &mdash; over, dilute at service.</li>
+    <li><b>Serve:</b> noodles in the bowl, ladle hot broth, add sliced brisket or raw steak (it cooks in the broth). Sides: bean sprouts, Thai basil, lime, hoisin, sriracha.</li>
+  </ol>
+
+  <h2>Troubleshooting <span class="note">Northern style: ginger + onion + 1 star anise, sugar cut 50%+, fish sauce as finishing salt, dilute harder</span></h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Too intense</td><td>Over-extraction / no brisket</td><td>Dilute to 8.7 Brix at service</td></tr>
+    <tr><td class="sym">Too weak</td><td>Under-extraction (under 7 Brix base)</td><td>Simmer longer or reduce</td></tr>
+    <tr><td class="sym">Bitter</td><td>Burnt cloves / over-charred aromatics</td><td>Lower heat; 30&ndash;40% char max</td></tr>
+    <tr><td class="sym">Murky</td><td>Boiled too hard</td><td>Gentle simmer; skim early</td></tr>
+    <tr><td class="sym">No body</td><td>Low gelatin extraction</td><td>Use knuckle bones; full 24 hr</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Ph&#7903; v6.0 &middot; assembly + troubleshoot</span><span>Page 3 / 3</span></div>
+</div>
+
+</body>
+</html>
