@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:27pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.06em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 (single page — reference card) -->
+<div class="page">
+  <div class="kicker">House Reference &nbsp;/&nbsp; v1.0</div>
+  <h1>Legg&rsquo;s Sausage Seasonings</h1>
+  <div class="sub">Blend 10 pork sausage &middot; Blend 111 fresh chorizo &middot; premix dosing + the freezer workflow</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Meat</div><div class="val">pork butt ~70/30</div></div>
+    <div><div class="lab">Portion</div><div class="val">450 g bags</div></div>
+    <div><div class="lab">Grind</div><div class="val">coarse &rarr; fine</div></div>
+    <div><div class="lab">Storage</div><div class="val">freeze, months</div></div>
+  </div>
+
+  <h2>Dosing <span class="note">both bags season 25 lb (11.3 kg) &mdash; weigh your meat, multiply</span></h2>
+  <table class="diag">
+    <tr><th>Blend</th><th>% of meat</th><th>per lb</th><th>per kg</th><th>Bag / notes</th></tr>
+    <tr><td class="sym">#10 Pork Sausage</td><td>2.0%</td><td>9 g</td><td>20 g</td><td>227 g (8 oz) bag</td></tr>
+    <tr><td class="sym">#111 Fresh Chorizo</td><td>4.0%</td><td>18 g</td><td>40 g</td><td>454 g (16 oz) bag &mdash; <b>also add vinegar + water per pack</b></td></tr>
+  </table>
+
+  <h2>Workflow <span class="note">same freezer engine as the rest &mdash; keep everything cold</span></h2>
+  <ol class="steps">
+    <li><b>Grind:</b> pork butt (~70/30), everything <b>near-freezing</b>. Pork sausage = <b>coarse then fine</b> (uniform); chorizo = <b>coarse</b> (or coarse + fine).</li>
+    <li><b>Weigh + dose:</b> weigh the ground meat, add the seasoning at the <b>% above</b>. Chorizo: also stir in <b>vinegar + water at Legg&rsquo;s pack ratio</b> &mdash; the acid is what makes it chorizo.</li>
+    <li><b>Mix:</b> mix <b>1&ndash;2 min</b> until it turns tacky and binds (primary bind = patties that hold) &mdash; keep it cold; warm fat smears and goes greasy/crumbly.</li>
+    <li><b>Portion + freeze:</b> into <b>450 g</b> bags, press flat, remove air, label with the date, freeze.</li>
+    <li><b>Cook:</b> thaw in the fridge. <b>Pork sausage</b> &mdash; patties or crumble on the griddle to <b>160&deg;F</b>. <b>Chorizo</b> &mdash; crumble and fry until rendered and crisp at the edges.</li>
+  </ol>
+
+  <div class="callout">
+    <b>This is the premix baseline</b> &mdash; run it, learn your grind and fat, and it becomes the bar the scratch versions have to beat. <b>Fat is the texture:</b> ~30% (pork butt) keeps both juicy; leaner reads dry and crumbly. <b>Cold is non-negotiable</b> &mdash; chill the meat, grinder parts, and bowl; smeared fat is the #1 way sausage goes greasy and won&rsquo;t bind. <b>Chorizo needs its acid</b> &mdash; don&rsquo;t skip the vinegar; follow Legg&rsquo;s ratio on Blend 111.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Legg&rsquo;s Seasonings v1.0 &middot; dosing + workflow</span><span>Page 1 / 1</span></div>
+</div>
+
+</body>
+</html>
