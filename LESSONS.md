@@ -17,6 +17,13 @@ rule here exists because ignoring it broke something.
 - **The rasterized eyeball stays mandatory.** A one-line collision slipped past a
   110-dpi visual check. Render and look, in addition to the detector.
 
+- **Near-full pages need 2–3 spacing passes, not one.** The footer gate's safe
+  limit is tight — on a packed page the last wrapped word can clear by a fraction
+  of a point (a fix once landed at 750.4 vs a 750.2 limit, ~0.16pt). Don't expect
+  to nail it in one edit; nudge a spacing token, re-run `build.py`, repeat. Fix it
+  by tightening vertical rhythm on **page-2-only elements** (step padding, callout
+  / diag / lead margins) so page 1 is untouched and no content is cut.
+
 ## Editing HTML
 
 - **Never `sed` a line containing HTML entities (`&mdash;`, `&deg;`, `&amp;`, …).**
