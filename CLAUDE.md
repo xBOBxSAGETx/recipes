@@ -1,0 +1,75 @@
+# Aguillon House Kitchen — Claude Code guide
+
+Single-source HTML recipes rendered to print-ready, validated PDFs. One recipe =
+one file in `recipes/`. `template.html` is the design system; `LESSONS.md` is the
+rulebook. **Read `LESSONS.md` before editing any recipe, `template.html`, or
+`build.py`** — every rule there exists because ignoring it broke something.
+
+## Build & validate
+
+```bash
+python build.py                # build + validate ALL recipes -> dist/
+python build.py nyc-bagels     # one recipe (substring match on filename)
+python build.py --check-only   # validate existing dist/ PDFs, don't re-render
+```
+
+- A recipe is DONE only when `build.py` prints `[PASS]` for it. Never call a recipe
+  finished while any gate fails — fix and re-run until green.
+- Toolchain is already installed on this machine (playwright, pypdf, pymupdf +
+  Chromium). If a browser reinstall is ever needed it's
+  `python -m playwright install chromium` — the bare `playwright` command is NOT on
+  PATH (user install).
+- PDFs land in `dist/` (gitignored — build artifacts, never commit them).
+
+## The gates (all enforced by build.py)
+
+1. Filename has exactly ONE dot before `.pdf` (iOS mislabels multi-dot PDFs as "data").
+2. Valid PDF (parses with pypdf).
+3. **No footer overflow** on any page (`overflow_check`) — the hard one.
+4. No bare `tsp`/`tbsp` in rendered text (weigh in grams; ml ok).
+5. Balanced `<span>` tags.
+6. No mangled HTML entities in output (literal `mdash;` etc.).
+7. No blank pages.
+8. Version stamp (`vN.N` / `vN-N`) in every page footer.
+
+## Editing rules (the ones that bite)
+
+- **Never `sed` a line with HTML entities** (`&mdash; &deg; &amp;`) — it mangles the
+  `&`. Use Edit/Write (Python string-replace), never stream-edit those lines.
+- **Fixing footer overflow:** tighten vertical rhythm on **page-2-only** elements
+  (step padding, callout / `.diag` / `p.lead` margins) so page 1 is untouched and no
+  recipe content is cut. The safe limit is tight — expect 2–3 nudge-and-rebuild
+  passes; the last wrapped word can clear by a fraction of a point.
+- **Eyeball it too.** After a near-full page passes, rasterize page 2 and look — a
+  one-line collision once slipped past the detector. Quick render:
+  `python -c "import fitz; fitz.open('dist/NAME.pdf')[1].get_pixmap(dpi=140).save('dist/_chk.png')"`
+  then read the PNG (delete it after; it's in gitignored `dist/`).
+
+## Adding / converting a recipe
+
+1. Create `recipes/<kebab-name>.html` using the design system from `template.html`
+   (same `<style>` block + grammar: kicker → h1/sub/rule → spec strip → h2 sections
+   → ingredient tables / gold-circle steps / callouts / diag tables → footer).
+2. Units: grams for weight; counts for whole items (eggs, pods, bay); ml for liquids;
+   no tsp/tbsp. Resolve vague heat ("medium-low") to an IR temp, or state the visual
+   cue. Multi-stage cooks: per-page temp targets, not a front-page dashboard.
+3. Version-stamp the footer of every page.
+4. Run `python build.py <name>` until `[PASS]`, eyeball page 2 if it's near-full.
+
+## Commit & push
+
+- Commit only finished, passing work. Conventional one-line summary + short body.
+- Push to `main` when the user asks. End commit messages with the Co-Authored-By
+  trailer if configured.
+- One source per recipe — don't fork a recipe into two files (drift creeps in; git
+  history is the archive).
+
+## Working from the phone (Remote Control)
+
+This repo is built to be driven from the Claude mobile app against a Remote Control
+session running here. Front-load instructions so the session doesn't stop to ask —
+a complete instruction looks like:
+
+> "Set the curry's salt to 9 g, rebuild, confirm overflow_check passes, commit and push."
+> "Convert this pasted recipe into `recipes/<name>.html` in the house style, build
+>  until it passes, then commit and push."
