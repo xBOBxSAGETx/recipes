@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+  .cols3{ display:flex; gap:18px; }
+  .cols3 .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:62px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:18%; background:#efe9dd; white-space:nowrap; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Meatloaf Sandwich</h1>
+  <div class="sub">Free-form glazed meatloaf &middot; max-crisp oven fries &middot; A1 aioli &middot; ~4 sandwiches</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~4 sandwiches</div></div>
+    <div><div class="lab">Active</div><div class="val">~2 hr</div></div>
+    <div><div class="lab">Meatloaf</div><div class="val">350&deg;F &rarr; 160&deg;F</div></div>
+    <div><div class="lab">Fries</div><div class="val">450&deg;F</div></div>
+  </div>
+
+  <h2>Meatloaf <span class="note">907 g beef (85/15) &middot; free-form on a rack &middot; 160&deg;F internal</span></h2>
+  <div class="cols3">
+    <div class="col">
+      <span class="tag">Meat &amp; Binder</span>
+      <table class="ing">
+        <tr><td>Ground beef <span class="mut">85/15</span></td><td class="amt">907 g</td></tr>
+        <tr><td>Breadcrumbs</td><td class="amt">80 g</td></tr>
+        <tr><td>Milk</td><td class="amt">80 g</td></tr>
+        <tr><td>Eggs <span class="mut">(2)</span></td><td class="amt">100 g</td></tr>
+        <tr><td>Ketchup <span class="mut">glaze</span></td><td class="amt">120 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Aromatics</span>
+      <table class="ing">
+        <tr><td>Onion <span class="mut">diced</span></td><td class="amt">100 g</td></tr>
+        <tr><td>Garlic <span class="mut">minced</span></td><td class="amt">6 g</td></tr>
+        <tr><td>Butter / oil</td><td class="amt">10 g</td></tr>
+        <tr><td>Soy sauce</td><td class="amt">15 g</td></tr>
+        <tr><td>Worcestershire</td><td class="amt">10 g</td></tr>
+        <tr><td>Fish sauce</td><td class="amt">5 g</td></tr>
+        <tr><td>Tomato paste</td><td class="amt">10 g</td></tr>
+        <tr><td>Brown sugar</td><td class="amt">15 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Seasonings</span>
+      <table class="ing">
+        <tr><td>Salt</td><td class="amt">10 g</td></tr>
+        <tr><td>Black pepper</td><td class="amt">3 g</td></tr>
+        <tr><td>Garlic powder</td><td class="amt">12 g</td></tr>
+        <tr><td>Onion powder</td><td class="amt">16 g</td></tr>
+        <tr><td>Paprika</td><td class="amt">4 g</td></tr>
+        <tr><td>Thyme</td><td class="amt">1 g</td></tr>
+        <tr><td>Oregano</td><td class="amt">1 g</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <ol class="steps">
+    <li><b>Base:</b> preheat <b>350&deg;F</b>. Saut&eacute; onion + garlic in butter until soft; add tomato paste, cook 1 min, cool. Whisk eggs, milk, soy, Worcestershire, fish sauce.</li>
+    <li><b>Bind:</b> add breadcrumbs + all seasonings + brown sugar to the egg mix, rest <b>5 min</b>, then add beef + aromatics and mix firmly to bind.</li>
+    <li><b>Shape:</b> line a loaf pan with plastic wrap, pack tight, flip onto a <b>rack-on-sheet</b>, peel the wrap. Bake <b>45&ndash;50 min</b>.</li>
+    <li><b>Glaze:</b> coat with ketchup, bake <b>15 min more to 160&deg;F internal</b>, then <b>rest 10 min</b> before slicing.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Resting is non-negotiable</b> &mdash; slice it straight out of the oven and the juices run out into a dry, crumbly mess. Ten minutes lets them redistribute. The <b>rack-on-sheet + free-form</b> shape (vs. baked in the pan) lets all sides brown and the fat drain instead of stewing.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Meatloaf Sandwich v1.0 &middot; the meatloaf</span><span>Page 1 / 4</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Max Crisp Fries &middot; Seasoning</div>
+  <h1 class="sm">The Fries</h1>
+  <div class="rule gold"></div>
+
+  <h2>Max Crisp Fries <span class="note">4 russets &middot; soak overnight &middot; 450&deg;F on preheated pans</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Russet potatoes</td><td class="amt">4</td></tr>
+        <tr><td><span class="mut">(700&ndash;800 g)</span></td><td class="amt">&mdash;</td></tr>
+        <tr><td>Rice flour</td><td class="amt">8 g</td></tr>
+        <tr><td>Cornstarch</td><td class="amt">8 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Neutral oil <span class="mut">split</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Baking soda <span class="mut">in parboil water</span></td><td class="amt">3 g</td></tr>
+        <tr><td>Salt <span class="mut">in parboil water</span></td><td class="amt">10 g</td></tr>
+      </table>
+    </div>
+  </div>
+  <ol class="steps">
+    <li><b>Soak:</b> cut <b>&frac14;&Prime; fries</b>, soak overnight. Parboil in salted + baking-soda water <b>2&ndash;3 min</b>, drain, steam-dry <b>5 min</b>.</li>
+    <li><b>Coat:</b> preheat <b>450&deg;F with two sheet pans inside</b>. Dust the fries with rice flour + cornstarch, toss with <b>15 g oil</b>, spread on the hot pans.</li>
+    <li><b>Bake:</b> <b>20 min</b>, then flip, add the remaining oil, swap pan positions, bake <b>20&ndash;25 min</b> more. Optional broil <b>2 min</b>. Season immediately.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Two tricks do the crisping.</b> The <b>overnight soak</b> rinses surface starch so the exterior shatters instead of gumming; the <b>baking soda</b> in the parboil raises pH, breaking down pectin for a fluffy interior. Preheated pans give the bottoms an instant sear &mdash; cold pans steam.
+  </div>
+
+  <h2>Fry Seasoning <span class="note">~115 g batch &mdash; use 55&ndash;60 g, save the rest</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Paprika</td><td class="amt">30 g</td></tr>
+        <tr><td>Garlic powder</td><td class="amt">20 g</td></tr>
+        <tr><td>Onion powder</td><td class="amt">16 g</td></tr>
+        <tr><td>Black pepper <span class="mut">16-mesh</span></td><td class="amt">10 g</td></tr>
+        <tr><td>Mustard powder</td><td class="amt">1 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Salt <span class="mut">Diamond Crystal, by wt</span></td><td class="amt">24 g</td></tr>
+        <tr><td>Sugar</td><td class="amt">6 g</td></tr>
+        <tr><td>Cayenne</td><td class="amt">2 g</td></tr>
+        <tr><td>Oregano</td><td class="amt">2 g</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Meatloaf Sandwich v1.0 &middot; fries + seasoning</span><span>Page 2 / 4</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="kicker">Aioli &middot; Onions &middot; Assembly</div>
+  <h1 class="sm">Build the Sandwich</h1>
+  <div class="rule gold"></div>
+
+  <h2>A1 Aioli <span class="note">Doubled batch &mdash; raw + roasted garlic for depth</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Mayonnaise</td><td class="amt">240 g</td></tr>
+        <tr><td>A1 steak sauce</td><td class="amt">100 g</td></tr>
+        <tr><td>Dijon mustard</td><td class="amt">24 g</td></tr>
+        <tr><td>Garlic <span class="mut">12 g roast, 12 g raw</span></td><td class="amt">24 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Lemon juice</td><td class="amt">10 g</td></tr>
+        <tr><td>Worcestershire</td><td class="amt">6 g</td></tr>
+        <tr><td>Black pepper</td><td class="amt">2 g</td></tr>
+        <tr><td>Cayenne / hot sauce</td><td class="amt">to taste</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="lead"><b>Roast half the garlic until golden</b>, mash both roasted and raw to a paste, whisk with everything else, chill <b>30 min</b>. All raw is too sharp; all roasted too mellow &mdash; the mix is the point.</p>
+
+  <h2>Saut&eacute;ed Onions <span class="note">Low and slow &mdash; rushing steams them, never caramelizes</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Yellow onion <span class="mut">sliced thin</span></td><td class="amt">150 g</td></tr>
+        <tr><td>Butter</td><td class="amt">10 g</td></tr>
+        <tr><td>Olive oil</td><td class="amt">10 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Salt</td><td class="amt">1 g</td></tr>
+        <tr><td>Black pepper</td><td class="amt">0.5 g</td></tr>
+        <tr><td>Worcestershire / balsamic</td><td class="amt">3 g</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="lead">Cook in butter + oil over low heat until <b>deep golden &mdash; 20&ndash;30 min</b>, stirring occasionally (color is the target, not the clock). Finish with the Worcestershire or balsamic.</p>
+
+  <h2>Assembly <span class="note">Per sandwich &middot; ~4 total</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Sourdough / round loaf</td><td class="amt">2 slices</td></tr>
+        <tr><td>A1 aioli</td><td class="amt">25&ndash;30 g</td></tr>
+        <tr><td>Meatloaf <span class="mut">1 thick slice</span></td><td class="amt">160&ndash;200 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Cheese <span class="mut">provolone / cheddar</span></td><td class="amt">30&ndash;40 g</td></tr>
+        <tr><td>Saut&eacute;ed onions</td><td class="amt">75 g</td></tr>
+        <tr><td>Arugula, pickles <span class="mut">optional</span></td><td class="amt">&mdash;</td></tr>
+      </table>
+    </div>
+  </div>
+  <ol class="steps">
+    <li><b>Melt:</b> toast the bread lightly; warm a meatloaf slice, top with cheese, melt under the broiler.</li>
+    <li><b>Close:</b> spread aioli on both slices, layer meatloaf + cheese, onions, and extras; close, slice, serve with the fries.</li>
+  </ol>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Meatloaf Sandwich v1.0 &middot; aioli &middot; onions &middot; assembly</span><span>Page 3 / 4</span></div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="kicker">Timeline &middot; Notes</div>
+  <h1 class="sm">Run of Show</h1>
+  <div class="rule gold"></div>
+
+  <h2>Cooking Timeline <span class="note">~2 hr from aioli to plate</span></h2>
+  <table class="diag">
+    <tr><th>Time</th><th>Action</th></tr>
+    <tr><td class="sym">T&minus;30 min</td><td>Start aioli: roast half the garlic, mash with raw, mix with the rest, chill.</td></tr>
+    <tr><td class="sym">T&minus;20 min</td><td>Slice onions thin; start them low and slow in butter + oil.</td></tr>
+    <tr><td class="sym">T&minus;0</td><td>Preheat oven 350&deg;F. Mix and shape the meatloaf. Into the oven.</td></tr>
+    <tr><td class="sym">T+30 min</td><td>Check onions (keep going); check meatloaf.</td></tr>
+    <tr><td class="sym">T+45&ndash;50</td><td>Glaze meatloaf with ketchup; return to oven.</td></tr>
+    <tr><td class="sym">T+60&ndash;65</td><td>Meatloaf done at 160&deg;F. Pull and rest 10&ndash;15 min.</td></tr>
+    <tr><td class="sym">While resting</td><td>Parboil fries in salted + baking-soda water 2&ndash;3 min; drain, steam-dry.</td></tr>
+    <tr><td class="sym">T+70 min</td><td>Preheat oven 450&deg;F with 2 pans inside. Dust fries with flour + starch, toss with oil, spread on the hot pans. Bake 20 min.</td></tr>
+    <tr><td class="sym">T+90 min</td><td>Flip fries, drizzle remaining oil, swap pan positions. Bake 20&ndash;25 min more (optional broil 2 min).</td></tr>
+    <tr><td class="sym">Last 10 min</td><td>Toast bread. Warm meatloaf slices. Melt cheese on the meatloaf.</td></tr>
+    <tr><td class="sym">T+115 min</td><td>Season fries HOT. Assemble: aioli both slices, meatloaf + cheese, onions, extras. Serve immediately.</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>Fries:</b> the overnight soak removes surface starch for a crispier result; baking soda in the parboil raises pH and breaks down pectin for a fluffier interior. &nbsp; <b>Meatloaf:</b> resting is critical &mdash; slice too early and it&rsquo;s a dry, crumbly mess. &nbsp; <b>Aioli:</b> raw + roasted garlic gives depth; all raw is too sharp, all roasted too mellow. &nbsp; <b>Onions:</b> low and slow &mdash; rush them and you get steamed onions, not caramelized.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Meatloaf Sandwich v1.0 &middot; timeline &middot; notes</span><span>Page 4 / 4</span></div>
+</div>
+
+</body>
+</html>

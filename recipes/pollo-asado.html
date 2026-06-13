@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:92px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Pollo Asado</h1>
+  <div class="sub">Achiote-citrus (red) &amp; green herb-jalape&ntilde;o &middot; cubed thigh &middot; griddle chop-and-sear</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">1.5 kg &middot; 6&ndash;8</div></div>
+    <div><div class="lab">Active</div><div class="val">~15 min</div></div>
+    <div><div class="lab">Marinate</div><div class="val">2&ndash;24 hr</div></div>
+    <div><div class="lab">Griddle (IR)</div><div class="val">450&ndash;500&deg;F</div></div>
+  </div>
+
+  <h2>Two Marinades <span class="note">Per 450 g (1 lb) thigh &mdash; ratios scale linearly</span></h2>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">Achiote-Citrus &middot; Red</span>
+      <table class="ing">
+        <tr><td>Achiote paste <span class="mut">El Yucateco brick</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Orange juice <span class="mut">fresh</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Lime juice <span class="mut">fresh</span></td><td class="amt">15 g</td></tr>
+        <tr><td>Garlic <span class="mut">minced</span></td><td class="amt">10 g</td></tr>
+        <tr><td>Olive oil</td><td class="amt">15 g</td></tr>
+        <tr><td>Salt &middot; pepper &middot; oregano</td><td class="amt">4 &middot; 1 &middot; 1 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Green &middot; Herb-Jalape&ntilde;o</span>
+      <table class="ing">
+        <tr><td>Jalape&ntilde;o <span class="mut">seeded, minced</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Cilantro <span class="mut">packed, at finish</span></td><td class="amt">15 g</td></tr>
+        <tr><td>Lime juice <span class="mut">fresh</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Garlic <span class="mut">minced</span></td><td class="amt">10 g</td></tr>
+        <tr><td>Olive oil</td><td class="amt">30 g</td></tr>
+        <tr><td>Salt &middot; cumin &middot; oregano</td><td class="amt">4 &middot; 2 &middot; 1 g</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="callout">
+    <b>Break up the achiote brick in the citrus first</b> &mdash; whisk it into the orange + lime juice before adding oil, or it stays gritty and dyes-streaky. <b>Cilantro goes in at the finish only</b> &mdash; cooked in the marinade it turns muddy and flat; raw at the end it stays bright. Marinade window is <b>2 hr minimum, 24 hr max</b> &mdash; past 24 hr the acid breaks down the meat to mush.
+  </div>
+
+  <h2>Temperature Targets <span class="note">IR-confirm the surface &mdash; don&rsquo;t eyeball it</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Griddle surface <span class="mut">(IR)</span></td><td class="amt">450&ndash;500&deg;F</td></tr>
+        <tr><td>Char coverage</td><td class="amt">15&ndash;20%</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Chicken internal</td><td class="amt">165&ndash;175&deg;F</td></tr>
+        <tr><td>Final texture</td><td class="amt">crisp edge, juicy</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Pollo Asado v1.0 &middot; two marinades</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method &middot; Sear &middot; Troubleshoot</div>
+  <h1 class="sm">Cook &amp; Finish</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">Active ~15 min &mdash; serve immediately</span></h2>
+  <ol class="steps">
+    <li><b>Cube:</b> cut thighs into <b>1&ndash;1.5&Prime; (2.5&ndash;4 cm)</b> pieces, uniform for even cooking.</li>
+    <li><b>Mix:</b> whisk the marinade smooth &mdash; <b>break up the achiote in the citrus first</b> &mdash; until the color is uniform.</li>
+    <li><b>Marinate:</b> coat every piece, refrigerate <b>2&ndash;24 hr</b> (overnight is the sweet spot). <b>Never past 24 hr.</b></li>
+    <li><b>Temper:</b> pull the chicken <b>20 min</b> before cooking. Heat griddle / cast iron until screaming &mdash; <b>IR 450&ndash;500&deg;F</b>.</li>
+    <li><b>Sear:</b> single layer, <b>do not crowd</b>, 2&ndash;3 min/side for char. Let the pan recover between batches &mdash; crowding steams, no char.</li>
+    <li><b>Chop:</b> all chicken back on the surface, chop with two spatulas, let it sit <b>30&ndash;60 sec</b>, toss. Builds crispy edges.</li>
+    <li><b>Finish:</b> fresh lime squeeze (both profiles); <b>fresh cilantro on the green only</b>. Pull at <b>165&ndash;175&deg;F</b>, serve now.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Chop-and-sear is the same move as shawarma</b> &mdash; cubing then chopping on the hot surface multiplies the seared edge without overcooking the interior, so you get crispy edges <i>and</i> juicy centers. The achiote turns bitter if the paste is old or scorched: use fresh paste and <b>medium-high, not nuclear</b>, once the chicken is down.
+  </div>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Bland inside</td><td>Under-marinated or cubes too large</td><td>Full 24 hr; cut smaller (1&Prime;)</td></tr>
+    <tr><td class="sym">No char</td><td>Pan too cool or overcrowded</td><td>Smaller batches; recover to 450&ndash;500&deg;F</td></tr>
+    <tr><td class="sym">Dry meat</td><td>Overcooked or low oil in marinade</td><td>Pull at 165&ndash;175&deg;F; keep the oil ratio</td></tr>
+    <tr><td class="sym">Mushy texture</td><td>Over-marinated &mdash; acid too long</td><td>Max 24 hr; do not exceed</td></tr>
+    <tr><td class="sym">Achiote bitter</td><td>Old paste or burnt during sear</td><td>Fresh paste; medium-high, not screaming</td></tr>
+    <tr><td class="sym">Green tastes flat</td><td>Cooked the cilantro</td><td>Add cilantro at the finish only, never in the pan</td></tr>
+  </table>
+
+  <h2>Notes <span class="note">Scaling &middot; serving</span></h2>
+  <p class="lead"><b>Scaling:</b> the per-450 g ratios scale linearly &mdash; 1.5 kg is 3.3&times; a single pound. <b>Serving:</b> tacos, burritos, rice bowls; pairs with pickled onion, crema, and salsa. <b>Same family as the shawarma</b> &mdash; oil-carried marinade, hot iron, chop finish.</p>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Pollo Asado v1.0 &middot; 450&ndash;500&deg;F &middot; chop-and-sear</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

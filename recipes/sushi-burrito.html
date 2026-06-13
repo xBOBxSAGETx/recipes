@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:84px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Sushi Burrito</h1>
+  <div class="sub">Tempura shrimp &middot; California crab &middot; fresh tuna &middot; full-sheet nori, rolled tight</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">2 large burritos</div></div>
+    <div><div class="lab">Active</div><div class="val">25&ndash;30 min</div></div>
+    <div><div class="lab">Rice Ratio</div><div class="val">1:1 rice:water</div></div>
+    <div><div class="lab">Difficulty</div><div class="val">Easy</div></div>
+  </div>
+
+  <h2>Key Targets <span class="note">Four numbers decide whether it holds together</span></h2>
+  <table class="diag">
+    <tr><th>Component</th><th>Target</th><th>Why it matters</th></tr>
+    <tr><td class="sym">Rice temp</td><td>Body temp, 95&ndash;100&deg;F</td><td>Too hot = soggy nori; too cold = clumps, won&rsquo;t stick</td></tr>
+    <tr><td class="sym">Rice seasoning</td><td>3 : 2 : 0.5 vinegar:sugar:salt</td><td>Brightness cuts the fish richness &mdash; balance is everything</td></tr>
+    <tr><td class="sym">Nori texture</td><td>Crisp at assembly</td><td>Wet nori = chewy mess; work fast or toast fresh</td></tr>
+    <tr><td class="sym">Tuna temp</td><td>Ice cold, 35&ndash;38&deg;F</td><td>Warmth = bacteria growth and mushy texture</td></tr>
+  </table>
+
+  <h2>Ingredients <span class="note">Per 2 burritos &mdash; sauces converted to grams</span></h2>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">Rice</span>
+      <table class="ing">
+        <tr><td>Sushi rice <span class="mut">short grain</span></td><td class="amt">300 g</td></tr>
+        <tr><td>Water <span class="mut">1:1 by weight</span></td><td class="amt">300 g</td></tr>
+        <tr><td>Rice vinegar</td><td class="amt">60 g</td></tr>
+        <tr><td>Sugar</td><td class="amt">25 g</td></tr>
+        <tr><td>Salt</td><td class="amt">6 g</td></tr>
+      </table>
+      <span class="tag">Sauces</span>
+      <table class="ing">
+        <tr><td>Kewpie mayo</td><td class="amt">45 g</td></tr>
+        <tr><td>Sriracha</td><td class="amt">15 g</td></tr>
+        <tr><td>Eel sauce <span class="mut">unagi</span></td><td class="amt">40 g</td></tr>
+        <tr><td>Good shoyu <span class="mut">to dip</span></td><td class="amt">&mdash;</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Proteins</span>
+      <table class="ing">
+        <tr><td>Sushi-grade tuna <span class="mut">cubed</span></td><td class="amt">170 g</td></tr>
+        <tr><td>Imitation crab <span class="mut">surimi</span></td><td class="amt">115 g</td></tr>
+        <tr><td>Tempura shrimp <span class="mut">frozen</span></td><td class="amt">6&ndash;8 pcs</td></tr>
+      </table>
+      <span class="tag">Fillings</span>
+      <table class="ing">
+        <tr><td>Avocado <span class="mut">sliced</span></td><td class="amt">1 whole</td></tr>
+        <tr><td>Cucumber <span class="mut">julienned</span></td><td class="amt">&frac12; whole</td></tr>
+        <tr><td>Green onion <span class="mut">sliced</span></td><td class="amt">2 stalks</td></tr>
+        <tr><td>Lemon <span class="mut">paper-thin</span></td><td class="amt">&frac12; whole</td></tr>
+        <tr><td>Nori sheets <span class="mut">full size</span></td><td class="amt">2 sheets</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Sushi Burrito v1.0 &middot; targets + ingredients</span><span>Page 1 / 3</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method</div>
+  <h1 class="sm">Rice, Prep &amp; Roll</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">Rice first &mdash; everything else waits on it cooling to body temp</span></h2>
+  <ol class="steps">
+    <li><b>Rinse:</b> rice in a fine mesh strainer, agitate under cold water until it runs <b>crystal clear</b> (2&ndash;3 min).</li>
+    <li><b>Cook:</b> pressure cooker &mdash; <b>300 g rice + 300 g water</b> (1:1 by weight), high pressure <b>3 min</b>, natural release <b>10 min</b>. Tender, separate grains.</li>
+    <li><b>Season:</b> warm vinegar + sugar + salt until dissolved. Transfer hot rice to a wide bowl, <b>drizzle while cutting/folding</b> (not stirring), and fan to <b>body temp, glossy</b>.</li>
+    <li><b>Crab mix:</b> shred surimi by hand into thin strips, mix with <b>30 g Kewpie</b> + a pinch of salt &mdash; creamy and cohesive.</li>
+    <li><b>Spicy mayo:</b> combine <b>15 g Kewpie + 15 g sriracha</b>; adjust toward 2:1 for hotter, 3:1 for milder.</li>
+    <li><b>Tempura:</b> from frozen &mdash; air fryer <b>400&deg;F, 8&ndash;10 min</b>, flip halfway (oven: 425&deg;F, 12&ndash;15 min). Golden, crispy.</li>
+    <li><b>Prep veg:</b> avocado thin, cucumber into matchsticks, green onion on the bias, lemon mandolined paper-thin. Uniform cuts.</li>
+    <li><b>Lay nori:</b> shiny-side down on a dry surface; if humid, flash-toast over a flame ~2 sec/side so it&rsquo;s crisp.</li>
+    <li><b>Spread rice:</b> wet hands; spread <b>~150 g rice</b> over the center third, leaving a <b>&frac12;&Prime; border</b> top and bottom to seal. ~&frac14;&Prime; thick, even.</li>
+    <li><b>Fill:</b> layer across the center &mdash; tuna, crab mix, tempura shrimp, avocado, cucumber, lemon, green onion. Drizzle spicy mayo + eel sauce. <b>Don&rsquo;t overfill.</b></li>
+    <li><b>Roll:</b> fold the bottom edge over the filling and tuck tight; continue away from you keeping tension; seal the edge with a wet finger.</li>
+    <li><b>Cut:</b> wet a sharp knife, cut in half on the bias, wipe the blade between cuts for a clean face.</li>
+  </ol>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Sushi Burrito v1.0 &middot; rice &middot; prep &middot; roll</span><span>Page 2 / 3</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="kicker">Troubleshoot &middot; Variations</div>
+  <h1 class="sm">Fix It &amp; Riff</h1>
+  <div class="rule gold"></div>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Rice sticky / clumpy</td><td>Overworked or too hot</td><td>Cut and fold, don&rsquo;t stir; fan while seasoning</td></tr>
+    <tr><td class="sym">Nori chewy</td><td>Got wet during assembly</td><td>Work faster; toast over a flame if humid</td></tr>
+    <tr><td class="sym">Falls apart</td><td>Overfilled or loose roll</td><td>Less filling; tuck tight on the first fold</td></tr>
+  </table>
+
+  <h2>Variations <span class="note">Same roll, different build</span></h2>
+  <table class="diag">
+    <tr><th>Name</th><th>Build</th><th>Notes</th></tr>
+    <tr><td class="sym">Oregon</td><td>In: spicy Dungeness crab, cucumber, avocado. Top: salmon, lemon</td><td>Real crab + spicy mayo</td></tr>
+    <tr><td class="sym">Hamachi Lover</td><td>In: yellowtail, salmon, serrano. Top: yellowtail, lemon</td><td>Fresh serrano heat</td></tr>
+    <tr><td class="sym">Rainbow</td><td>In: crab mix, cucumber, avocado. Top: assorted fish</td><td>Classic multi-fish</td></tr>
+    <tr><td class="sym">Ms. Ginny</td><td>In: spicy tuna, cucumber, salmon. Top: red snapper, white tuna</td><td>Wife&rsquo;s favorite</td></tr>
+    <tr><td class="sym">The Hawaiian</td><td>In: spicy tuna, cucumber, avocado. Top: yellowtail, cilantro, lemon</td><td>Wife&rsquo;s favorite</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>Shoyu:</b> Yamasa or Marukin straight, or mix <b>3 : 1 : 1 shoyu : rice vinegar : mirin</b> with a squeeze of lemon. <b>Tuna:</b> don&rsquo;t refreeze once thawed &mdash; if buying bulk, portion while still firm. <b>Rice ratio (memorize it):</b> 300 g rice : 300 g water : 60 g vinegar : 25 g sugar : 6 g salt. <b>Lemons:</b> a mandoline is the only way to get them paper-thin.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Sushi Burrito v1.0 &middot; troubleshoot &middot; variations</span><span>Page 3 / 3</span></div>
+</div>
+
+</body>
+</html>

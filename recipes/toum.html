@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:78px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Toum</h1>
+  <div class="sub">Lebanese garlic sauce &middot; egg-free emulsion &middot; fluffy white paste that holds stiff peaks</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~500 g</div></div>
+    <div><div class="lab">Active</div><div class="val">15&ndash;20 min</div></div>
+    <div><div class="lab">Key Ratio</div><div class="val">1 : 4 garlic:oil</div></div>
+    <div><div class="lab">Storage</div><div class="val">4&ndash;6 wk fridge</div></div>
+  </div>
+
+  <h2>Ingredients <span class="note">Full batch ~500 g &mdash; weigh everything</span></h2>
+  <table class="ing">
+    <tr><td>Garlic cloves <span class="mut">peeled, ~4 heads, no green germ</span></td><td class="amt">130 g</td></tr>
+    <tr><td>Neutral oil <span class="mut">grapeseed / canola / sunflower &mdash; NOT olive</span></td><td class="amt">520 g</td></tr>
+    <tr><td>Fresh lemon juice <span class="mut">room temp, strained</span></td><td class="amt">60 g</td></tr>
+    <tr><td>Ice water <span class="mut">stabilizes the emulsion</span></td><td class="amt">60 g</td></tr>
+    <tr><td>Kosher salt <span class="mut">by weight; helps break down garlic</span></td><td class="amt">6 g</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>Toum is an egg-free emulsion</b> &mdash; the garlic&rsquo;s own water plus lemon juice suspend the oil droplets, so the <b>1 : 4 garlic-to-oil ratio (by weight)</b> is non-negotiable: too much oil too fast and it breaks. <b>Never olive oil</b> &mdash; it&rsquo;s bitter and dyes the toum yellow; neutral oil lets the garlic stay clean and white. The <b>ice water keeps the processor cool</b> (heat breaks emulsions) and fresh, firm garlic carries more water for a stronger set.
+  </div>
+
+  <h2>Quality Targets <span class="note">What each stage should look like</span></h2>
+  <table class="diag">
+    <tr><th>Stage</th><th>Target</th></tr>
+    <tr><td class="sym">Garlic paste</td><td>Smooth, no chunks</td></tr>
+    <tr><td class="sym">Initial emulsion</td><td>Creamy, opaque &mdash; processor cool to the touch</td></tr>
+    <tr><td class="sym">Final texture</td><td>Holds stiff peaks, bright white</td></tr>
+    <tr><td class="sym">Flavor (day 2+)</td><td>Mellow, not harsh &mdash; rests into balance</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Toum v1.0 &middot; 1:4 garlic:oil</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method &middot; Rescue &middot; Scaling</div>
+  <h1 class="sm">Build the Emulsion</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">~10&ndash;12 min of patient streaming &mdash; don&rsquo;t rush the first oil</span></h2>
+  <ol class="steps">
+    <li><b>Prep:</b> peel the garlic, slice each clove lengthwise and <b>remove the green germ</b> (it&rsquo;s the source of bitterness). A small food processor (~3-cup) works best.</li>
+    <li><b>Paste:</b> garlic + salt into the processor. Pulse, scrape, then run <b>1&ndash;2 min to a smooth paste</b> &mdash; this is the foundation.</li>
+    <li><b>Start:</b> processor running, drizzle the <b>first ~55 g oil in a hair-thin stream over 2+ min</b>, then add <b>15 g lemon</b>. This is the make-or-break step &mdash; do not rush it.</li>
+    <li><b>Build:</b> alternate <b>~55 g oil (slow)</b> then <b>15 g ice water or lemon</b>, repeating until both are used. ~10&ndash;12 min total. It turns fluffy and white.</li>
+    <li><b>Check:</b> it should <b>hold stiff peaks, bright white</b>. Too thick &rarr; add ice water; processor warm &rarr; pause and let it cool.</li>
+    <li><b>Rest:</b> jar it and refrigerate <b>24 hr minimum</b> &mdash; the harshness mellows and the texture firms.</li>
+  </ol>
+
+  <div class="callout">
+    <b>If it breaks (soupy, separated):</b> start a new batch &mdash; 2 fresh garlic cloves + a pinch of salt to a paste, then stream the <i>broken toum</i> back in slowly as if it were the oil. <b>Egg-white rescue</b> (1 frothy egg white, broken toum streamed in) also works but drops shelf life to 5&ndash;7 days. Most breaks come from <b>oil too fast or a hot processor</b>.
+  </div>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Broke / separated</td><td>Oil too fast, or processor hot</td><td>Re-emulsify into 2 fresh cloves + salt</td></tr>
+    <tr><td class="sym">Too thin</td><td>Too much acid, or old garlic</td><td>Keep processing, add oil slowly</td></tr>
+    <tr><td class="sym">Too thick</td><td>Not enough liquid</td><td>Add ice water 15 g at a time</td></tr>
+    <tr><td class="sym">Bitter</td><td>Green germ left in, or olive oil</td><td>Can&rsquo;t fix &mdash; remake, neutral oil, no germ</td></tr>
+    <tr><td class="sym">Too harsh</td><td>Fresh garlic, eaten same day</td><td>Wait 24&ndash;48 hr; or soak garlic 30 min first</td></tr>
+  </table>
+
+  <h2>Scaling <span class="note">1 : 4 : 0.46 : 0.46 : 0.046 &mdash; garlic : oil : lemon : ice water : salt</span></h2>
+  <table class="diag">
+    <tr><th>Batch</th><th>Garlic</th><th>Oil</th><th>Lemon</th><th>Ice water</th><th>Salt</th></tr>
+    <tr><td class="sym">Half ~250 g</td><td>65 g</td><td>260 g</td><td>30 g</td><td>30 g</td><td>3 g</td></tr>
+    <tr><td class="sym">Full ~500 g</td><td>130 g</td><td>520 g</td><td>60 g</td><td>60 g</td><td>6 g</td></tr>
+    <tr><td class="sym">Double ~1 kg</td><td>260 g</td><td>1040 g</td><td>120 g</td><td>120 g</td><td>12 g</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Toum v1.0 &middot; egg-free &middot; neutral oil only</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

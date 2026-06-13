@@ -17,8 +17,8 @@ into a normalized, validated PDF, and land everything in GitHub — with the pho
 to both kick off the work and retrieve the finished PDF. No copy-paste babysitting,
 laptop-independent storage, one durable home.
 
-Everything below is in service of that loop. The ONLY thing not yet working is the
-phone↔laptop link (Remote Control auth) — see the open task.
+Everything below is in service of that loop. As of 2026-06-13 the phone↔laptop link
+(Remote Control) is **paired and working** — see the SOLVED section.
 
 ## What this repo is
 Aguillon House Kitchen — single-source HTML recipes in `recipes/`, rendered to
@@ -26,51 +26,43 @@ validated print PDFs by `build.py`. Design system = `template.html`. Rulebook =
 `LESSONS.md`. Conventions for agents = `CLAUDE.md`. GitHub:
 `https://github.com/xBOBxSAGETx/recipes` (PRIVATE).
 
-## ⏳ WHERE WE LEFT OFF — the one open task: pair Remote Control
+## ✅ SOLVED (2026-06-13) — Remote Control is paired
 
-Goal: drive this repo from the iPhone via Claude Code **Remote Control** (laptop is
-the engine that runs `build.py`; phone is the remote). `/rc` keeps failing with:
+`/rc` works. The iPhone can now drive this repo. Here's the REAL root cause, because
+the earlier diagnosis was incomplete and cost an hour.
 
-> "Remote Control requires a full-scope login token… run claude auth login"
+**The actual bug:** the saved credential
+(`~/.claude/.credentials.json`) was created by `claude setup-token`, NOT a browser
+login. Tell-tale signs:
+- `scopes: ["user:inference"]` — the only scope; Remote Control requires
+  `user:sessions:claude_code`, which it lacked.
+- `expiresAt` was exactly **1 year** out — the signature of a long-lived setup-token.
 
-**Root cause (diagnosed):** the saved login token is inference-only
-(`scopes: ['user:inference']`, from `claude setup-token`). Remote Control needs the
-full scopes a browser login grants. Re-login wasn't taking because
-**`ANTHROPIC_API_KEY` was still set in already-open terminals**, and when that key is
-in a process, `claude` uses the API key and ignores OAuth entirely — so
-`claude auth login` ran but never updated the credential file.
+**Why every `claude auth login` silently failed:** because the file made
+`claude auth status` report `loggedIn: true`, the login flow **short-circuited and
+never overwrote the credential** (its mtime stayed pinned to the day it was created).
+`auth status` reads `subscriptionType`/`authMethod` (which looked healthy: "max",
+"claude.ai") — it does NOT surface `scopes`, so it masked the problem. The
+`ANTHROPIC_API_KEY`-in-the-env theory was a red herring; the process env was already
+clean.
 
-**Already fixed:** `ANTHROPIC_API_KEY` removed from Windows **User** scope (user only
-uses the Max plan, never the API key). `CLAUDE_CODE_OAUTH_TOKEN` confirmed not set
-anywhere. So a BRAND-NEW terminal is now clean.
+**The fix that worked:**
+1. Verified live state instead of trusting `auth status`: read
+   `~/.claude/.credentials.json` directly and saw `scopes: ["user:inference"]` + the
+   1-year expiry + a stale mtime.
+2. Backed it up, then **moved the stale credential file aside** so the CLI could not
+   short-circuit.
+3. Ran `/login` (browser) — which, with no file to short-circuit on, did a genuine
+   fresh login and minted a full-scope token.
+4. Validated the NEW `~/.claude/.credentials.json`: scopes now include
+   `user:sessions:claude_code` and the token is short-lived (~8 h) = real OAuth.
+5. `/rc` → QR → paired. ✅
 
-### ✅ DO THIS NEXT (in order)
-1. Close ALL old PowerShell windows and Claude sessions (they still carry the API key
-   in-process — that's what sabotaged every prior attempt).
-2. Open ONE fresh PowerShell from the Start menu.
-3. Prove it's clean — this MUST print a blank line:
-   ```powershell
-   echo $env:ANTHROPIC_API_KEY
-   ```
-   If it prints a key, that window is poisoned — close it, open another.
-4. Re-auth and verify:
-   ```powershell
-   claude auth logout
-   claude auth login          # finish browser sign-in with the MAX account
-   claude auth status         # MUST now show MORE than just "user:inference"
-   ```
-5. Only if status looks right:
-   ```powershell
-   cd C:\Users\aagui\Recipes
-   claude
-   ```
-   then type `/rc`, press SPACEBAR for the QR code.
-6. iPhone: Claude app → Code tab → scan QR / tap the session. Paired = computer icon
-   + green dot. (`/config` → "Enable Remote Control for all sessions" = automatic.)
-
-The make-or-break check is **step 3**. Report what `claude auth status` prints after
-login; if it's still only `user:inference`, the login issued a limited token again and
-we dig further.
+**If it ever regresses:** don't trust `claude auth status`. Read
+`~/.claude/.credentials.json` and check the `scopes` array. If it's only
+`user:inference` (or `expiresAt` is ~1 year out), it's a setup-token — move the file
+aside and re-run `/login` to force a real browser login. Archival copy of the broken
+token: `~/.claude/backups/.credentials.inference-only.may29.json`.
 
 ## ✅ DONE THIS SESSION (all committed + pushed to main)
 - Repo created from `aguillon-kitchen.zip`, `git init`, pushed to GitHub.
