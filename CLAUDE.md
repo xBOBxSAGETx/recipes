@@ -19,7 +19,10 @@ python build.py --check-only   # validate existing dist/ PDFs, don't re-render
   Chromium). If a browser reinstall is ever needed it's
   `python -m playwright install chromium` — the bare `playwright` command is NOT on
   PATH (user install).
-- PDFs land in `dist/` (gitignored — build artifacts, never commit them).
+- Working renders go to `dist/` (gitignored). Every recipe that PASSES is also
+  auto-copied to `pdfs/` (git-tracked) — that's the **phone-facing** output: commit
+  + push and the recipe shows up in the GitHub mobile app, tap to Save to Files.
+  So a finished change is: build (passes → publishes to `pdfs/`) → commit → push.
 
 ## The gates (all enforced by build.py)
 

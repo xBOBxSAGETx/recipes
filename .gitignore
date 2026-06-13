@@ -1,6 +1,10 @@
-# Build artifacts — PDFs are generated from recipes/*.html, not committed
+# Build artifacts — working renders are generated, not committed
 dist/
 *.pdf
+# ...but the phone-facing published copies in pdfs/ ARE tracked (they sync to the
+# phone via the GitHub mobile app). build.py copies each PASSING PDF here.
+!pdfs/
+!pdfs/*.pdf
 
 # Python
 __pycache__/

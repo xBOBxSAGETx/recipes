@@ -25,7 +25,7 @@ Requires: playwright (chromium), pypdf, pymupdf (fitz).
     pip install playwright pypdf pymupdf --break-system-packages
     playwright install chromium
 """
-import sys, re, pathlib
+import sys, re, shutil, pathlib
 from playwright.sync_api import sync_playwright
 from pypdf import PdfReader
 import fitz
@@ -33,7 +33,8 @@ from overflow_check import footer_collisions
 
 ROOT = pathlib.Path(__file__).parent
 RECIPES = ROOT / "recipes"
-DIST = ROOT / "dist"
+DIST = ROOT / "dist"          # working renders (gitignored)
+PDFS = ROOT / "pdfs"          # phone-facing published copies (git-tracked)
 
 def norm(s): return re.sub(r"[\s.,\-]+", "", (s or "").lower())
 
@@ -109,6 +110,12 @@ def build_one(src: pathlib.Path, check_only=False):
     print(f"[{status}] {src.name} -> dist/{out.name}")
     for f in fails:
         print(f"        - {f}")
+    if not fails:
+        # Publish the passing PDF to the git-tracked pdfs/ folder so it syncs to
+        # the phone (browse in the GitHub mobile app). Only validated PDFs land here.
+        PDFS.mkdir(exist_ok=True)
+        shutil.copy2(out, PDFS / out.name)
+        print(f"        published -> pdfs/{out.name}")
     return not fails
 
 def main():

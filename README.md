@@ -26,8 +26,10 @@ python build.py nyc-bagels     # one recipe (substring match)
 python build.py --check-only   # validate existing dist/ PDFs
 ```
 
-PDFs land in `dist/` (gitignored — they're build artifacts). Any failed validation
-gate aborts that recipe with a report; we don't ship un-validated PDFs.
+Working renders land in `dist/` (gitignored). Any failed validation gate aborts that
+recipe with a report; we don't ship un-validated PDFs. Every recipe that **passes** is
+also copied to `pdfs/` (git-tracked) — the phone-facing output: push it and the PDF is
+viewable in the GitHub mobile app (tap → Save to Files/Books).
 
 ## How it's organized
 
