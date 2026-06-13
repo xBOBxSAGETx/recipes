@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.06em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+  .cols3{ display:flex; gap:18px; }
+  .cols3 .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:58px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:22%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Sloppy Joes</h1>
+  <div class="sub">Glazed beef &middot; sweet-tangy &middot; no-water method &middot; the veg is the moisture</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">907 g &middot; 6</div></div>
+    <div><div class="lab">Active</div><div class="val">~25 min</div></div>
+    <div><div class="lab">Meat : Sauce</div><div class="val">2 : 1 by wt</div></div>
+    <div><div class="lab">Browning</div><div class="val">375&ndash;400&deg;F</div></div>
+  </div>
+
+  <h2>Temperature Targets <span class="note">a hard sear builds the fond &mdash; flavor base</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Browning <span class="mut">(pan)</span></td><td class="amt">375&ndash;400&deg;F</td></tr>
+        <tr><td>Aromatics sweat</td><td class="amt">medium-high</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Paste bloom</td><td class="amt">325&ndash;350&deg;F</td></tr>
+        <tr><td>Final simmer</td><td class="amt">200&ndash;210&deg;F</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Ingredients <span class="note">907 g (2 lb) ground beef &middot; 80/20 or 85/15</span></h2>
+  <div class="cols3">
+    <div class="col">
+      <span class="tag">Aromatics &mdash; 315 g</span>
+      <table class="ing">
+        <tr><td>Yellow onion <span class="mut">minced</span></td><td class="amt">200 g</td></tr>
+        <tr><td>Green bell pepper <span class="mut">minced</span></td><td class="amt">100 g</td></tr>
+        <tr><td>Garlic <span class="mut">minced</span></td><td class="amt">15 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Binding Sauce</span>
+      <table class="ing">
+        <tr><td>Ketchup</td><td class="amt">300 g</td></tr>
+        <tr><td>Tomato paste</td><td class="amt">20 g</td></tr>
+        <tr><td>Worcestershire</td><td class="amt">25 g</td></tr>
+        <tr><td>Brown sugar</td><td class="amt">20 g</td></tr>
+        <tr><td>Yellow mustard</td><td class="amt">16 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Season &amp; Acid</span>
+      <table class="ing">
+        <tr><td>Kosher salt <span class="mut">on beef</span></td><td class="amt">8 g</td></tr>
+        <tr><td>Coarse pepper <span class="mut">on beef</span></td><td class="amt">2 g</td></tr>
+        <tr><td>Fine pepper <span class="mut">finish</span></td><td class="amt">1 g</td></tr>
+        <tr><td>ACV <span class="mut">10 build + 5 finish</span></td><td class="amt">15 g</td></tr>
+        <tr><td>Guajillo powder</td><td class="amt">2 g</td></tr>
+        <tr><td>Smoked paprika</td><td class="amt">2 g</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>No-water method:</b> the 315 g of onion + pepper <i>is</i> the liquid &mdash; they sweat their moisture into the glaze, so it never tastes dilute. <b>Retain 30&ndash;45 g of the rendered fat</b> after browning (drain the rest): too much reads greasy, too little and the bloom/sweat goes dry. <b>Split the acid &mdash; 10 g in the build, 5 g off-heat</b> &mdash; vinegar concentrates as it reduces, so the final splash is what keeps it bright instead of sharp.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Sloppy Joes v1.0 &middot; targets + ingredients</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method &middot; The Glaze</div>
+  <h1 class="sm">Sear, Bloom &amp; Glaze</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">~25 min &mdash; sear hard, bloom the paste, reduce to a glaze</span></h2>
+  <ol class="steps">
+    <li><b>Season:</b> toss 907 g beef with <b>8 g salt + 2 g coarse pepper</b>. Mix gently &mdash; don&rsquo;t compact it.</li>
+    <li><b>Sear:</b> hot skillet, add beef, break into chunks, <b>brown well to build fond</b> (375&ndash;400&deg;F). Retain <b>30&ndash;45 g fat</b>, drain the excess.</li>
+    <li><b>Sweat:</b> add onion + pepper, cook <b>5&ndash;6 min</b> until softened and the moisture releases. Add garlic the <b>last 1&ndash;2 min only</b> (prevents bitter oxidation).</li>
+    <li><b>Bloom:</b> clear the center, add tomato paste + guajillo + smoked paprika, stir in the center <b>60 sec</b> until the paste darkens (325&ndash;350&deg;F).</li>
+    <li><b>Build:</b> add ketchup, Worcestershire, mustard, brown sugar, and <b>10 g ACV</b> (reserve 5 g). Stir to combine.</li>
+    <li><b>Reduce:</b> simmer uncovered <b>10&ndash;15 min</b>. Test: drag a spoon through &mdash; the channel should <b>hold 3&ndash;5 sec</b> before closing.</li>
+    <li><b>Finish:</b> off heat, add the reserved <b>5 g ACV + 1 g fine pepper</b>. Taste, adjust salt, cover and <b>rest 5 min</b>.</li>
+  </ol>
+
+  <h2>Troubleshooting <span class="note">salt window: ~8 g on beef, sauce adds ~4&ndash;5 g &mdash; taste-add only at the end</span></h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Greasy / separates</td><td>Too much fat retained</td><td>Drain to 30&ndash;45 g; for 73/27 drain harder</td></tr>
+    <tr><td class="sym">Too sharp / tangy</td><td>Acid concentrated in the reduction</td><td>Stage it: 10 g build, 5 g off-heat finish</td></tr>
+    <tr><td class="sym">Flat / bland</td><td>No fond; paste not bloomed; beef unseasoned</td><td>Season beef first; hard sear; toast paste dark</td></tr>
+    <tr><td class="sym">Bitter undertone</td><td>Garlic oxidized; paste burnt</td><td>Add garlic only the last 1&ndash;2 min of sweat</td></tr>
+    <tr><td class="sym">Over-salted</td><td>Reduction concentrates the salt</td><td>Start at 7&ndash;8 g; add 2 g increments at the end</td></tr>
+    <tr><td class="sym">Doesn&rsquo;t glaze</td><td>Under-reduced</td><td>Spoon-drag test: channel holds 3&ndash;5 sec</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Sloppy Joes v1.0 &middot; method + troubleshoot</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

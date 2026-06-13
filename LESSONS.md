@@ -39,6 +39,30 @@ rule here exists because ignoring it broke something.
   `Cubano.v1.3.pdf`) as type "data" and refuses to render them. Versions use
   hyphens: `v1-3`, `v2-1`. Build output is kebab-case `recipe-name.pdf`.
 
+## Layout
+
+- **Lean 2-page default. Never strand troubleshooting on its own page.** The house
+  format is a tight 2-page guide: page 1 = identity + spec + ingredients + key
+  targets; page 2 = method + the troubleshooting / quality / storage table folded in
+  **at the bottom**, under the steps. A page that carries only a troubleshooting table
+  above a screen of white space reads as bloat — fold it under the method on page 2.
+  This was a real fix: chicken-curry, nixtamal, and sushi each shipped with a near-empty
+  third page that was just troubleshooting/quality; all three got pulled back to 2 pages.
+
+- **If a recipe overflows two pages, cut redundancy before adding a page.** A timeline
+  that just restates the step list, a callout that repeats a key-targets row, notes that
+  paraphrase the method — that's the fat. Meatloaf went 4pp&rarr;2pp by replacing an
+  11-row timeline with one compact "run of show" callout and folding each side-sauce's
+  one-line method into its `h2 .note`. Only add a page when the *content* genuinely
+  needs it (a true multi-stage cook), never to relieve cramming you could trim away.
+
+- **Small recipes are ONE page.** A short formula (e.g. hummus: ~8 ingredients, ~7
+  steps) fits one page cleanly &mdash; don't pad it to two. One page is the leanest
+  expression and still passes every gate.
+
+- **Page titles are descriptors, not slogans.** Page 2 is `Execution`, not
+  `Execution & Read`; `Build the Curry`, not `Read & Adjust`. Cut the cute "& X" tails.
+
 ## Recipe content
 
 - **Per-page temp targets beat a front-page dashboard** for any multi-stage cook.

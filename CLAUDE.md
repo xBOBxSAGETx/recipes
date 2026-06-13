@@ -50,6 +50,14 @@ python build.py --check-only   # validate existing dist/ PDFs, don't re-render
 
 ## Adding / converting a recipe
 
+**Lean format is the house standard** (see `LESSONS.md` → Layout): a tight **2-page**
+guide — page 1 = identity + spec + ingredients + key targets, page 2 = method with the
+troubleshooting / quality table folded in **at the bottom**. NEVER give troubleshooting
+(or quality/storage) its own page floating above white space — fold it under the method
+on page 2. Overflowing two pages? Cut redundancy (a timeline that restates the steps, a
+callout that repeats a target) before adding a page. Small recipes are **one page** —
+don't pad. Page titles are plain descriptors (`Execution`, not `Execution & Read`).
+
 1. Create `recipes/<kebab-name>.html` using the design system from `template.html`
    (same `<style>` block + grammar: kicker → h1/sub/rule → spec strip → h2 sections
    → ingredient tables / gold-circle steps / callouts / diag tables → footer).

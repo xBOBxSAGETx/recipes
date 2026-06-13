@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:14px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.06em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+  .cols3{ display:flex; gap:18px; }
+  .cols3 .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:66px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:46px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:4px 0 4px 26px; font-size:9pt; line-height:1.38; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:4px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:4px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:22%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v2.0</div>
+  <h1>Pozole Rojo</h1>
+  <div class="sub">Chile-forward &middot; pork-rich &middot; collagen-extracted &middot; no shortcuts</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">4 L &middot; 6&ndash;8</div></div>
+    <div><div class="lab">Time</div><div class="val">1.25 / 3.5 hr</div></div>
+    <div><div class="lab">Water</div><div class="val">2 L per kg pork</div></div>
+    <div><div class="lab">Chile</div><div class="val">200 g per 4 L</div></div>
+  </div>
+
+  <h2>Temperature Targets <span class="note">paste fries to brick/burgundy; pork done at 195&ndash;205&deg;F</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Aromatics broil</td><td>500&deg;F+ char</td><td class="sym">Chile toast</td><td>350&ndash;375&deg;F</td></tr>
+    <tr><td class="sym">Pan browning</td><td>400&ndash;450&deg;F</td><td class="sym">Lard for paste</td><td>375&ndash;400&deg;F</td></tr>
+    <tr><td class="sym">Broth simmer</td><td>190&ndash;200&deg;F</td><td class="sym">Pork internal</td><td>195&ndash;205&deg;F</td></tr>
+  </table>
+
+  <h2>Ingredients <span class="note">2 L water per kg pork &middot; 50 g chiles per liter</span></h2>
+  <div class="cols3">
+    <div class="col">
+      <span class="tag">Pork &amp; Broth</span>
+      <table class="ing">
+        <tr><td>Pork shoulder <span class="mut">bone-in</span></td><td class="amt">2 kg</td></tr>
+        <tr><td>Pig&rsquo;s feet <span class="mut">or 750 g neck</span></td><td class="amt">500 g</td></tr>
+        <tr><td>Water</td><td class="amt">4 L</td></tr>
+        <tr><td>Onions <span class="mut">quartered</span></td><td class="amt">2</td></tr>
+        <tr><td>Garlic head <span class="mut">halved</span></td><td class="amt">1</td></tr>
+        <tr><td>Bay leaves</td><td class="amt">2</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Chile Paste &mdash; 200 g</span>
+      <table class="ing">
+        <tr><td>Guajillo</td><td class="pct">55%</td><td class="amt">110 g</td></tr>
+        <tr><td>Ancho</td><td class="pct">25%</td><td class="amt">50 g</td></tr>
+        <tr><td>Pasilla</td><td class="pct">17.5%</td><td class="amt">35 g</td></tr>
+        <tr><td>&Aacute;rbol</td><td class="pct">2.5%</td><td class="amt">5 g</td></tr>
+        <tr><td>Garlic <span class="mut">raw</span></td><td class="pct"></td><td class="amt">25&ndash;30 g</td></tr>
+        <tr><td>Cumin &middot; oregano</td><td class="pct"></td><td class="amt">3 &middot; 1 g</td></tr>
+        <tr><td>Salt &middot; peppercorns</td><td class="pct"></td><td class="amt">3 g &middot; 6</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Hominy &amp; Finish</span>
+      <table class="ing">
+        <tr><td>Hominy <span class="mut">2 cans</span></td><td class="amt">1.6 kg</td></tr>
+        <tr><td>Lard <span class="mut">total</span></td><td class="amt">~90 g</td></tr>
+        <tr><td>Apple cider vinegar</td><td class="amt">15 g</td></tr>
+        <tr><td>Salt</td><td class="amt">to taste</td></tr>
+      </table>
+      <p class="lead mut" style="margin-top:7px;"><b>The spread:</b> cabbage, radish, onion, oregano, lime.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Two non-negotiables:</b> <b>collagen + simmer</b> for body &mdash; the feet/neck and a lazy <b>190&ndash;200&deg;F</b> simmer for 2.5&ndash;3 hr are what make the broth rich, not thin; and <b>frying the chile paste to brick/burgundy</b> in shimmering lard, which cooks out the raw edge. Bloom the drained hominy in that hot paste off-heat 15&ndash;20 min so it drinks the chile-lard.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Pozole Rojo v2.0 &middot; targets + ingredients</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Broth &middot; Paste &middot; Finish</div>
+  <h1 class="sm">Build the Pot</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">broth 2.5&ndash;3 hr &middot; start the paste at the 1-hour mark</span></h2>
+  <ol class="steps">
+    <li><b>Broil:</b> onions quartered + garlic halved, cut-side up, 6&ndash;8&Prime; from the broiler, <b>8&ndash;12 min to char</b> (500&deg;F+). Reserve 1 onion for the paste.</li>
+    <li><b>Prep:</b> debone the shoulder, cube 2&ndash;3&Prime;, reserve the bone. Split the feet lengthwise if using.</li>
+    <li><b>Brown:</b> shimmering lard, brown the pork in 3&ndash;4 batches, 2&ndash;3 min/side, to build fond (400&ndash;450&deg;F).</li>
+    <li><b>Simmer:</b> add bone, collagen cuts, pork, aromatics, bay, water. <b>Lazy bubbles 2.5&ndash;3 hr</b> at 190&ndash;200&deg;F. Skim at 30 min; start the paste at 1 hr.</li>
+    <li><b>Toast:</b> dry skillet &mdash; &aacute;rbol 15&ndash;20 sec/side, guajillo/ancho/pasilla 30&ndash;60 sec/side. Watch for the puff, then stem + seed.</li>
+    <li><b>Soak:</b> off-boil hot water, submerge the chiles <b>25 min</b>. Reserve the liquid.</li>
+    <li><b>Blend:</b> chiles + a cup of the liquid + the roasted onion + raw garlic + spices. <b>Strain hard</b>, rinsing with a little broth.</li>
+    <li><b>Fry:</b> 4 spoons of lard, shimmering. Add the paste (it sizzles hard), vinegar at 30 sec, stir <b>3&ndash;4 min to brick/burgundy</b> (375&ndash;400&deg;F).</li>
+    <li><b>Bloom:</b> kill the heat, stir in the drained hominy, rest <b>15&ndash;20 min</b> off heat to absorb the chile-lard.</li>
+    <li><b>Finish:</b> pork at 195&ndash;205&deg;F &rarr; remove. Strain + skim the broth, add the chile-hominy, simmer <b>15 min</b>, return the pork 5 min. Salt; lime if flat.</li>
+    <li><b>Serve:</b> ladle <b>70% broth, 30% solids</b>; tear the pork by hand into irregular chunks. Pass the garnishes.</li>
+  </ol>
+
+  <h2>Troubleshooting <span class="note">better on day 2 &mdash; the fat cap makes skimming easy</span></h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Thin broth</td><td>No collagen cuts / short simmer</td><td>Add feet or neck; simmer 2.5&ndash;3 hr min</td></tr>
+    <tr><td class="sym">Bitter paste</td><td>Burnt or old chiles</td><td>Toast less; a pinch of brown sugar if bitter</td></tr>
+    <tr><td class="sym">Pale color</td><td>Not enough guajillo</td><td>Guajillo = 55% of the chile mass</td></tr>
+    <tr><td class="sym">Tough pork</td><td>Under 195&deg;F</td><td>Keep simmering &mdash; collagen breaks at 195&ndash;205&deg;F</td></tr>
+    <tr><td class="sym">Flat flavor</td><td>No acid</td><td>Add lime at the end for brightness</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Pozole Rojo v2.0 &middot; method + troubleshoot</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

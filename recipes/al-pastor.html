@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.06em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:78px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:48px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:4px 0 4px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:4px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps.cont{ counter-reset:s 7; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:24%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Al Pastor</h1>
+  <div class="sub">Achiote-adobo &middot; griddle-charred &middot; taco-truck style &middot; freezer workflow</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Portion</div><div class="val">450 g bags</div></div>
+    <div><div class="lab">Marinate</div><div class="val">4 hr&ndash;overnight</div></div>
+    <div><div class="lab">Slice</div><div class="val">3&ndash;4 mm vs grain</div></div>
+    <div><div class="lab">Freezer</div><div class="val">3+ months</div></div>
+  </div>
+
+  <h2>Key Targets <span class="note">char outside, tender inside &mdash; judged by eye</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Chile rehydration</td><td class="amt">soft, 20&ndash;30 min</td></tr>
+        <tr><td>Adobo consistency</td><td class="amt">coats a spoon</td></tr>
+        <tr><td>Slice thickness</td><td class="amt">3&ndash;4 mm</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Griddle temp</td><td class="amt">oil shimmers</td></tr>
+        <tr><td>Char level</td><td class="amt">crispy, blackened</td></tr>
+        <tr><td>Final texture</td><td class="amt">charred, tender</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Adobo Formula <span class="note">% of pork weight &mdash; &aacute;rbol 1% = medium; 0.5% mild, 1.5% hot</span></h2>
+  <table class="ing">
+    <tr><td>Pork butt <span class="mut">boneless, sliced 3&ndash;4 mm vs grain</span></td><td class="pct">100%</td><td class="amt">3500 g</td></tr>
+    <tr><td>Guajillo <span class="mut">dried, stemmed + seeded</span></td><td class="pct">6.5%</td><td class="amt">228 g</td></tr>
+    <tr><td>Ancho <span class="mut">dried, stemmed + seeded</span></td><td class="pct">3.3%</td><td class="amt">116 g</td></tr>
+    <tr><td>&Aacute;rbol <span class="mut">dried &mdash; heat dial</span></td><td class="pct">1%</td><td class="amt">35 g</td></tr>
+    <tr><td>Achiote paste <span class="mut">brick, El Yucateco</span></td><td class="pct">9%</td><td class="amt">315 g</td></tr>
+    <tr><td>Orange juice <span class="mut">fresh, not concentrate</span></td><td class="pct">13%</td><td class="amt">455 ml</td></tr>
+    <tr><td>White vinegar <span class="mut">distilled / white wine</span></td><td class="pct">6.5%</td><td class="amt">228 ml</td></tr>
+    <tr><td>Garlic <span class="mut">fresh, ~2 heads</span></td><td class="pct">2%</td><td class="amt">70 g</td></tr>
+    <tr><td>Cumin, ground</td><td class="pct">0.1%</td><td class="amt">3.5 g</td></tr>
+    <tr><td>Mexican oregano <span class="mut">not Italian</span></td><td class="pct">0.1%</td><td class="amt">3.5 g</td></tr>
+    <tr><td>Black pepper</td><td class="pct">0.05%</td><td class="amt">1.75 g</td></tr>
+    <tr><td>Cloves, ground <span class="mut">scant &mdash; they dominate</span></td><td class="pct">0.025%</td><td class="amt">~1 g</td></tr>
+    <tr><td>Salt <span class="mut">Diamond Crystal, by wt</span></td><td class="pct">1.5%</td><td class="amt">52 g</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>Salt is brand-dependent &mdash; convert by weight:</b> the 52 g is <b>Diamond Crystal</b> for 3.5 kg. Morton Kosher = <b>60%</b> of that (31 g); table salt = <b>50%</b> (26 g). <b>Achiote substitute</b> if no brick: ~8 g ground annatto + ~6 g paprika per 450 g pork &mdash; close, not identical. Formula scales linearly: weigh the pork, multiply the percentages.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Al Pastor v1.0 &middot; adobo formula</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Prep &middot; Freeze &middot; Griddle</div>
+  <h1 class="sm">Make Ahead &amp; Cook</h1>
+  <div class="rule gold"></div>
+
+  <h2>Prep &amp; Freeze <span class="note">build the bags ahead &mdash; marinate happens in the freezer</span></h2>
+  <ol class="steps">
+    <li><b>Toast chiles:</b> dry skillet, medium. Guajillo, ancho, &aacute;rbol <b>30&ndash;60 sec/side</b> until fragrant and pliable &mdash; don&rsquo;t burn (burnt = bitter adobo).</li>
+    <li><b>Rehydrate:</b> cover with hot water, soak <b>20&ndash;30 min</b> until fully soft. Drain, reserving a little soaking liquid.</li>
+    <li><b>Blend adobo:</b> chiles + achiote + OJ + vinegar + garlic + spices + salt to smooth. Loosen with soaking liquid <b>15 ml at a time</b> &mdash; it should coat a spoon, not run watery.</li>
+    <li><b>Semi-freeze the pork:</b> whole butt in the freezer <b>45&ndash;60 min</b> until firm but not solid &mdash; this is what makes clean slicing possible.</li>
+    <li><b>Slice:</b> <b>3&ndash;4 mm against the grain</b>. Thin is critical; work fast before the pork softens.</li>
+    <li><b>Combine:</b> toss the slices in the adobo until fully coated; massage it in.</li>
+    <li><b>Portion + freeze:</b> into quart bags (<b>450 g</b> each), press flat, remove air, label with the date, freeze.</li>
+  </ol>
+
+  <h2>Cook from Frozen <span class="note">ripping-hot griddle &mdash; sear, don&rsquo;t steam</span></h2>
+  <ol class="steps cont">
+    <li><b>Thaw:</b> fridge overnight, or a cold-water bath <b>30&ndash;45 min</b>.</li>
+    <li><b>Griddle:</b> cast iron / flat-top, high heat, light oil. Single layer, don&rsquo;t crowd. Char <b>60&ndash;90 sec</b>, flip once, char the other side.</li>
+    <li><b>Chop + onion:</b> push pork aside, add fresh sliced white onion; char it while chopping the pork with metal spatulas, then mix together on the griddle.</li>
+    <li><b>Serve:</b> double-stacked corn tortillas, al pastor, charred onion, cilantro, fresh lime, flaky salt on top.</li>
+  </ol>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Mushy texture</td><td>Sliced too thick; steamed not seared</td><td>Thinner slices, higher heat, don&rsquo;t crowd</td></tr>
+    <tr><td class="sym">Pale, no char</td><td>Griddle not hot enough</td><td>Wait for the oil to shimmer, almost smoke</td></tr>
+    <tr><td class="sym">Bitter adobo</td><td>Chiles burnt during toast</td><td>Toast less &mdash; just until pliable</td></tr>
+    <tr><td class="sym">Bland</td><td>Under-salted adobo</td><td>Salt the marinade; finish with flaky salt</td></tr>
+    <tr><td class="sym">Dry meat</td><td>Overcooked</td><td>Pull earlier &mdash; pork keeps cooking off-heat</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Al Pastor v1.0 &middot; prep &middot; freeze &middot; griddle</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>
