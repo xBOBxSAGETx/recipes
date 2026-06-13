@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:92px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:50px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Chicken Shawarma</h1>
+  <div class="sub">Oil-based marinade &middot; thin-sliced thighs &middot; high-heat chop-and-sear finish</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">900g &middot; 4&ndash;6</div></div>
+    <div><div class="lab">Active</div><div class="val">~30 min</div></div>
+    <div><div class="lab">Marinate</div><div class="val">12&ndash;24 hr</div></div>
+    <div><div class="lab">Spice Ratio</div><div class="val">2.5% meat wt</div></div>
+  </div>
+
+  <h2><span class="pt">Part 1</span> &nbsp;Spice Blend <span class="note">Makes ~50g &mdash; 22g into one 900g batch</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Cumin</td><td class="pct">28%</td><td class="amt">14 g</td></tr>
+        <tr><td>Coriander</td><td class="pct">18%</td><td class="amt">9 g</td></tr>
+        <tr><td>Paprika <span class="mut">sweet</span></td><td class="pct">15%</td><td class="amt">7.5 g</td></tr>
+        <tr><td>Turmeric</td><td class="pct">10%</td><td class="amt">5 g</td></tr>
+        <tr><td>Allspice <span class="mut">signature</span></td><td class="pct">9%</td><td class="amt">4.5 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Black pepper</td><td class="pct">7%</td><td class="amt">3.5 g</td></tr>
+        <tr><td>Cinnamon</td><td class="pct">5%</td><td class="amt">2.5 g</td></tr>
+        <tr><td>Cardamom <span class="mut">green, seeds only</span></td><td class="pct">3%</td><td class="amt">1.5 g</td></tr>
+        <tr><td>Nutmeg</td><td class="pct">3%</td><td class="amt">1.5 g</td></tr>
+        <tr><td>Clove</td><td class="pct">2%</td><td class="amt">1 g</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="callout">
+    <b>Grind everything together in a spice grinder</b> to a uniform powder &mdash; whole spices ground fresh are far more potent than pre-ground (the volatile oils oxidize fast). Grind the whole spices first, then pulse the pre-ground ones (paprika, turmeric) in to homogenize. <b>Cardamom: green pods, seeds only</b> &mdash; the papery husk is flavorless filler; the 1.5g is seed weight. <b>Allspice is the signature note</b> &mdash; 9% is conservative, bump to <b>12&ndash;15%</b> if timid; <b>go easy on clove</b>, it dominates fast. Blend keeps <b>6+ months</b> sealed.
+  </div>
+
+  <h2><span class="pt">Part 2</span> &nbsp;Marinade <span class="note">Per 900g boneless skinless thighs</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Chicken thighs <span class="mut">boneless, skinless</span></td><td class="amt">900 g</td></tr>
+        <tr><td>Spice blend <span class="mut">(2.5%)</span></td><td class="amt">22 g</td></tr>
+        <tr><td>Olive oil <span class="mut">(15&ndash;20%)</span></td><td class="amt">135&ndash;180 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Lemon juice <span class="mut">(5&ndash;6%)</span></td><td class="amt">45&ndash;54 g</td></tr>
+        <tr><td>Garlic <span class="mut">minced (3&ndash;4%)</span></td><td class="amt">27&ndash;36 g</td></tr>
+        <tr><td>Fine sea salt <span class="mut">(1.5&ndash;2%)</span></td><td class="amt">14&ndash;18 g</td></tr>
+        <tr><td>Onion <span class="mut">grated (optional)</span></td><td class="amt">&frac12;</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="callout">
+    <b>Why oil-based, not yogurt:</b> oil carries the fat-soluble spice compounds <i>into</i> the meat. Yogurt forms a barrier &mdash; it seasons the coating, not the chicken. <b>Acid held to 5&ndash;6%:</b> thin slices absorb more, and excess acid turns the texture mushy. <b>Never exceed 48 hr</b> marinade &mdash; the acid degrades the protein.
+  </div>
+
+  <h2>Temperature Targets <span class="note">IR gun confirms the surface &mdash; don't eyeball it</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Pan/griddle surface <span class="mut">(IR)</span></td><td class="amt">450&ndash;500&deg;F</td></tr>
+        <tr><td>Oil shimmer</td><td class="amt">visible waves</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Chicken internal</td><td class="amt">165&ndash;175&deg;F</td></tr>
+        <tr><td>Char coverage</td><td class="amt">15&ndash;20%</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Shawarma v1.0 &middot; spice + marinade</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method &middot; Sear &middot; Troubleshoot</div>
+  <h1 class="sm">Cook &amp; Finish</h1>
+  <div class="rule gold"></div>
+
+  <h2><span class="pt">Part 3</span> &nbsp;Method <span class="note">Active ~30 min &mdash; serve immediately, no rest</span></h2>
+  <ol class="steps">
+    <li><b>Slice:</b> trim fat, slice thighs horizontally to <b>&frac14;&Prime; (6mm)</b>. Thin = complete flavor penetration &mdash; the whole reason the inside isn't bland.</li>
+    <li><b>Build:</b> whisk oil, lemon, garlic, salt, and spices until <b>deeply tinted</b>. Taste &mdash; it should read aggressive; the meat tames it.</li>
+    <li><b>Marinate:</b> coat every piece, bag or container, refrigerate <b>12&ndash;24 hr</b> (24 = full development). <b>Max 48 hr.</b></li>
+    <li><b>Temper:</b> pull from fridge <b>30 min early</b>. Heat <b>cast iron / flat-top griddle</b> until screaming hot &mdash; <b>IR-confirm 450&ndash;500&deg;F</b>.</li>
+    <li><b>Sear:</b> <b>single-layer batches</b>, 2&ndash;3 min/side for char. Let the surface recover between batches &mdash; <b>crowding = steam</b>, no char. Target 15&ndash;20% surface char.</li>
+    <li><b>Chop:</b> all pieces back on the hot surface, chop with two spatulas, let sit <b>30&ndash;60 sec</b>, toss. Builds crispy edges.</li>
+    <li><b>Serve:</b> <b>immediately, no rest</b> &mdash; crispy edges degrade fast. Pull at <b>165&ndash;175&deg;F</b>. Taste before wrapping; it should eat great plain.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Chop-and-sear replicates the spit:</b> a vertical shawarma spit does two things &mdash; bastes in rendered fat and chars on high heat. Thin slice + oil marinade + screaming-hot iron + the chop step reproduces both at home. <b>Flat-top advantage:</b> more surface = bigger single-layer batches without crowding, which is the #1 cause of no char.
+  </div>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Bland inside</td><td>Slices too thick or under-marinated</td><td>Slice &frac14;&Prime; (6mm); full 24 hr marinade</td></tr>
+    <tr><td class="sym">No char</td><td>Surface too cool or overcrowded</td><td>Smaller batches; recover to 450&ndash;500&deg;F</td></tr>
+    <tr><td class="sym">Dry meat</td><td>Overcooked or under-oiled marinade</td><td>Check 165&ndash;175&deg;F; use 15&ndash;20% oil</td></tr>
+    <tr><td class="sym">Muted spice</td><td>Under-spiced</td><td>Scale to 3% meat wt; raise allspice</td></tr>
+    <tr><td class="sym">Mushy texture</td><td>Over 48 hr marinade or excess acid</td><td>Keep under 48 hr; hold lemon at 5&ndash;6%</td></tr>
+  </table>
+
+  <h2>Scaling <span class="note">Hold the ratios &mdash; spice 2.5%, oil 15&ndash;20%, lemon 5&ndash;6%</span></h2>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">1 lb (~450g)</span>
+      <table class="ing">
+        <tr><td>Spice blend</td><td class="amt">11 g</td></tr>
+        <tr><td>Olive oil</td><td class="amt">70 g</td></tr>
+        <tr><td>Lemon juice</td><td class="amt">25 g</td></tr>
+        <tr><td>Garlic</td><td class="amt">15 g</td></tr>
+        <tr><td>Salt</td><td class="amt">7 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">3 lb (~1,360g)</span>
+      <table class="ing">
+        <tr><td>Spice blend</td><td class="amt">34 g</td></tr>
+        <tr><td>Olive oil</td><td class="amt">200 g</td></tr>
+        <tr><td>Lemon juice</td><td class="amt">70 g</td></tr>
+        <tr><td>Garlic</td><td class="amt">45 g</td></tr>
+        <tr><td>Salt</td><td class="amt">20 g</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Shawarma v1.0 &middot; 450&ndash;500&deg;F &middot; chop-and-sear</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

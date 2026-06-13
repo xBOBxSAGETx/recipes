@@ -1,0 +1,15 @@
+# Build artifacts — PDFs are generated from recipes/*.html, not committed
+dist/
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+*.swp
+.vscode/
+.idea/

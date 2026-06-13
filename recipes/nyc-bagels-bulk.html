@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{
+    width:8.5in; height:11in; padding:0.55in 0.7in; position:relative;
+    page-break-after:always; overflow:hidden;
+  }
+  .page:last-child{ page-break-after:auto; }
+
+  /* Header */
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:30pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  /* Spec strip */
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:16px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold); }
+  h2 .note{ float:right; font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:74px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  .tag{ display:inline-block; font-size:7pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+        background:var(--char-black); color:var(--paper); padding:2px 7px; border-radius:2px; margin-bottom:6px; }
+  .tag.gold{ background:var(--broth-gold); color:var(--char-black); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; }
+  .diag td.sym{ font-weight:800; width:38%; background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; color:var(--char-black); margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">House Formula &nbsp;/&nbsp; v2.1 &nbsp;&middot;&nbsp; Bulk Method</div>
+  <h1>NYC-Style Bagels</h1>
+  <div class="sub">Straight dough &middot; short ~3h bulk &rarr; shape &rarr; <b>emphasized pan proof</b> &rarr; cold hold &middot; boiled &amp; baked</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">24 @ 150g</div></div>
+    <div><div class="lab">Flour</div><div class="val">Sir Lancelot 14.2%</div></div>
+    <div><div class="lab">Hydration</div><div class="val">60%</div></div>
+    <div><div class="lab">Method</div><div class="val">Straight + bulk</div></div>
+    <div><div class="lab">Total Dough</div><div class="val">~3,630g</div></div>
+  </div>
+
+  <h2>Straight Dough <span class="note">No poolish &mdash; mix it all at once</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Sir Lancelot</td><td class="amt">2,200 g</td></tr>
+        <tr><td>Water <span class="mut">(60% &mdash; cold if warm kitchen)</span></td><td class="amt">1,320 g</td></tr>
+        <tr><td>Salt <span class="mut">(2%)</span></td><td class="amt">44 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Honey <span class="mut">(~2.5%)</span></td><td class="amt">55 g</td></tr>
+        <tr><td>ADY <span class="mut">(0.6%)</span></td><td class="amt">13.2 g</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="lead mut">The flour's malted barley supplies the enzyme load. <b>0.6% ADY targets a ~4.5h total room ferment</b> (~3h bulk + ~1.5h pan proof) &mdash; ~6&times; the pizza 0.2% because this runs ~5&times; faster. Derived against the TXCraig1 yeast model at a granite-cooled ~66&deg;F effective bulk temp. Start here; if the bulk hits 50% well before 3h, drop toward 0.4% &mdash; if it drags, the granite's colder than figured, nudge up or extend.</p>
+
+  <h2>Mix <span class="note">Two batches &mdash; incorporation only, then fold</span></h2>
+  <p class="lead">Mix straight, then divide by weight for the stretch-and-fold. Each batch makes 12 bagels.</p>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">Per mixing batch &times;2</span>
+      <table class="ing">
+        <tr><td>Flour</td><td class="amt">1,100 g</td></tr>
+        <tr><td>Water</td><td class="amt">660 g</td></tr>
+        <tr><td>Salt</td><td class="amt">22 g</td></tr>
+        <tr><td>Honey</td><td class="amt">27.5 g</td></tr>
+        <tr><td>ADY</td><td class="amt">6.6 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <p class="lead"><b>Mixer = incorporation only.</b> At 60% with 14.2% flour the hook can't reach windowpane &mdash; gluten's too strong to fully develop in the machine. Run low just until combined, no dry bits, then stop.</p>
+      <p class="lead"><b>Develop by stretch-and-fold:</b> 2&ndash;3 S&amp;F sets ~30 min apart through the first ~1.5h of bulk; the rests autolyse, the folds build the network. <b>Windowpane is a post-fold check.</b> Low-friction mixing in a 70&deg;F room lands the dough near room temp (~68&ndash;70&deg;F) &mdash; already factored into the yeast and bulk timing.</p>
+      <p class="lead mut">~1,815g dough per batch &rarr; 12 bagels @ 150g.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>The consistency lever:</b> shaping from a <b>bulk-fermented mass</b> &mdash; not pre-divided pieces &mdash; is why pro bagels come out even without a scale. A short bulk organizes the gluten across the whole dough so each piece ropes uniformly. This is the structural reason for the fork.
+  </div>
+
+  <h2>Temp Targets <span class="note">this stage &mdash; mix &amp; dough</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Room <span class="mut">(dough rests here)</span></td><td class="amt">70&deg;F</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Dough after mix</td><td class="amt">~68&ndash;70&deg;F</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>NYC Bagels &mdash; v2.1 Bulk</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Shape · Proof · Boil · Bake</div>
+  <h1 style="font-size:24pt;">Execution &amp; Read</h1>
+  <div class="rule gold"></div>
+
+  <div class="spec" style="margin:12px 0 2px;">
+    <div><div class="lab">Room (bulk+proof)</div><div class="val">70&deg;F</div></div>
+    <div><div class="lab">Bulk pull</div><div class="val">~50% rise</div></div>
+    <div><div class="lab">Boil bath</div><div class="val">212&deg;F roll</div></div>
+    <div><div class="lab">Bake</div><div class="val">450&deg;F</div></div>
+  </div>
+
+  <div class="cols" style="margin-top:10px;">
+    <div class="col">
+      <h2>Bulk &middot; Shape &middot; Proof &middot; Hold</h2>
+      <ol class="steps">
+        <li><b>Short bulk, ~3 h:</b> mix in the morning, bulk on the counter <b>to ~50% rise</b>. Run <b>2&ndash;3 S&amp;F sets, 30 min apart</b>, through the first ~1.5 h; rest after. The bulk's job is to <b>organize the gluten</b>, not to do the main proof &mdash; pull by rise, not clock.</li>
+        <li><b>Divide from the bulk</b> to 150g (cut from the organized mass &mdash; the consistency move). Pre-round, bench rest <b>10&ndash;15 min</b>, then <b>rope &amp; weld TIGHT</b>: fuse the seam on un-floured counter, small ~1.5&Prime; hole = puffs up, not out.</li>
+        <li><b>Pan proof &mdash; THIS is the main proof, ~1&ndash;2 h:</b> rise the shaped bagels on half-sheets at 70&deg;F <b>to final height</b>. This is the rise that makes the bagel; weight it here, not in the bulk. Float-test when they look ready.</li>
+        <li><b>Fridge = HOLD, not proof.</b> Bagels go in <b>already proofed</b>; expect ~no rise (this fridge doesn't proof). Cold-hold for flavor + scheduling, then boil straight from cold (brief temper for the chill).</li>
+      </ol>
+      <p class="lead mut"><b>Granite note:</b> cold counter is a heat-sink &mdash; it slows the bulk (good, keeps it partial) but unevenly. Bulk in a <b>bowl</b> for even temp if you want; the pan proof runs warmer (pan buffers the counter) which is why it finishes the rise.</p>
+    </div>
+    <div class="col">
+      <h2>Boil &amp; Bake</h2>
+      <ol class="steps">
+        <li><b>Float test</b> straight from cold: surfaces in ~10s &rarr; go. Sinks &rarr; temper at room temp, retest. <b>This gates everything.</b></li>
+        <li><b>Boil bath:</b> per ~7 L water add <b>45 g baking soda</b> + <b>40 g honey</b>. Gentle rolling boil, never violent.</li>
+        <li><b>Boil 30 sec / side.</b> Shorter boil = thinner, more tender crust. Seed wet, straight out of the water (everything blend).</li>
+        <li><b>Bake 450&deg;F</b> on a <b>half-sheet pan</b> (parchment + cornmeal), <b>8 per pan</b>. Steam the first few min. <b>Steel goes one rack BELOW the pan with an air gap</b> &mdash; radiant mass, NOT touching the pan (pan-on-steel dries the heel). <b>~18 min total: flip the bagels on the pan at the halfway point</b> &mdash; gives the heel relief from bottom heat and evens both faces. Judge by set + even color.</li>
+        <li><b>Rest 20&ndash;30 min</b> before cutting. Hot crumb reads false-gummy.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h2>Browning Mechanism <span class="note">Solved &mdash; no malt syrup required</span></h2>
+  <p class="lead">Honey deposits a sugar film &rarr; <b>Maillard</b> fuel; baking soda drives the surface <b>alkaline</b>, accelerating it (pretzel chemistry). Together they cover the color the absent malt would give. Deeper mahogany: bake the soda 300&deg;F/1h &rarr; sodium carbonate, then use in the bath.</p>
+
+  <h2>Diagnostics</h2>
+  <table class="diag">
+    <tr><td class="sym">Dull, soft, over-sprung</td><td>Under-boiled &mdash; skin never set. Add boil time.</td></tr>
+    <tr><td class="sym">Wrinkled, tough, squat, gummy ring under skin</td><td>Over-boiled &mdash; skin set too hard, strangled spring. Cut boil time.</td></tr>
+    <tr><td class="sym">Skin right, interior gummy</td><td>Under-<i>baked</i>. Add 2&ndash;3 min; leave boil alone.</td></tr>
+    <tr><td class="sym">Tough bite, tight crumb</td><td>Under-proofed. Extend the bulk or the shaped room-temp rise; the fridge won't proof it. Float-test before boiling.</td></tr>
+    <tr><td class="sym">Tough, dried heel; soft top</td><td>Pan sitting directly on the steel &mdash; conduction cooks the heel all bake. Put an <b>air gap</b> (steel a rack below), and <b>flip at halfway</b> to give the heel relief.</td></tr>
+    <tr><td class="sym">Tough crumb, worse when toasted</td><td>Moisture-starved &mdash; <b>60% is the tenderness floor</b>.</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>v2.1 Bulk · short bulk · pan-proof · 60% · 30s</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:13px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:7px 9px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:6.5pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:10.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold); }
+  h2{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; }
+  h2 .pt{ color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing th{ text-align:left; font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); padding:0 0 4px; border-bottom:1px solid var(--line); }
+  table.ing th.r{ text-align:right; }
+  table.ing td{ padding:3.2px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.pct{ text-align:right; font-weight:700; color:var(--smoke-gray); width:44px; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:88px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:4.5px 0 4.5px 26px; font-size:8.8pt; line-height:1.38; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:4.5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+  ol.steps.c4{ counter-reset:s 4; }
+
+  .build{ list-style:none; counter-reset:b; font-size:8.8pt; }
+  .build li{ counter-increment:b; position:relative; padding:4px 0 4px 24px; border-bottom:1px solid var(--line); line-height:1.32; }
+  .build li:last-child{ border-bottom:none; }
+  .build li::before{ content:counter(b); position:absolute; left:0; top:4px; width:16px; height:16px; background:var(--char-black); color:var(--paper); font-size:7.5pt; font-weight:800; border-radius:50%; text-align:center; line-height:16px; }
+  .build b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:8px 11px; margin:9px 0; font-size:8.3pt; line-height:1.42; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.3pt; margin-top:4px; }
+  .diag td{ padding:4.5px 8px; border:1px solid var(--line); vertical-align:top; }
+  .diag td.sym{ font-weight:800; width:32%; background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:8.8pt; line-height:1.42; margin:5px 0; }
+  .mut{ color:var(--smoke-gray); }
+
+  .manifest{ display:flex; gap:10px; margin:12px 0 2px; }
+  .manifest div{ flex:1; border:1px solid var(--line); border-left:3px solid var(--broth-gold); padding:7px 10px; font-size:8pt; line-height:1.35; }
+  .manifest b{ font-weight:800; font-size:8.5pt; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 — TITLE + BREAD -->
+<div class="page">
+  <div class="kicker">House Formula &nbsp;/&nbsp; v1.3 &nbsp;&middot;&nbsp; Complete System</div>
+  <h1>The Cubano &mdash; Full Build</h1>
+  <div class="sub">Bread &rarr; marinated pork &rarr; pan reduction &rarr; build &amp; press &middot; one standalone system</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Bread</div><div class="val">8 @ 160g</div></div>
+    <div><div class="lab">Pork</div><div class="val">6 lb butt</div></div>
+    <div><div class="lab">Marinade</div><div class="val">24&ndash;48 hr</div></div>
+    <div><div class="lab">Roast</div><div class="val">275&deg;&rarr;195&deg;F</div></div>
+    <div><div class="lab">Press</div><div class="val">275&ndash;300&deg;F</div></div>
+  </div>
+
+  <div class="manifest">
+    <div><b>Plan-ahead:</b> pork marinates 24&ndash;48 hr and roasts ~6&ndash;8 hr. Start the day before.</div>
+    <div><b>Same-day:</b> bread is a ~4&ndash;4.5 hr same-day bake at 70&deg;F. The finishing sauce is the pan reduction &mdash; the marinade + drippings reduced down, no separate build.</div>
+  </div>
+
+  <h2><span class="pt">Part 1</span> &nbsp;Cuban Bread <span class="note">AP flour, NOT bread flour &mdash; tender, pressable</span></h2>
+  <table class="ing">
+    <tr><th>Ingredient</th><th class="r">Baker %</th><th class="r">Weight</th></tr>
+    <tr><td>AP flour <span class="mut">(~10.5&ndash;11.5% protein)</span></td><td class="pct">100%</td><td class="amt">750 g</td></tr>
+    <tr><td>Water <span class="mut">(warm; ~100g reserved to bloom)</span></td><td class="pct">63%</td><td class="amt">475 g</td></tr>
+    <tr><td>Lard <span class="mut">(rendered pork lard &mdash; structural)</span></td><td class="pct">4%</td><td class="amt">30 g</td></tr>
+    <tr><td>Sugar</td><td class="pct">2%</td><td class="amt">15 g</td></tr>
+    <tr><td>Salt</td><td class="pct">2%</td><td class="amt">15 g</td></tr>
+    <tr><td>ADY <span class="mut">(bloomed)</span></td><td class="pct">1.5%</td><td class="amt">11 g</td></tr>
+  </table>
+  <ol class="steps">
+    <li><b>Bloom ADY:</b> yeast + sugar in ~100g water at <b>100&ndash;110&deg;F</b>, <b>5&ndash;10 min</b> to foam. Over ~115&deg;F kills it.</li>
+    <li><b>Mix:</b> flour, salt, lard, bloom, remaining water. Knead to <b>moderate</b> gluten &mdash; soft, NOT windowpane. ~8&ndash;10 min.</li>
+    <li><b>Bulk:</b> <b>~1.5&ndash;2 hr</b> to doubled at <b>70&deg;F</b> &mdash; by the dough, not the clock.</li>
+    <li><b>Shape:</b> 8 &times; 160g, short <b>~8&Prime; blunt-ended torpedoes</b>, seam down.</li>
+    <li><b>Proof:</b> 45&ndash;60 min until puffy.</li>
+    <li><b>Score</b> one lengthwise slash. <b>Bake 400&deg;F</b> w/ steam first 10 min, then dry; ~20&ndash;22 min to <b>pale golden</b> (200&ndash;205&deg;F internal). <b>Brush hot with lard/butter</b> for a soft, pressable crust.</li>
+  </ol>
+
+  <h2>Temp Targets <span class="note">this stage &mdash; the bread</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Bloom water</td><td><b>100&ndash;110&deg;F</b> &mdash; foam in 5&ndash;10 min. Over <b>~115&deg;F kills the yeast</b>.</td></tr>
+    <tr><td class="sym">Rise</td><td>Bulk &amp; proof at <b>70&deg;F</b> room &mdash; by the dough, not the clock.</td></tr>
+    <tr><td class="sym">Bake</td><td>Oven <b>400&deg;F</b>, pull at <b>200&ndash;205&deg;F</b> internal &mdash; pale golden, NOT dark.</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>The Cubano v1.3</span><span>Page 1 / 4</span></div>
+</div>
+
+<!-- PAGE 2 — PORK MARINADE -->
+<div class="page">
+  <div class="kicker">Part 2 &middot; The Pork</div>
+  <h1 class="sm">Marinated Pork</h1>
+  <div class="rule gold"></div>
+
+  <h2 style="margin-top:14px;"><span class="pt">Part 2</span> &nbsp;Marinade <span class="note">No salt &mdash; salt the meat (see cook)</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Badia Mojo Marinade <span class="mut">(base &mdash; garlic + onion already in it)</span></td><td class="amt">1,170 g</td></tr>
+        <tr><td>Olive oil <span class="mut">or</span> lard <span class="mut">(held &mdash; floats in a bath)</span></td><td class="amt">120 g</td></tr>
+        <tr><td>Ground cumin <span class="mut">(fresh)</span></td><td class="amt">20 g</td></tr>
+        <tr><td>Mexican oregano <span class="mut">dried</span></td><td class="amt">10 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Onion <span class="mut">sliced thin</span></td><td class="amt">1 large</td></tr>
+        <tr><td>Cracked black pepper</td><td class="amt">12 g</td></tr>
+        <tr><td>Bay leaves</td><td class="amt">5</td></tr>
+        <tr><td>Maggi seasoning <span class="mut">(umami, rec.)</span></td><td class="amt">56 g</td></tr>
+        <tr><td>Salt <span class="mut">(NOT in marinade &mdash; salt the meat)</span></td><td class="amt">&mdash;</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Bloom <span class="note">Non-negotiable &mdash; fat carries aromatics into the meat</span></h2>
+  <ol class="steps">
+    <li>Warm oil/lard to <b>250&ndash;300&deg;F</b> &mdash; shimmering, not smoking (below olive oil's ~400&deg;F smoke point).</li>
+    <li>Add <b>cumin</b>, stir <b>30&ndash;45 sec</b> to nutty/fragrant &mdash; burns fast, kill heat when aromatic.</li>
+    <li>Off heat: oregano, pepper, bay. Stir residual heat <b>15&ndash;30 sec</b>. Cool 5 min. <span class="mut">(no fresh garlic &mdash; Badia is already garlic-heavy)</span></li>
+  </ol>
+
+  <h2>Combine &amp; Marinate</h2>
+  <ol class="steps c4">
+    <li><b>Non-reactive container</b> (never aluminum): Badia + bloomed mix + onion + Maggi. Whisk hard; it separates into fat/water phases, normal. <span class="mut">(no salt &mdash; the marinade becomes the reduction; salt the meat directly instead)</span></li>
+    <li>Butt into a <b>4qt Cambro</b>, pour over to <b>submerge</b> (~1.5L covers a 6 lb butt in this vessel). Fridge <b>24&ndash;48 hr</b>; one flip at 12 hr for the fat-line surface.</li>
+    <li><b>6 lb: 24 hr sufficient, 48 hr max.</b> Don't exceed &mdash; surface goes mealy.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Why bloom is mandatory:</b> fat drives cumin/oregano warmth <i>into</i> the meat. Skip it and aromatics sit on the surface and wash off.
+  </div>
+
+  <h2>Temp Targets <span class="note">this stage &mdash; bloom &amp; marinate</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Bloom fat</td><td><b>250&ndash;300&deg;F</b> &mdash; shimmering, not smoking. Cumin scorches in seconds; kill heat the moment it's fragrant.</td></tr>
+    <tr><td class="sym">Marinate</td><td>Fridge <b>38&ndash;40&deg;F</b>, <b>24&ndash;48 hr</b> (24 sufficient, 48 max &mdash; past that the surface goes mealy).</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>The Cubano v1.3 &middot; pork marinade</span><span>Page 2 / 4</span></div>
+</div>
+
+<!-- PAGE 3 — COOK + MOJO -->
+<div class="page">
+  <div class="kicker">Part 3 &middot; Roast &amp; Reduction</div>
+  <h1 class="sm">Cook &amp; Pan Reduction</h1>
+  <div class="rule gold"></div>
+
+  <h2 style="margin-top:14px;"><span class="pt">Part 3a</span> &nbsp;Cook <span class="note">Stainless pan only &mdash; never nonstick with acid at temp</span></h2>
+  <table class="ing">
+    <tr><td><b>Oven</b>, fat cap up, rack over a <b>stainless</b> pan</td><td class="amt">275&deg;F</td></tr>
+    <tr><td><b>Salt the butt directly</b> before roasting <span class="mut">(marinade has none)</span></td><td class="amt">&mdash;</td></tr>
+    <tr><td><b>Marinade goes IN the pan</b>, butt on the rack above &mdash; drippings fall in, onion cooks down</td><td class="amt">~1.5L</td></tr>
+    <tr><td>Top with water if the pan reduces low / threatens to scorch</td><td class="amt">&mdash;</td></tr>
+    <tr><td>Pull at internal</td><td class="amt">195&deg;F</td></tr>
+    <tr><td>Rest, tented</td><td class="amt">45&ndash;60 min</td></tr>
+    <tr><td>Total estimate <span class="mut">(stall-dependent)</span></td><td class="amt">~6&ndash;8 hr</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>Foil by bark, not clock:</b> roast <b>open</b> until the bark is <b>dry, deeply colored, firm &mdash; doesn't smear</b> (~few hours). THEN foil to protect it through the stall and finish. <b>Tent the edges</b> specifically if they run ahead. Burnt edges &rarr; bitter bits in the drippings, which become the sauce &mdash; protect them.
+  </div>
+
+  <h2><span class="pt">Part 3b</span> &nbsp;Pan Reduction <span class="note">The marinade reduced &mdash; this IS the finishing sauce</span></h2>
+  <p class="lead">No separate mojo build &mdash; the bloomed aromatics already rode the marinade into the pan and cooked down with the drippings. Pour <b>pan liquid + drippings</b> into a pot and finish:</p>
+  <ol class="steps">
+    <li><b>Hard rolling boil</b> first &mdash; mandatory, the marinade was raw-pork-contaminated. Not a gentle simmer.</li>
+    <li><b>Reduce to coats-the-spoon</b> (nappe) &mdash; but keep <b>enough volume to hold the sliced pork</b>. Make extra; reduce less far if you're running short. Taste for salt; cut with water/unsalted stock if it sharpens.</li>
+    <li><b>No finishing citrus</b> &mdash; the reduced Badia carries plenty of acid. Optional: a squeeze of fresh lime off-heat <i>only</i> if it tastes flat/dull (brightness, not more sour).</li>
+    <li><b>Hold the sliced pork in the warm sauce</b> &mdash; let it drink it up before building. This is the step that makes it next-level; make enough sauce to do it.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Body &amp; tuning:</b> if it won't reach nappe before salting out, thicken with a <b>cornstarch slurry</b> (gentle simmer, don't hard-boil after &mdash; acid breaks it). Too acidic &rarr; pinch sugar or ~0.6g baking soda at a time. Fat stays in &mdash; it rounds the acid and carries flavor.
+  </div>
+
+  <h2>Temp Targets <span class="note">this stage &mdash; roast &amp; reduce</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Roast</td><td>Oven <b>275&deg;F</b>, fat cap up. Foil by bark-set, not clock.</td></tr>
+    <tr><td class="sym">Pull</td><td>Pork internal <b>195&deg;F</b>, then rest tented 45&ndash;60 min.</td></tr>
+    <tr><td class="sym">Reduce</td><td><b>Hard rolling boil</b> first (safety), then reduce to nappe &mdash; keep volume to soak the slices.</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>The Cubano v1.3 &middot; roast + reduction</span><span>Page 3 / 4</span></div>
+</div>
+
+<!-- PAGE 4 — BUILD + PRESS + PRINCIPLES -->
+<div class="page">
+  <div class="kicker">Part 4 &middot; Assembly</div>
+  <h1 class="sm">Build &amp; Press</h1>
+  <div class="rule gold"></div>
+
+  <div class="cols" style="margin-top:14px;">
+    <div class="col">
+      <h2><span class="pt">Part 4</span> &nbsp;Build <span class="note">bottom &rarr; top</span></h2>
+      <ol class="build">
+        <li>Cuban loaf, split</li>
+        <li>Yellow mustard, <b>both</b> inside faces</li>
+        <li>Swiss <span class="mut">(bottom &mdash; glue)</span></li>
+        <li>Roast pork <span class="mut">(soaked in the warm reduction)</span> + spoon extra sauce</li>
+        <li>Ham <span class="mut">(ruffled)</span></li>
+        <li>Dill pickle planks</li>
+        <li>Swiss <span class="mut">(top)</span></li>
+        <li>Top bread; <b>butter both outside faces</b></li>
+      </ol>
+    </div>
+    <div class="col">
+      <h2>Press</h2>
+      <table class="ing">
+        <tr><td><b>Blackstone flat-top</b>, IR-gun an even zone to</td><td class="amt">275&ndash;300&deg;F</td></tr>
+        <tr><td><b>Second griddle/pan on top</b> as the weight, compress to</td><td class="amt">&#8531; height</td></tr>
+        <tr><td>Per side &mdash; cheese melted <b>and</b> bread crisp-golden</td><td class="amt">~4&ndash;5 min</td></tr>
+        <tr><td>Slice on the diagonal</td><td class="amt">serve hot</td></tr>
+      </table>
+      <div class="callout" style="margin-top:12px;">
+        <b>Why 275&ndash;300&deg;F, not 400&deg;+:</b> the press is a dual-target &mdash; bread crisps fast, cheese melts slow. Too hot = scorched crust, cold cheese. Low and patient lets heat reach the center before the bread burns. <b>IR-gun the surface</b> &mdash; a flat-top has zones; find the even one and re-check between sandwiches as it drifts.
+      </div>
+      <p class="lead mut" style="margin-top:8px;"><b>One-lard system:</b> the same rendered lard goes in the bread dough, brushes the crust, and fries the pork aromatics &mdash; one ingredient ties the sandwich together.</p>
+    </div>
+  </div>
+
+  <h2>Key Principles <span class="note">hard-won &mdash; the "why"</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Bread: AP, not high-gluten</td><td>Tender crumb that compresses in the press. High-gluten bakes tough and rubbery. Pale, thin crust &mdash; don't bake dark.</td></tr>
+    <tr><td class="sym">Flood the pan WITH the built marinade</td><td>Reverses old advice: the v1 failure was flooding with <i>pure-acid</i> marinade. This marinade has a bloomed savory base &mdash; in the pan it catches drippings and reduces into the sauce. Top with water if it scorches.</td></tr>
+    <tr><td class="sym">One aromatic build, at the source</td><td>The bloomed cumin/oregano in the marinade carries through to the reduction &mdash; no second mojo build needed. The marinade onion cooks down in the pan for umami.</td></tr>
+    <tr><td class="sym">Reduced Badia carries the acid</td><td>No finishing citrus needed &mdash; the base is heavily acidic and concentrates. Optional squeeze only if the sauce tastes flat/dull, for brightness not sour.</td></tr>
+    <tr><td class="sym">Stainless, never nonstick</td><td>At roasting temps/durations with acid, nonstick is out.</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>The Cubano v1.3 &middot; complete system</span><span>Page 4 / 4</span></div>
+</div>
+
+</body>
+</html>

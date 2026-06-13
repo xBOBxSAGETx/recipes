@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:120px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+  ol.steps.c6{ counter-reset:s 6; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:28%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+  .chk{ font-size:8.5pt; line-height:1.7; }
+  .chk b{ font-weight:800; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v3.0</div>
+  <h1>Chicken Curry</h1>
+  <div class="sub">Yogurt-based &middot; garlic-forward &middot; no tomato &middot; stovetop</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">6&ndash;8</div></div>
+    <div><div class="lab">Active</div><div class="val">~1.25 hr</div></div>
+    <div><div class="lab">Onion Ratio</div><div class="val">1:1 to protein</div></div>
+    <div><div class="lab">Fat Ratio</div><div class="val">10% of protein</div></div>
+  </div>
+
+  <h2>Key Targets <span class="note">visual states &mdash; the bhuna is judged by eye, not clock</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Onion paste</td><td>Deep brown, jammy &mdash; <b>~75% volume loss</b>, smell sweet not sharp.</td></tr>
+    <tr><td class="sym">Bhuna (masala)</td><td><b>Oil separates</b> &mdash; paste goes curdled &amp; matte, clear oil pools in "craters" and at the edges.</td></tr>
+    <tr><td class="sym">Yogurt</td><td>Oil separates again <b>after each addition</b> before the next.</td></tr>
+    <tr><td class="sym">Sauce</td><td>Clings to the meat, coats a spoon.</td></tr>
+    <tr><td class="sym">Garlic finish</td><td>Hits the nose immediately on serving.</td></tr>
+    <tr><td class="sym">Final</td><td>Thick, glossy, not watery.</td></tr>
+  </table>
+
+  <h2>Ingredients <span class="note">1.5 kg chicken batch</span></h2>
+  <div class="cols">
+    <div class="col">
+      <table class="ing">
+        <tr><td>Chicken <span class="mut">boneless thigh, chunked</span></td><td class="amt">1.5 kg</td></tr>
+        <tr><td>Onion <span class="mut">sliced thin</span></td><td class="amt">1.5 kg</td></tr>
+        <tr><td>Ghee <span class="mut">(100 + 30 + 20)</span></td><td class="amt">150 g</td></tr>
+        <tr><td>Yogurt <span class="mut">full-fat, room temp</span></td><td class="amt">225 g</td></tr>
+        <tr><td>Ginger-garlic paste <span class="mut">DIY, below</span></td><td class="amt">60 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="ing">
+        <tr><td>Garlic <span class="mut">minced, for finish</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Salt <span class="mut">~12g at sear, rest to taste</span></td><td class="amt">18 g</td></tr>
+        <tr><td>Lemon juice</td><td class="amt">15 g</td></tr>
+        <tr><td>Kasuri methi <span class="mut">crushed</span></td><td class="amt">2&ndash;3 g</td></tr>
+        <tr><td>Green chilies <span class="mut">slit</span></td><td class="amt">2&ndash;3</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Spices <span class="note">whole = bloom (step 4) · ground = fry in fat (step 5)</span></h2>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">Whole &mdash; bloom, step 4</span>
+      <table class="ing">
+        <tr><td>Cumin seed</td><td class="amt">6 g</td></tr>
+        <tr><td>Green cardamom</td><td class="amt">4 pods</td></tr>
+        <tr><td>Black cardamom</td><td class="amt">2 pods</td></tr>
+        <tr><td>Cinnamon</td><td class="amt">1 stick</td></tr>
+        <tr><td>Bay</td><td class="amt">3 leaves</td></tr>
+        <tr><td>Cloves</td><td class="amt">4</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Ground &mdash; fry in fat, step 5</span>
+      <table class="ing">
+        <tr><td>Kashmiri chili <span class="mut">color, mild</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Hot chili</td><td class="amt">7 g</td></tr>
+        <tr><td>Turmeric</td><td class="amt">4 g</td></tr>
+      </table>
+      <span class="tag" style="display:block; margin-top:9px;">Garam masala &mdash; used in TWO stages</span>
+      <table class="ing">
+        <tr><td>Bloom half <span class="mut">with ground spices, step 5</span></td><td class="amt">3.5 g</td></tr>
+        <tr><td>Finish half <span class="mut">off heat, step 11</span></td><td class="amt">3.5 g</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>DIY ginger-garlic paste:</b> 60g garlic + 60g ginger (1:1), peeled. Blend with <b>15&ndash;30 ml water</b> &mdash; minimum to form a smooth paste. Yield <b>~120g</b>; use 60g here. Keeps <b>5&ndash;7 days</b> fridge, <b>3 months</b> frozen. Turns bitter after 24 hr at room temp &mdash; fresh is brighter.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Curry v3.0 &middot; targets + ingredients</span><span>Page 1 / 3</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method &middot; The Bhuna</div>
+  <h1 class="sm">Build the Curry</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">stovetop &mdash; oil separation gates every stage</span></h2>
+  <ol class="steps">
+    <li><b>Onions:</b> 100g ghee, add onions. <b>50&ndash;60 min medium</b>, stir every 5&ndash;7 min. Done: volume down ~75%, no steam releasing, smell sweet not sharp, color deep brown &amp; jammy.</li>
+    <li><b>Blend:</b> tilt the pot, immersion-blend the onions to a smooth paste in the residual fat &mdash; no water. <span class="mut">(Traditional blender: remove center cap, cover with towel, vent steam.)</span></li>
+    <li><b>Fry the paste (bhuna):</b> 30g ghee, return paste, <b>8&ndash;10 min medium</b>, stir constantly. Done: paste looks <b>curdled and matte</b>, clear oil pools in "craters" and at the edges. Non-negotiable &mdash; rushing = raw taste.</li>
+    <li><b>Bloom:</b> push paste to the sides, add whole spices to the fat in the center, <b>30&ndash;45 sec</b> until fragrant and sizzling, stir in. Add 60g ginger-garlic paste, <b>2&ndash;3 min</b> until the raw smell is gone.</li>
+    <li><b>Ground spices:</b> medium-low. Add the ground spices + the <b>first 3.5g garam masala (bloom half)</b>. Fry <b>45&ndash;60 sec</b> in the fat. Splash <b>50 ml water</b>, cook until oil separates.</li>
+    <li><b>Yogurt:</b> low heat. Temper first &mdash; whisk <b>~5g hot paste</b> into the yogurt bowl (prevents curdling). Add <b>~30g at a time</b>, waiting for oil to separate before each. <b>10&ndash;12 min</b> total.</li>
+    <li><b>Sear:</b> high heat. Add chicken, season with <b>~12g salt</b> (hold the rest). Sear <b>4&ndash;5 min</b> until opaque &mdash; building fond.</li>
+    <li><b>Simmer:</b> add <b>~300 ml hot water</b>, scrape up the fond, cover and simmer until the chicken is cooked through &mdash; <b>~15&ndash;20 min</b> for thigh chunks. Stir once or twice.</li>
+    <li><b>Reduce:</b> uncover, medium-high. Reduce until the sauce clings to the chicken, <b>8&ndash;12 min</b>. Now taste and bring to <b>final salt</b> (the held ~6g, to taste) &mdash; after reduction, not before.</li>
+    <li><b>Garlic finish:</b> small pan, 20g ghee + 30g minced garlic + slit chilies. <b>60&ndash;90 sec</b> to just-golden edges (not brown). Pour into the curry.</li>
+    <li><b>Finish:</b> off heat. Add the <b>second 3.5g garam masala (finish half)</b>, kasuri methi, 15g lemon. The garlic should hit your nose immediately.</li>
+  </ol>
+
+  <div class="callout">
+    <b>The bhuna &mdash; oil separation is the whole game:</b> it happens at steps 3, 5, and 6. The paste goes wet/glossy &rarr; matte/curdled &rarr; oil pools in craters. The oil should be <b>tinted red/yellow</b> &mdash; clear oil means the spices haven't released. Rush this and the curry is raw and flat.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Curry v3.0 &middot; method</span><span>Page 2 / 3</span></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="kicker">Troubleshoot &middot; Notes</div>
+  <h1 class="sm">Read &amp; Adjust</h1>
+  <div class="rule gold"></div>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Watery / thin sauce</td><td>Under-reduced onions; bhuna rushed</td><td>Reduce longer at step 9; oil must separate at steps 3, 5, 6</td></tr>
+    <tr><td class="sym">Tastes raw / flat</td><td>Bhuna rushed; bloom skipped</td><td>No shortcuts on oil separation; bloom the spices in fat</td></tr>
+    <tr><td class="sym">No garlic punch</td><td>Finish garlic overcooked</td><td>Golden edges only, not brown; add right before serving</td></tr>
+    <tr><td class="sym">Too hot / dry</td><td>Chili concentrated; not enough fat</td><td>Add 20&ndash;30g ghee &mdash; NOT water. Fat mellows heat.</td></tr>
+    <tr><td class="sym">Yogurt curdled</td><td>Cold yogurt; heat too high</td><td>Room temp; temper first; keep heat low</td></tr>
+  </table>
+
+  <h2>Notes &amp; Scaling</h2>
+  <div class="cols">
+    <div class="col">
+      <p class="lead"><b>Onion ratio:</b> 1:1 minimum. If the sauce runs thin, go 1.25:1.</p>
+      <p class="lead"><b>Fat:</b> 10% is conservative &mdash; restaurants run 12&ndash;15%. Dry or too spicy? Add ghee, never water.</p>
+      <p class="lead"><b>Yogurt:</b> room temp, temper first, low heat &mdash; the three guards against curdling.</p>
+    </div>
+    <div class="col">
+      <p class="lead"><b>Whole spices:</b> bloom in fat &mdash; extracts more than dry heat alone.</p>
+      <p class="lead"><b>Make ahead:</b> better the next day. Add fresh-fried garlic when reheating to bring the punch back.</p>
+      <p class="lead"><b>Scaling:</b> doubles linearly &mdash; but the onion fry stretches to <b>70&ndash;80 min</b> at 2&times;.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Why no tomato:</b> the body comes from the deeply browned onion paste and the yogurt, not acid + sugar from tomato. It's a richer, rounder base &mdash; the garlic finish and kasuri methi carry the top notes.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Curry v3.0 &middot; troubleshoot + notes</span><span>Page 3 / 3</span></div>
+</div>
+
+</body>
+</html>

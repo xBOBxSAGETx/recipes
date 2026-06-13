@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:25pt; line-height:1.04; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:88px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:4.5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin:9px 0 3px; }
+  .tag:first-child{ margin-top:0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Baking Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Dark Chocolate &amp; Pistachio<br>Molasses Cookies</h1>
+  <div class="sub">Chewy center &middot; crisp edge &middot; salt-sweet finish</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~16 @ 120g</div></div>
+    <div><div class="lab">Active</div><div class="val">25 min</div></div>
+    <div><div class="lab">Chill</div><div class="val">24&ndash;36 hr</div></div>
+    <div><div class="lab">Bake</div><div class="val">14&ndash;16 min @ 350&deg;F</div></div>
+    <div><div class="lab">Dough Wt</div><div class="val">~1,960 g</div></div>
+  </div>
+
+  <h2>Targets <span class="note">judge by these &mdash; the butter step is everything</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Butter + sugar</td><td>Cold cubed butter, paddle, <b>speed 2, 45&ndash;60 sec</b>. Chunky and uneven &mdash; <b>NOT creamed</b> to light/fluffy.</td></tr>
+    <tr><td class="sym">Dough ball</td><td><b>120g</b> (&plusmn;5g), pressed rough &mdash; craggy surface cracks better.</td></tr>
+    <tr><td class="sym">Pull temp</td><td><b>175&deg;F internal</b> &mdash; carryover finishes it to 180&ndash;185&deg;F.</td></tr>
+    <tr><td class="sym">Visual pull</td><td>Edges set and cracking, <b>center jiggles</b> when the pan is shaken.</td></tr>
+    <tr><td class="sym">Spacing</td><td><b>8&ndash;10 cm (3&ndash;4&Prime;)</b> between balls, 4 per half-sheet, center rack.</td></tr>
+  </table>
+
+  <h2>Ingredients <span class="note">grouped by how they're used</span></h2>
+  <div class="cols">
+    <div class="col">
+      <span class="tag">Dry &mdash; whisk, step 2</span>
+      <table class="ing">
+        <tr><td>Bread flour <span class="mut">14% protein</span></td><td class="amt">438 g</td></tr>
+        <tr><td>Pistachios <span class="mut">toasted, ground fine</span></td><td class="amt">140 g</td></tr>
+        <tr><td>Baking powder</td><td class="amt">4 g</td></tr>
+        <tr><td>Baking soda</td><td class="amt">3 g</td></tr>
+        <tr><td>Salt <span class="mut">fine/kosher, by weight</span></td><td class="amt">6 g</td></tr>
+      </table>
+      <span class="tag">Butter + sugar &mdash; step 3</span>
+      <table class="ing">
+        <tr><td>Salted butter <span class="mut">cold, 1cm cubes</span></td><td class="amt">336 g</td></tr>
+        <tr><td>Light brown sugar <span class="mut">packed</span></td><td class="amt">360 g</td></tr>
+        <tr><td>Molasses <span class="mut">unsulphured</span></td><td class="amt">80 g</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Wet &mdash; step 4</span>
+      <table class="ing">
+        <tr><td>Whole eggs <span class="mut">room temp</span></td><td class="amt">2</td></tr>
+        <tr><td>Egg yolks <span class="mut">room temp</span></td><td class="amt">2</td></tr>
+        <tr><td>Vanilla extract</td><td class="amt">28 g</td></tr>
+      </table>
+      <span class="tag">Fold-in &mdash; step 6</span>
+      <table class="ing">
+        <tr><td>Dark chocolate <span class="mut">60%, ~1cm chunks</span></td><td class="amt">340 g</td></tr>
+        <tr><td>Pistachios <span class="mut">toasted, rough chopped</span></td><td class="amt">140 g</td></tr>
+      </table>
+      <span class="tag">Finish</span>
+      <table class="ing">
+        <tr><td>Flaky sea salt</td><td class="amt">to finish</td></tr>
+        <tr><td>Extra chocolate + pistachio <span class="mut">for tops</span></td><td class="amt">&mdash;</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Molasses Cookies v1.0 &middot; targets + ingredients</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Method &middot; Cold-Butter</div>
+  <h1 class="sm">Build &amp; Bake</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">no creaming &mdash; the cold-butter smash is the whole game</span></h2>
+  <ol class="steps">
+    <li><b>Toast:</b> all 280g pistachios on a sheet, <b>325&deg;F, 8&ndash;10 min</b>, shake halfway, pull fragrant (not dark). Cool completely, then grind 140g in a food processor (pulse 8&ndash;10&times;, coarse sand); rough-chop the other 140g.</li>
+    <li><b>Dry:</b> whisk flour, ground pistachios, baking powder, baking soda, salt. Set aside.</li>
+    <li><b>Butter + sugar:</b> paddle, cold cubed butter + brown sugar + molasses. <b>Speed 2 only, 45&ndash;60 sec.</b> It stays chunky and uneven &mdash; that's correct. <b>Do NOT cream</b> to light/fluffy. Scrape the bowl.</li>
+    <li><b>Eggs:</b> speed 2. Add whole eggs, yolks, vanilla. Mix <b>~30 sec</b>, just combined &mdash; no egg streaks. Scrape.</li>
+    <li><b>Combine:</b> speed 2 (stir). Dry mix in two additions: first half ~10 sec, second half <b>stop when a few flour streaks remain</b>. Don't walk away &mdash; overmix = tough.</li>
+    <li><b>Fold:</b> off the mixer. Add chocolate + chopped pistachios. Stiff spatula &mdash; cut the center, scrape the bottom, fold <b>~10&ndash;15 times</b> until evenly distributed.</li>
+    <li><b>Portion:</b> zero a plate on the scale, scoop to <b>120g</b>. Press into a rough ball with both hands &mdash; don't compress it smooth. Craggy surface cracks better. 4 per parchment tray.</li>
+    <li><b>Ferment:</b> wrap the tray tightly, fridge <b>24&ndash;36 hr</b> (24 min, 36 ideal). The dough darkens as sugar breaks down &mdash; that's the toffee/caramel development.</li>
+    <li><b>Bake:</b> temper <b>10&ndash;15 min</b> at room temp. <b>350&deg;F</b>, parchment, light-colored sheet, 8&ndash;10cm spacing, center rack. Rotate at 8 min. Total <b>14&ndash;16 min</b>: edges golden &amp; cracked, center jiggles when shaken. <b>Pull at 175&deg;F internal</b> &mdash; carryover finishes it.</li>
+    <li><b>Finish:</b> flaky salt immediately. Press extra chocolate/pistachio into the surface while tacky. Cool on the pan <b>15 min</b> (still baking on residual heat), then to a wire rack.</li>
+  </ol>
+
+  <div class="callout">
+    <b>The cold-butter smash &mdash; the most important step:</b> do NOT cream. Cold cubed butter smashed with sugar on low speed keeps air <i>out</i>. Air = cakey; no air = dense, fudgy, chewy. Creaming to light-and-fluffy (or mixing above speed 2) is the #1 way this cookie goes wrong.
+  </div>
+
+  <h2>Troubleshooting</h2>
+  <table class="diag">
+    <tr><td class="sym">Flat / spread</td><td>Under-fermented or butter too warm &rarr; re-chill; butter must be cold cubed</td></tr>
+    <tr><td class="sym">Cakey</td><td>Creamed too long / above speed 2 &rarr; cold cubed butter, speed 2, 45&ndash;60 sec max</td></tr>
+    <tr><td class="sym">Airy / crumbly</td><td>Too much baking soda &rarr; verify <b>3g</b>, not more</td></tr>
+    <tr><td class="sym">Tough</td><td>Overmixed at combine &rarr; pull at 14 min; check internal temp</td></tr>
+    <tr><td class="sym">Raw center</td><td>Balls too cold &rarr; temper 10&ndash;15 min, or add 2 min bake</td></tr>
+    <tr><td class="sym">Edges brown, center raw</td><td>Oven too hot for ball size &rarr; drop to 325&deg;F, extend 2&ndash;3 min</td></tr>
+    <tr><td class="sym">Too sticky to portion</td><td>Dough too warm &rarr; fridge 15 min, then portion</td></tr>
+    <tr><td class="sym">Bland</td><td>Under-salted &rarr; verify <b>6g</b> salt + the flaky finish</td></tr>
+  </table>
+
+  <h2>Notes <span class="note">the non-obvious bits</span></h2>
+  <div class="cols">
+    <div class="col">
+      <p class="lead"><b>Chocolate:</b> eating-quality bar, hand-chopped ~1cm &mdash; not chips (stabilizers block melt pools).</p>
+      <p class="lead"><b>Pistachios:</b> cool completely before grinding or they oil out to paste.</p>
+    </div>
+    <div class="col">
+      <p class="lead"><b>Make ahead:</b> freeze portioned balls solid, bag; bake from frozen +2&ndash;3 min (keeps 3 months).</p>
+      <p class="lead"><b>Storage:</b> airtight, room temp, 4&ndash;5 days &mdash; never refrigerate (staling).</p>
+    </div>
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Molasses Cookies v1.0 &middot; method + troubleshoot</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>
