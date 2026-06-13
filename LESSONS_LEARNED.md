@@ -43,6 +43,20 @@ time something bites, even if it feels obvious in the moment.
   `python -c "import fitz; fitz.open('dist/x.pdf')[PAGE].get_pixmap(dpi=150).save('dist/_chk.png')"`
   then Read the PNG. Delete the temp PNG after (it's in gitignored `dist/`).
 
+- **The overflow gate had a blind spot — a footer collision can report `[PASS]`.** The old
+  `overflow_check.py` found the footer as "the lowest y-cluster" and skipped anything within
+  6pt of it; when a body row sagged *into* the footer band it looked like the footer and got
+  skipped (nyc-bagels page 2 shipped with the last diagnostics row overlapping the footer,
+  gate green). Fixed by **anchoring the footer by content** ("Aguillon House Kitchen" /
+  "Page N/M") and flagging any non-footer span below the safe limit. Lesson stands regardless:
+  **a `[PASS]` is necessary, not sufficient — eyeball page bottoms.** After any detector change,
+  re-run the full build as a sweep (it flags every recipe at once).
+
+- **Footer text is letter-spaced, so PyMuPDF extracts it with spaces between characters**
+  ("A GU IL L ON ..."). Any text-matching against rendered spans (footer anchors, the
+  mangled-entity gate, etc.) must normalize whitespace first (`re.sub(r"\s+","",t).lower()`),
+  or literal substring matches silently fail.
+
 ## Process
 
 - **Fix the root cause / all instances, not the first one you see.** Before declaring a
