@@ -70,7 +70,24 @@ python build.py --check-only   # validate existing dist/ PDFs, don't re-render
 ## Working from the phone (Remote Control)
 
 This repo is built to be driven from the Claude mobile app against a Remote Control
-session running here. Front-load instructions so the session doesn't stop to ask —
+session running on the laptop. The laptop is the engine (it runs `build.py` +
+Chromium); the phone is the remote. **The laptop must stay awake with the session
+running.**
+
+**One-time setup (laptop) — Remote Control needs a full-scope Max login:**
+An `ANTHROPIC_API_KEY` or `setup-token` is *inference-only* and `/rc` will refuse it
+("requires a full-scope login token"). The account here runs on the **Claude Max
+plan only**; `ANTHROPIC_API_KEY` was removed from the Windows User env (2026-06-13)
+so sessions use Max, not pay-per-token API billing. To pair:
+
+1. Fresh terminal → `claude auth login` (browser login with the Max account).
+2. `cd C:\Users\aagui\Recipes` then `claude`; in the session type `/rc`, press
+   **spacebar** for the QR code.
+3. Phone: Claude app → **Code** tab → scan the QR / tap the session. Paired = computer
+   icon + green dot. (`/config` → "Enable Remote Control for all sessions" makes it
+   automatic.)
+
+**Driving it:** front-load instructions so the session doesn't stop to ask —
 a complete instruction looks like:
 
 > "Set the curry's salt to 9 g, rebuild, confirm overflow_check passes, commit and push."
