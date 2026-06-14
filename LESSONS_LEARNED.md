@@ -64,3 +64,11 @@ time something bites, even if it feels obvious in the moment.
   what makes the same gotcha resurface.
 - **Git on Windows prints `LF will be replaced by CRLF` warnings** on add/commit. Benign —
   not an error, don't chase it.
+
+- **Don't parrot a recipe's assertions as immutable fact, or bolt reflexive guardrails onto
+  the user's calls.** A recipe's confident prose ("AP flour, NOT bread flour — high-gluten
+  bakes tough and rubbery") is a design *opinion*, not a law. I repeated it as fact and
+  hedged the user's decisions against it — on a bread they'd actually baked and I hadn't.
+  When the user has the oven and the result and you don't, **their empirical finding wins.**
+  Offer caveats only when they're grounded and specific, not as automatic hedges — the user
+  will (rightly) call it hallucination.
