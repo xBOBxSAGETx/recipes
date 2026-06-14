@@ -18,8 +18,8 @@
   hydration if you want a more open crumb.
 
 ## 🧪 Build / finish later
-- [ ] **Legg's chorizo card** — drop in the exact **Blend 111 vinegar + water ratio**
-  (currently a "per pack" placeholder) and re-render.
+- [x] **Legg's chorizo card** — vinegar filled in (5% acidity, ~4% / **19 ml per lb**, 1 pint
+  per 25 lb) + Legg's double-grind method (½″ → season → 3/16″). ✅ done 2026-06-14
 - [ ] **Sausage clones (scratch)** — endgame **Jimmy Dean breakfast sausage** + **endgame
   chorizo**, after the Legg's premix trials set a baseline to beat.
 - [ ] **Scratch mojo** — replace the doctored Badia for full god-tier Cubano (sour orange /
