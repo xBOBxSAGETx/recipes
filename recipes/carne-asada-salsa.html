@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:100px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:50px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+  ol.steps.c3{ counter-reset:s 3; }   /* continue numbering across the column break */
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin:9px 0 3px; }
+  .tag:first-child{ margin-top:0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Table Heat &nbsp;/&nbsp; v1.0</div>
+  <h1>Asada Salsa</h1>
+  <div class="sub">Fried guajillo&middot;pasilla&middot;&aacute;rbol salsa on a tomatillo-verde base &middot; the only heat at the table</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~2 cups (480 ml)</div></div>
+    <div><div class="lab">Active</div><div class="val">~40 min</div></div>
+    <div><div class="lab">Heat</div><div class="val">Serious</div></div>
+    <div><div class="lab">Keeps</div><div class="val">1 week, fridge</div></div>
+  </div>
+
+  <h2>Ingredients <span class="note">dried chiles + a canned verde base &mdash; weeknight shortcut, upgraded by frying</span></h2>
+  <table class="ing">
+    <tr><td>Guajillo chiles <span class="mut">stemmed, seeded &mdash; flavor &amp; body</span></td><td class="amt">4</td></tr>
+    <tr><td>Pasilla chiles <span class="mut">stemmed, seeded &mdash; dark, raisiny</span></td><td class="amt">2</td></tr>
+    <tr><td>Chiles de &aacute;rbol <span class="mut">stemmed, seeds in &mdash; the heat engine</span></td><td class="amt">6</td></tr>
+    <tr><td>Chiltep&iacute;n chiles <span class="mut">tiny wild pods &mdash; very hot, sharp flash heat</span></td><td class="amt">~2 g</td></tr>
+    <tr><td>White onion <span class="mut">thick slabs, to char</span></td><td class="amt">&frac12;</td></tr>
+    <tr><td>Garlic <span class="mut">skin on, to char</span></td><td class="amt">3 cloves</td></tr>
+    <tr><td>Embasa salsa verde <span class="mut">7 oz / 200 g each can</span></td><td class="amt">2 cans</td></tr>
+    <tr><td>Lard <span class="mut">or neutral oil &mdash; to fry the salsa</span></td><td class="amt">13 g</td></tr>
+    <tr><td>Knorr caldo de pollo <span class="mut">optional &mdash; only if it tastes flat</span></td><td class="amt">to taste</td></tr>
+  </table>
+
+  <h2>Method <span class="note">toast &middot; soak &middot; char &middot; blend &middot; fry &middot; balance</span></h2>
+  <div class="cols">
+    <div class="col">
+      <ol class="steps">
+        <li><b>Toast the chiles.</b> Comal or cast iron over medium (surface <b>~350&ndash;400&deg;F</b>), or the mouth of the Ooni. Lay guajillo + pasilla flat; toast <b>30&ndash;45 sec/side</b> until they puff, darken, and smell nutty &mdash; pull the instant they smell toasty (<b>guajillo turns acrid fast</b>). Toast the &aacute;rbol + chiltep&iacute;n briefly; they&rsquo;re thin/tiny and scorch first. Have a bowl of hot water ready.</li>
+        <li><b>Soak.</b> Push all toasted chiles under the hot water; soak <b>15&ndash;20 min</b> until fully pliable. <b>SAVE the soaking water</b> &mdash; it&rsquo;s the salsa&rsquo;s liquid and flavor.</li>
+        <li><b>Char the aromatics.</b> On the comal/stone, char the onion slabs and skin-on garlic until <b>blackened in spots and soft</b>. Pull; let the garlic cool enough to peel.</li>
+      </ol>
+    </div>
+    <div class="col">
+      <ol class="steps c3">
+        <li><b>Blend.</b> Drained chiles, charred onion, peeled garlic, and <b>both cans of Embasa</b> into a blender. Add a splash of reserved soaking water to get it moving. Blend smooth &mdash; start thick, you can always loosen. Aim for a sauce that <b>coats a spoon</b>.</li>
+        <li><b>Fry it &mdash; don&rsquo;t skip.</b> Heat the lard until shimmering (<b>~325&ndash;350&deg;F</b>). Pour in the salsa (it&rsquo;ll spit &mdash; stand back) and fry, stirring, <b>5&ndash;8 min</b> until it darkens, thickens, and the raw chile edge cooks off. <b>Single biggest upgrade</b>; it also fixes the thin volume of canned base.</li>
+        <li><b>Cool, then balance.</b> Off heat, rest <b>10 min</b> &mdash; flavors are muddy while screaming hot and resolve as they settle. <b>No salt, no lime by design.</b> If it tastes flat, stir in a pinch of Knorr caldo de pollo &mdash; nothing more.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Heat dial &mdash; built serious.</b> 6 &aacute;rbol + chiltep&iacute;n is a real, building heat &mdash; the &aacute;rbol lingers, the chiltep&iacute;n hits sharp and flashes &mdash; and this salsa is the <b>only heat at the table</b> (the picada marinade is heat-free by design). Milder? Drop to <b>4 &aacute;rbol and skip the chiltep&iacute;n</b>. Hotter is hard to walk back &mdash; taste before you push it. &nbsp;&bull;&nbsp; <b>No salt, no lime &mdash; on purpose.</b> Embasa is salt-forward and frying concentrates it; the tomatillo base is already tart. <b>Fresh lime + flaky salt finish the meat at the plate</b> &mdash; don&rsquo;t double up. &nbsp;&bull;&nbsp; <b>Texture:</b> keep it <b>spoonable, not paste</b> &mdash; it has to cling to the crispy diced edges of the picada; loosen with reserved soaking water if it tightens overnight. &nbsp;&bull;&nbsp; <b>Make-ahead:</b> improves after a night in the fridge as the fried chile rounds out. Don&rsquo;t add cumin/oregano &mdash; the meat already carries those, you&rsquo;d muddy it.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Asada Salsa v1-0 &middot; guajillo-pasilla-&aacute;rbol</span><span>Page 1 / 1</span></div>
+</div>
+
+</body>
+</html>
