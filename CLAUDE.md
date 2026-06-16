@@ -48,16 +48,28 @@ cumin-beef and chile-salsa disasters were unvalidated bulk commits. When unsure,
    that works (start there, don't reinvent it); **STATE of the variable ingredients**
    (dried-chile age/pliability, flour protein %, salt brand — *counts are meaningless without
    state*); equipment + reference target ("what does good taste like").
-1. **Formula, not vibes.** Ratios / % that scale, anchored to the user's baseline or a cited
-   recipe — never arbitrary counts. Variable-potency items anchor to a TARGET (heat level,
-   % salt by weight) plus a state adjustment.
-2. **Validate before it reaches the user.** Run the draft through the adversarial swarm
-   (the `recipe-build` skill): build → critics (traditional / food-science / practical /
-   "over-engineered?" / "did we ask the right inputs?") → web-checked → only a refined draft
-   is shown, assumptions + open questions flagged out loud.
-3. **NEVER bulk an unvalidated recipe.** Bulk run = cook a **1-lb test batch, taste, adjust,
+1. **Define the target — sensory + cultural — first.** What *is* this dish: its job (e.g.
+   "bright cutting heat against rich beef"), the eating experience, and the cultural/family
+   anchor that makes it itself. Agree on this before any ingredient.
+2. **Function-map, then strip — LESS = MORE.** List each component as a *job + mechanism*, not
+   an ingredient (acid → brightness; árbol → heat, fat-soluble; char → Maillard, bitter past
+   the edge). That exposes the **3–5 real levers**; hold everything else. A real dish reduces
+   to almost nothing — **strip until each ingredient earns its place** (every disaster came from
+   *adding*). Express levers as ratios / % of a base where it helps scale (e.g. chiles as % of
+   tomatillo) — a proportion tool, not the spine.
+3. **Reason from mechanism + cultural grammar — sources are evidence, NOT scripture.** Every
+   choice must survive *why does this work*. Weigh only **canonical** sources (McGee, *Modernist
+   Cuisine*, tested chefs, cuisine-authority cookbooks, the cook's own family) — **never SEO
+   blogs / YouTube** (99% noise). **The cook's bench and family memory beat every source.** Do
+   NOT run automated google-search-and-summarize swarms as design or validation — breadth
+   produces confident garbage (the blanket-salt over-reach proved it). Depth, mechanism, the
+   cook's tongue.
+4. **Unknowns → a controlled experiment, not an opinion.** When reasoning can't decide (raw vs
+   charred tomatillo), the output is a tight **A/B — one variable at a time, taste-judged by the
+   cook** — never a verdict or a summary.
+5. **NEVER bulk an unvalidated recipe.** Bulk run = cook a **1-lb test batch, taste, adjust,
    THEN scale.** A $5 test before a $120 commit. **Mandatory.**
-4. **Version on the cook** — stays v1.0 until actually cooked (see `LESSONS_LEARNED.md`).
+6. **Version on the cook** — stays v1.0 until actually cooked (see `LESSONS_LEARNED.md`).
 
 ### Publish gates — every card passes all 7 before it's DONE
 1. **Doneness:** a probe target only where it governs. Dark thigh **175–185°F+** (never a
