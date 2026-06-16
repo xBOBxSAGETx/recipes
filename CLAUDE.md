@@ -63,9 +63,12 @@ cumin-beef and chile-salsa disasters were unvalidated bulk commits. When unsure,
 1. **Doneness:** a probe target only where it governs. Dark thigh **175–185°F+** (never a
    165°F floor); meat **submerged in simmering liquid** = tenderness/time cue (can't exceed
    broth temp); small dice / soft cookies = char/visual, not a probe.
-2. **Salt budget:** count EVERY sodium source (salted butter, Maggi, soy/fish/Worcestershire,
-   achiote, blends, ketchup); spec **~0.9–1.0% of finished mass** (bread/sausage to their own
-   ranges); default **unsalted butter**; taste a test piece before committing.
+2. **Salt is TASTED, never calculated.** Count sodium sources only to avoid a *false claim*
+   (don't label a Maggi/soy/achiote marinade "no-salt"). **Do NOT chase a target %**, and
+   **NEVER re-salt a dish the cook has already made — their palate wins, every time.** Any
+   "~1%" figure is a loose sanity ceiling for a *never-cooked* draft, not an instruction to
+   change a number. (This gate was itself over-applied once — salt edits got stamped on dishes
+   the cook had made and liked. Don't repeat it.)
 3. **Honesty:** no shortcut branded "authentic/restaurant-style"; no identity/balance/mechanism
    claim stated as fact unless cooked. Reframe shortcuts as honest substitutions.
 4. **Lean:** kill temp-dashboards that restate inline numbers, version-history / "why-we're-clever"

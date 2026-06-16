@@ -37,7 +37,7 @@ Stays **v1.0** until actually cooked. Pre-cook iteration does not bump the versi
 
 ## The 7 publish gates (every card passes all 7)
 1. **Doneness** — probe only where it governs (thigh 175–185°F+; submerged = tenderness cue; dice/cookies = char/visual).
-2. **Salt budget** — count every sodium source; ~0.9–1.0% finished mass; unsalted butter; taste-test before committing.
+2. **Salt is tasted, not calculated** — count sodium sources only to kill false "no-salt" claims; never chase a % and NEVER re-salt a dish the cook has made (their palate wins).
 3. **Honesty** — no false "authentic/restaurant-style"; no identity/balance/mechanism claim as fact unless cooked.
 4. **Lean** — no dashboards/version-callouts/pseudo-precision; each cue once.
 5. **Numbers reconcile** — ratio == batch; divides/yields; named ingredients == shopping list; flip/step counts == prose.
