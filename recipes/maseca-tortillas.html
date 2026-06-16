@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:90px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:54px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps.c4{ counter-reset:s 4; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:inline-block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin-bottom:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Professional Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Maseca Tortillas</h1>
+  <div class="sub">Masa-harina path &middot; toasted-masa + lard upgrades &middot; the no-grinder route toward El Milagro</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~28 @ 32 g</div></div>
+    <div><div class="lab">Active</div><div class="val">~45 min</div></div>
+    <div><div class="lab">Hydration</div><div class="val">~115% (start)</div></div>
+    <div><div class="lab">Masa moisture</div><div class="val">55&ndash;60%</div></div>
+  </div>
+
+  <h2>Formula <span class="note">baker&rsquo;s % of Maseca weight &mdash; scale to your batch</span></h2>
+  <table class="ing">
+    <tr><td>Maseca <span class="mut">masa harina, yellow &mdash; toast 100 g of it (step 1)</span></td><td class="pct">100%</td><td class="amt">400 g</td></tr>
+    <tr><td>Water, hot <span class="mut">~110&ndash;120&deg;F &mdash; start here, dial by feel</span></td><td class="pct">115%</td><td class="amt">460 g</td></tr>
+    <tr><td>Lard <span class="mut">melted into the water &mdash; pliability + keeping</span></td><td class="pct">4%</td><td class="amt">16 g</td></tr>
+    <tr><td>Salt <span class="mut">fine</span></td><td class="pct">1.25%</td><td class="amt">5 g</td></tr>
+  </table>
+
+  <h2><span class="pt">Stage 1</span> &nbsp;Make the Masa <span class="note">Play-Doh that doesn&rsquo;t crack at the edges is the whole game</span></h2>
+  <ol class="steps">
+    <li><b>Toast a quarter.</b> Dry-toast <b>100 g of the Maseca</b> (no oil) in a comal/skillet over medium, stirring, until it smells <b>nutty and just barely colors</b> &mdash; <b>3&ndash;5 min</b>. Don&rsquo;t brown it (turns bitter). This puts back toasty depth that drying strips out. Stir it into the other <b>300 g</b>.</li>
+    <li><b>Hydrate.</b> Melt the <b>16 g lard</b> into the <b>460 g hot water</b>. Stir the salt into the Maseca, then pour in the lard-water <b>gradually</b>, mixing as you go.</li>
+    <li><b>Knead.</b> Work <b>2&ndash;3 min</b> to a smooth <b>Play-Doh</b> &mdash; press a ball flat: <b>smooth edges, no cracks</b>. Too dry &rarr; add water 5 ml at a time; too wet &rarr; dust in Maseca.</li>
+    <li><b>Rest.</b> Cover with a damp towel, <b>20&ndash;30 min</b> &mdash; the masa fully hydrates and firms. Re-check the smush test after; it usually wants a touch more water.</li>
+  </ol>
+
+  <h2>Hydration Check <span class="note">all one question &mdash; is the masa at 55&ndash;60%?</span></h2>
+  <table class="diag">
+    <tr><th>Test</th><th>What you want</th><th>If not</th></tr>
+    <tr><td class="sym">Smush test</td><td>Press a ball flat &mdash; edges smooth, no cracks</td><td>Cracks = dry: add water 5 ml at a time</td></tr>
+    <tr><td class="sym">Earlobe test</td><td>As soft as an earlobe; clean release from your hands</td><td>Too dry: + water. Sticky/wet: dust in Maseca.</td></tr>
+    <tr><td class="sym">Float test</td><td>A pea-sized ball floats in water</td><td>Sinks = under-hydrated; knead in more water</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Maseca Tortillas v1.0 &middot; formula &amp; masa</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Stage 2 &middot; Press, Cook &amp; Keep</div>
+  <h1 class="sm">Press &amp; Cook</h1>
+  <div class="rule gold"></div>
+
+  <h2><span class="pt">Stage 2</span> &nbsp;Press &amp; Cook <span class="note">three flips &mdash; the third is the puff</span></h2>
+  <ol class="steps">
+    <li><b>Portion:</b> roll <b>32 g balls</b> (~28 total), smooth, keep covered so they don&rsquo;t skin over.</li>
+    <li><b>Press:</b> ball between plastic (a cut produce/zip bag) &mdash; press once, <b>rotate 180&deg;</b>, press again to an even <b>~1.5 mm</b>, no thin spots.</li>
+    <li><b>Cook, 3 flips:</b> dry comal at <b>400&ndash;450&deg;F (IR)</b>. <b>Side 1</b> ~15 sec until the edges set and lift; <b>flip 1</b> ~40 sec until light spots appear; <b>flip 2</b> back to side 1 &mdash; it should <b>puff</b> (nudge the edges with a towel).</li>
+    <li><b>Steam-rest:</b> stack into a towel-lined container and <b>cover immediately</b> &mdash; the trapped steam is what keeps them soft and foldable.</li>
+  </ol>
+
+  <h2>If It Won&rsquo;t Puff <span class="note">almost always one of three</span></h2>
+  <table class="diag">
+    <tr><th>Symptom</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">No puff, stiff</td><td>Masa too dry, or pressed too thick</td><td>Hydrate up; press to ~1.5 mm</td></tr>
+    <tr><td class="sym">Cracked edges off the press</td><td>Under-hydrated masa</td><td>Knead in water 5 ml at a time</td></tr>
+    <tr><td class="sym">Sticks / gummy</td><td>Comal too cool, or masa too wet</td><td>Recover to 400&ndash;450&deg;F; dust in Maseca</td></tr>
+  </table>
+
+  <h2>Storage <span class="note">reheat on the comal, never cold</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Towel-lined container, room temp</td><td>Best within <b>4 hr</b> &mdash; eat fresh.</td></tr>
+    <tr><td class="sym">Wrapped / paper bag, fridge</td><td><b>5&ndash;7 days</b> &mdash; reheat on the comal 10 sec/side.</td></tr>
+    <tr><td class="sym">Freezer, stacked + separated</td><td><b>1&ndash;2 months</b> &mdash; comal from frozen, or damp towel + microwave.</td></tr>
+  </table>
+
+  <p class="lead mut"><b>Endgame upgrade (next batch):</b> cut the Maseca 50/50 with <b>Masienda</b> heirloom masa harina &mdash; the closest a dried flour gets to fresh stone-ground El Milagro. Master the technique on straight Maseca first, then swap the flour.</p>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Maseca Tortillas v1.0 &middot; press &middot; cook &middot; keep</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>
