@@ -11,6 +11,7 @@
 
 ## 🔧 Repo audit fix queue — decisions locked 2026-06-16
 Run each through the **Recipe Build Protocol** (validate before delivery; bulk items get a test batch). High → low.
+> **Execution-ready specs** (exact `from → to` edits, researched numbers) live in **`FIXPLAN.md`** — 143 edits across 19 recipes, all ready. **6 items have one open decision each** (listed at the top of FIXPLAN); answer those, then it's pure execution.
 1. [ ] **cubano-complete** — kill the false "no-salt marinade" (count Maggi's ~6 g Na), stop triple-salting, set a real salt target; trim Tex-Mex cumin to a whisper + Mediterranean (not Mexican) oregano; add filling weights.
 2. [ ] **pho** — cut the 3–5× spice load; **cross-reference the Leighton pho recipe** (the gold standard) and match it; reconsider garlic adulteration / blanch.
 3. [ ] **colorado-green-chile** — add **browned pork butt** chunks (in place of chicharrón-only); reconsider tomato; fix lumpy flour method; cut chicharrón-taught-4× bloat.
