@@ -72,3 +72,13 @@ time something bites, even if it feels obvious in the moment.
   When the user has the oven and the result and you don't, **their empirical finding wins.**
   Offer caveats only when they're grounded and specific, not as automatic hedges — the user
   will (rightly) call it hallucination.
+
+- **When the user states a design goal repeatedly, audit the ingredient list AGAINST it — don't
+  echo the card's self-description as proof.** The carne-asada marinade called cumin (0.2%) +
+  oregano (0.3%) "quiet complements — the beef is the star," and I repeated that line back while
+  the user said "beef-forward" over and over. In a no-acid bulk marinade sitting through a long
+  freeze/thaw, those two **dominated and buried the beef — 15 lb committed before a cook caught
+  it.** The user's stated intent outranks the recipe's untested prose. When the written ingredients
+  contradict the goal, **cut them or hard-flag the conflict BEFORE the user commits** — never
+  validate the contradiction by quoting the card back at them. (Root of the "audit every recipe,
+  trust nothing unvalidated" project.)
