@@ -38,6 +38,45 @@ python build.py --check-only   # validate existing dist/ PDFs, don't re-render
 7. No blank pages.
 8. Version stamp (`vN.N` / `vN-N`) in every page footer.
 
+## Recipe Build Protocol — how to build or change a recipe
+
+**Scale rigor to stakes.** A ≤~2 lb one-off can be loose. A **bulk/freezer run** (>~3 lb,
+>~$40 of ingredients, or anything portioned & frozen) gets the FULL protocol — the
+cumin-beef and chile-salsa disasters were unvalidated bulk commits. When unsure, ask.
+
+0. **Interrogate before proposing.** Every time: scale + stakes; do you already have a method
+   that works (start there, don't reinvent it); **STATE of the variable ingredients**
+   (dried-chile age/pliability, flour protein %, salt brand — *counts are meaningless without
+   state*); equipment + reference target ("what does good taste like").
+1. **Formula, not vibes.** Ratios / % that scale, anchored to the user's baseline or a cited
+   recipe — never arbitrary counts. Variable-potency items anchor to a TARGET (heat level,
+   % salt by weight) plus a state adjustment.
+2. **Validate before it reaches the user.** Run the draft through the adversarial swarm
+   (the `recipe-build` skill): build → critics (traditional / food-science / practical /
+   "over-engineered?" / "did we ask the right inputs?") → web-checked → only a refined draft
+   is shown, assumptions + open questions flagged out loud.
+3. **NEVER bulk an unvalidated recipe.** Bulk run = cook a **1-lb test batch, taste, adjust,
+   THEN scale.** A $5 test before a $120 commit. **Mandatory.**
+4. **Version on the cook** — stays v1.0 until actually cooked (see `LESSONS_LEARNED.md`).
+
+### Publish gates — every card passes all 7 before it's DONE
+1. **Doneness:** a probe target only where it governs. Dark thigh **175–185°F+** (never a
+   165°F floor); meat **submerged in simmering liquid** = tenderness/time cue (can't exceed
+   broth temp); small dice / soft cookies = char/visual, not a probe.
+2. **Salt budget:** count EVERY sodium source (salted butter, Maggi, soy/fish/Worcestershire,
+   achiote, blends, ketchup); spec **~0.9–1.0% of finished mass** (bread/sausage to their own
+   ranges); default **unsalted butter**; taste a test piece before committing.
+3. **Honesty:** no shortcut branded "authentic/restaurant-style"; no identity/balance/mechanism
+   claim stated as fact unless cooked. Reframe shortcuts as honest substitutions.
+4. **Lean:** kill temp-dashboards that restate inline numbers, version-history / "why-we're-clever"
+   callouts (git is the archive), pseudo-precision (Brix, yeast models, 2-decimal %); each cue once.
+5. **Numbers reconcile:** ratio label == gram batch; divides/yields; named ingredients == shopping
+   list; flip/step counts == prose.
+6. **Cuisine identity:** ingredient-forward cuisines lead with the signature element (spice
+   supports); do NOT flatten genuinely spice-layered cuisines (curry, al pastor).
+7. **Balance & finish:** every card names its acid lever and guards the LIKELY failure in
+   troubleshooting.
+
 ## Editing rules (the ones that bite)
 
 - **Never `sed` a line with HTML entities** (`&mdash; &deg; &amp;`) — it mangles the
