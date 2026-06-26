@@ -130,37 +130,46 @@
   <div class="rule gold"></div>
 
   <svg viewBox="0 0 740 122" width="100%" style="display:block; margin:7px 0 2px; font-family:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;">
+    <defs>
+      <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#c4b59b"/>
+        <stop offset="0.30" stop-color="#d8a63e"/>
+        <stop offset="0.58" stop-color="#df8a2b"/>
+        <stop offset="0.82" stop-color="#d06f22"/>
+        <stop offset="1" stop-color="#c4571d"/>
+      </linearGradient>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b8ab90"/>
+        <stop offset="1" stop-color="#8d8068"/>
+      </linearGradient>
+    </defs>
     <!-- header -->
-    <text x="6" y="10" font-size="7.5" font-weight="700" letter-spacing="1.2" fill="#6b6560">TRAEGER IRONTOP &#183; THICK STEEL &#183; 4-ZONE</text>
+    <text x="6" y="10" font-size="7.5" font-weight="700" letter-spacing="1.2" fill="#6b6560">TRAEGER IRONTOP &#183; THICK STEEL</text>
     <text x="734" y="10" text-anchor="end" font-size="7.5" font-weight="800" letter-spacing="1.2" fill="#c8941e">PREHEAT 10&#8211;15 MIN &#183; IR-VERIFY EACH ZONE</text>
-    <!-- griddle body: dark seasoned steel -->
-    <rect x="2" y="16" width="736" height="102" rx="11" fill="#0f0d0b"/>
-    <rect x="6" y="20" width="728" height="94" rx="8" fill="#211d19"/>
-    <!-- zone seams -->
-    <rect x="187" y="20" width="2" height="94" fill="#0f0d0b"/>
-    <rect x="369" y="20" width="2" height="94" fill="#0f0d0b"/>
-    <rect x="551" y="20" width="2" height="94" fill="#0f0d0b"/>
-    <!-- heat-accent bars (opacity fades hot -> cool) -->
-    <rect x="47"  y="28" width="100" height="4" rx="2" fill="#c8941e" fill-opacity="1"/>
-    <rect x="229" y="28" width="100" height="4" rx="2" fill="#c8941e" fill-opacity="0.6"/>
-    <rect x="411" y="28" width="100" height="4" rx="2" fill="#c8941e" fill-opacity="0.4"/>
-    <rect x="593" y="28" width="100" height="4" rx="2" fill="#c8941e" fill-opacity="0.16"/>
-    <!-- Z1 -->
-    <text x="97"  y="50" text-anchor="middle" font-size="7.5" font-weight="800" letter-spacing="1.5" fill="#857c70">ZONE 1</text>
-    <text x="97"  y="80" text-anchor="middle" font-size="20" font-weight="800" fill="#e0a92a">~425&#176;F</text>
-    <text x="97"  y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#e7ded0">Sausage</text>
-    <!-- Z2 -->
-    <text x="279" y="50" text-anchor="middle" font-size="7.5" font-weight="800" letter-spacing="1.5" fill="#857c70">ZONE 2</text>
-    <text x="279" y="80" text-anchor="middle" font-size="20" font-weight="800" fill="#e0a92a">~300&#176;F</text>
-    <text x="279" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#e7ded0">Cakes</text>
-    <!-- Z3 -->
-    <text x="461" y="50" text-anchor="middle" font-size="7.5" font-weight="800" letter-spacing="1.5" fill="#857c70">ZONE 3</text>
-    <text x="461" y="80" text-anchor="middle" font-size="20" font-weight="800" fill="#e0a92a">~275&#176;F</text>
-    <text x="461" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#e7ded0">Folded egg</text>
-    <!-- Z4 -->
-    <text x="643" y="50" text-anchor="middle" font-size="7.5" font-weight="800" letter-spacing="1.5" fill="#857c70">ZONE 4</text>
-    <text x="643" y="79" text-anchor="middle" font-size="15" font-weight="800" fill="#9a9286">Low / off</text>
-    <text x="643" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#e7ded0">Hold + build</text>
+    <!-- griddle body: raised steel lip -->
+    <rect x="2" y="15" width="736" height="103" rx="13" fill="url(#steel)" stroke="#6b6150" stroke-width="1.5"/>
+    <rect x="7" y="20" width="726" height="93" rx="9" fill="#7c6f57"/>
+    <!-- grease drain trough (left side) -->
+    <rect x="11" y="24" width="44" height="85" rx="7" fill="#5d5446"/>
+    <rect x="25" y="29" width="16" height="68" rx="8" fill="#2c261f"/>
+    <circle cx="33" cy="101" r="6.5" fill="#15110c" stroke="#7c7160" stroke-width="1"/>
+    <text transform="rotate(-90 33 62)" x="33" y="62" text-anchor="middle" font-size="6" font-weight="700" letter-spacing="1.4" fill="#c9bca4">GREASE DRAIN</text>
+    <!-- cooking surface: thermal gradient, cool (left) -> hot (right) -->
+    <rect x="60" y="24" width="668" height="85" rx="6" fill="url(#heat)"/>
+    <rect x="60" y="24" width="668" height="17" rx="6" fill="#ffffff" opacity="0.07"/>
+    <!-- faint scored zone seams -->
+    <rect x="227" y="29" width="1.4" height="75" fill="#1a1714" opacity="0.16"/>
+    <rect x="394" y="29" width="1.4" height="75" fill="#1a1714" opacity="0.16"/>
+    <rect x="561" y="29" width="1.4" height="75" fill="#1a1714" opacity="0.16"/>
+    <!-- zone labels ON the surface (coolest left -> hottest right) -->
+    <text x="144" y="64" text-anchor="middle" font-size="15" font-weight="800" fill="#3a3328">Low / off</text>
+    <text x="144" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#473d2e">Hold + build</text>
+    <text x="310" y="65" text-anchor="middle" font-size="19" font-weight="800" fill="#241f17">~275&#176;F</text>
+    <text x="310" y="85" text-anchor="middle" font-size="9.5" font-weight="700" fill="#3a3328">Folded egg</text>
+    <text x="477" y="65" text-anchor="middle" font-size="19" font-weight="800" fill="#241f17">~300&#176;F</text>
+    <text x="477" y="85" text-anchor="middle" font-size="9.5" font-weight="700" fill="#3a3328">Cakes</text>
+    <text x="644" y="65" text-anchor="middle" font-size="19" font-weight="800" fill="#fdf6ea">~425&#176;F</text>
+    <text x="644" y="85" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fbf2e2">Sausage</text>
   </svg>
 
   <div class="cols" style="margin-top:8px;">
