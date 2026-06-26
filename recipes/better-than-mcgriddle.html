@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:13px 0 6px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.04em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:74px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:46px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:3.5px 0 3.5px 26px; font-size:9pt; line-height:1.38; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:4px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td{ padding:4px 8px; border:1px solid var(--line); vertical-align:top; }
+  .diag td.sym{ font-weight:800; width:28%; background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin:9px 0 3px; }
+  .tag:first-child{ margin-top:0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">House Formula &nbsp;/&nbsp; v1.0 &nbsp;&middot;&nbsp; Pre-Cook Draft</div>
+  <h1>Better-Than-McGriddle Sandwich</h1>
+  <div class="sub">Maple-pocket griddle cakes &middot; seared sausage &middot; American &middot; basted egg &middot; ~4 sandwiches + a spare cake</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~4 + spare</div></div>
+    <div><div class="lab">Cakes</div><div class="val">9 @ ~58 g</div></div>
+    <div><div class="lab">Key Lever</div><div class="val">Maple SUGAR</div></div>
+    <div><div class="lab">Griddle</div><div class="val">~300&deg;F / 150&deg;C</div></div>
+  </div>
+
+  <div class="callout">
+    <b>The whole dish turns on one variable: a maple pocket that survives the griddle.</b> It is solved with
+    <b>maple SUGAR (crystallized), folded in last so it stays as discrete crystals</b> &mdash; those crystals melt
+    into pockets of caramelized maple <i>inside</i> the cake. <b>Never liquid syrup in the batter:</b> it bleeds,
+    scorches against the surface, and gums the crumb. Liquid maple appears in exactly <b>one</b> place &mdash; the
+    finishing butter, brushed on the <i>outside</i> after the cake is set (Component 3, page 2).
+  </div>
+
+  <h2>1 &middot; Griddle Cakes <span class="note">Baker's % on flour weight &middot; flour = 100% &middot; ~536 g batter</span></h2>
+  <table class="ing">
+    <tr><td>AP flour <span class="mut">&mdash; the base; everything else is a % of this</span></td><td class="pct">100%</td><td class="amt">200 g</td></tr>
+    <tr><td>Maple sugar <span class="mut">&mdash; structural syrup pockets; folded in LAST, stays crystalline</span></td><td class="pct">20%</td><td class="amt">40 g</td></tr>
+    <tr><td>Granulated sugar <span class="mut">&mdash; exterior browning</span></td><td class="pct">10%</td><td class="amt">20 g</td></tr>
+    <tr><td>Baking powder <span class="mut">&mdash; lift</span></td><td class="pct">4%</td><td class="amt">8 g</td></tr>
+    <tr><td>Baking soda <span class="mut">&mdash; browning + reacts with the buttermilk</span></td><td class="pct">0.3%</td><td class="amt">0.6 g</td></tr>
+    <tr><td>Fine salt <span class="mut">(by weight)</span></td><td class="pct">1.5%</td><td class="amt">3 g</td></tr>
+    <tr><td>Egg <span class="mut">&mdash; 1 large; structure</span></td><td class="pct">25%</td><td class="amt">50 g</td></tr>
+    <tr><td>Buttermilk <span class="mut">&mdash; tang + tender crumb (the acid lever)</span></td><td class="pct">92%</td><td class="amt">185 g</td></tr>
+    <tr><td>Melted butter <span class="mut">&mdash; plain melted &amp; cooled, NOT browned</span></td><td class="pct">15%</td><td class="amt">30 g</td></tr>
+  </table>
+
+  <h2>Mixing &amp; Griddling <span class="note">9 cakes &middot; greased 3.5&ndash;4&Prime; rings &middot; low-and-slow, covered</span></h2>
+  <ol class="steps">
+    <li><b>Whisk the dry &mdash; but HOLD the maple sugar.</b> Combine flour, granulated sugar, baking powder, baking soda, salt. Keep the 40 g maple sugar aside; it goes in dead last.</li>
+    <li><b>Whisk the wet:</b> egg + buttermilk + the cooled melted butter.</li>
+    <li><b>Combine to just-mixed &mdash; lumps are fine.</b> Stop the moment the flour disappears; overmixing builds gluten and gives flat, tough cakes.</li>
+    <li><b>Fold the maple sugar in LAST, &le;5 strokes.</b> It must stay suspended as discrete crystals, not dissolve &mdash; those undissolved crystals are the syrup pockets.</li>
+    <li><b>Rest the batter 15 min.</b> Hydration finishes and the gluten relaxes &mdash; this is the chew.</li>
+    <li><b>Portion + griddle:</b> a <b>#16 disher</b> (scant &frac14; cup, ~58 g) into greased <b>3.5&ndash;4&Prime; rings, ~1 cm deep</b>, on a <b>~300&deg;F / 150&deg;C</b> surface. <b>Covered ~3 min, flip, ~3 min.</b> Low-and-slow so the maple sugar caramelizes <i>inside</i> without scorching the exterior.</li>
+  </ol>
+
+  <div class="callout">
+    <b>Chew variant:</b> swap <b>25&ndash;30% of the flour for bread flour</b> and bump the buttermilk to <b>~193 g</b> to
+    offset the higher absorption. More structure, a denser pull &mdash; closer to a true griddled-bread bite.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Better-Than-McGriddle v1.0 &middot; griddle cakes</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Sausage &middot; Maple Butter &middot; Egg &middot; Cheese &middot; Build</div>
+  <h1 class="sm">Components &amp; Build</h1>
+  <div class="rule gold"></div>
+
+  <div class="cols" style="margin-top:10px;">
+    <div class="col">
+      <h2>2 &middot; Sausage <span class="note">Your breakfast sausage &middot; 4 patties</span></h2>
+      <table class="ing">
+        <tr><td>Breakfast sausage <span class="mut">raw, per patty</span></td><td class="amt">80 g</td></tr>
+        <tr><td>&mdash; if leaner than ~25% fat</td><td class="amt">90 g</td></tr>
+      </table>
+      <ol class="steps">
+        <li><b>Smash to ~4&Prime; wide</b> so it sears flat and finishes <b>~3.5&Prime;</b> after shrink &mdash; matched to the cake diameter.</li>
+        <li><b>Sear hard, both sides,</b> for a full Maillard crust. Melt the American on top <b>off-heat</b> (Cheese, right).</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h2>3 &middot; Maple Finishing Butter <span class="note">% on butter weight &middot; the ONLY liquid maple</span></h2>
+      <table class="ing">
+        <tr><td>Butter <span class="mut">softened, not melted</span></td><td class="pct">100%</td><td class="amt">40 g</td></tr>
+        <tr><td>Real maple syrup</td><td class="pct">25%</td><td class="amt">10 g</td></tr>
+        <tr><td>Flaky salt <span class="mut">to finish</span></td><td class="pct">&mdash;</td><td class="amt">&mdash;</td></tr>
+      </table>
+      <ol class="steps">
+        <li><b>Beat soft butter + syrup to a compound butter</b> &mdash; do <b>not</b> melt it; it must cling.</li>
+        <li><b>Brush on the cake exteriors during the final 30 s</b> on the griddle. Outside, post-bake &mdash; where liquid maple can't gum the crumb.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <h2>4 &middot; Egg <span class="note">1 large per sandwich &middot; diameter is the only spec</span></h2>
+      <ol class="steps">
+        <li><b>Grease a ring sized to the cake</b> on the griddle; crack in one egg.</li>
+        <li><b>Add a few drops of water, cover 90 s</b> to baste-set the top; yolk to preference. The diameter match is what makes the stack sit even.</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h2>Cheese <span class="note">1 slice per sandwich &middot; no build</span></h2>
+      <div class="callout" style="margin-top:4px;">
+        <b>One slice elite-quality American,</b> melted on the hot sausage off the heat. American's <b>emulsifying salts</b>
+        give the clean, even melt this needs. <b>Do not substitute aged cheese</b> &mdash; it breaks and weeps oil.
+      </div>
+    </div>
+  </div>
+
+  <h2>5 &middot; Assembly <span class="note">Serve immediately &mdash; cakes stale fast once the maple sugar recrystallizes</span></h2>
+  <ol class="steps">
+    <li><b>Bottom cake, maple-buttered face up.</b></li>
+    <li><b>Sausage with its melted cheese.</b></li>
+    <li><b>Basted egg.</b></li>
+    <li><b>Top cake, maple-buttered face down.</b> Close and eat hot.</li>
+  </ol>
+
+  <h2>Read &amp; Fix <span class="note">Judge by the crumb and the pockets &mdash; cause &rarr; correction</span></h2>
+  <table class="diag">
+    <tr><td class="sym">No maple pockets</td><td>Maple sugar dissolved into the batter. <b>Fold it in LAST, &le;5 strokes,</b> and griddle promptly &mdash; the longer it sits stirred-in, the more it melts. Keep the crystals discrete.</td></tr>
+    <tr><td class="sym">Gummy / scorched crumb</td><td>Liquid syrup got into the batter, <b>or</b> the surface ran too hot. Syrup belongs only in the finishing butter (outside); hold the griddle at <b>~300&deg;F / 150&deg;C</b> and cover so it cooks through low-and-slow.</td></tr>
+    <tr><td class="sym">Flat, tough cakes</td><td>Overmixed, or the batter wasn't rested. Mix to <b>just-combined</b> (lumps fine) and <b>rest 15 min.</b></td></tr>
+    <tr><td class="sym">Stack slides apart</td><td>Components mis-matched in size. Smash sausage to ~4&Prime; (&rarr; ~3.5&Prime;), cook the egg in a cake-sized ring, and stack with the maple-buttered faces inward.</td></tr>
+    <tr><td class="sym">Cheese breaks / weeps</td><td>Aged cheese used, or melted over direct heat. Use <b>American,</b> melt it on the hot sausage <b>off the heat.</b></td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Better-Than-McGriddle v1.0 &middot; sausage &middot; butter &middot; egg &middot; build</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>
