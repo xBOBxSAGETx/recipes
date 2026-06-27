@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:13px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:7px 9px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:6.5pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:10.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:10px 0 6px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing th{ text-align:left; font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); padding:0 0 4px; border-bottom:1px solid var(--line); }
+  table.ing th.r{ text-align:right; }
+  table.ing td{ padding:3.2px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.pct{ text-align:right; font-weight:700; color:var(--smoke-gray); width:60px; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:74px; color:var(--char-black); }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:3px 0 3px 26px; font-size:8.9pt; line-height:1.34; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:4px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:7px 11px; margin:7px 0; font-size:8.3pt; line-height:1.4; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.3pt; margin-top:4px; }
+  .diag td{ padding:2px 8px; border:1px solid var(--line); vertical-align:top; }
+  .diag td.sym{ font-weight:800; width:32%; background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:8.9pt; line-height:1.42; margin:5px 0; }
+  .mut{ color:var(--smoke-gray); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">House Formula &nbsp;/&nbsp; v1.0 &nbsp;&middot;&nbsp; Pre-Cook Draft</div>
+  <h1>Cuban Pullman Sandwich Loaf</h1>
+  <div class="sub">Cuban-bread base &rarr; tangzhong for a soft, tight crumb &rarr; lidded pain-de-mie bake &middot; one 13&times;4&Prime; loaf</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Pan</div><div class="val">13&times;4&times;4&Prime; lidded</div></div>
+    <div><div class="lab">Dough</div><div class="val">~948 g</div></div>
+    <div><div class="lab">Flour</div><div class="val">Sir Lancelot 14.2%</div></div>
+    <div><div class="lab">Hydration</div><div class="val">66%</div></div>
+    <div><div class="lab">Bake</div><div class="val">375&deg;F lidded</div></div>
+  </div>
+
+  <div class="callout">
+    <b>What changed from the Cuban base:</b> same lard/sugar/salt ratios; hydration up 63% &rarr; 66% plus a <b>tangzhong</b>
+    (a cooked flour-water paste from within the formula). It locks in water so high-gluten flour bakes <b>soft and keeps
+    soft</b>, and the <b>lid</b> gives a thin crust + tight square crumb &mdash; no steam, no score.
+  </div>
+
+  <h2>Formula <span class="note">Baker's % on total flour (incl. the tangzhong flour)</span></h2>
+  <table class="ing">
+    <tr><th>Ingredient</th><th class="r">Baker %</th><th class="r">Weight</th></tr>
+    <tr><td>Sir Lancelot <span class="mut">(14.2% high-gluten)</span></td><td class="pct">100%</td><td class="amt">540 g</td></tr>
+    <tr><td>Water</td><td class="pct">66%</td><td class="amt">356 g</td></tr>
+    <tr><td>Lard <span class="mut">(rendered &mdash; tenderness, soft crust)</span></td><td class="pct">4%</td><td class="amt">22 g</td></tr>
+    <tr><td>Sugar</td><td class="pct">2%</td><td class="amt">11 g</td></tr>
+    <tr><td>Salt</td><td class="pct">2%</td><td class="amt">11 g</td></tr>
+    <tr><td>ADY <span class="mut">(bloomed)</span></td><td class="pct">1.5%</td><td class="amt">8 g</td></tr>
+  </table>
+  <div class="callout">
+    <b>Tangzhong (cook first, taken FROM the formula above):</b> <b>25 g flour + 125 g water.</b> The dough then gets the
+    <b>remaining 515 g flour and 231 g water</b> plus everything else. Don't add these as extra &mdash; it's a split, not an addition.
+  </div>
+
+  <h2>Method <span class="note">Same-day ~3.5&ndash;4 h at 70&deg;F &middot; grease pan AND lid</span></h2>
+  <ol class="steps">
+    <li><b>Tangzhong:</b> whisk <b>25 g flour + 125 g water</b> in a small pot. Cook on low, stirring, until it thickens to a paste and the whisk leaves lines (~65&deg;C), ~2&ndash;3 min. Scrape out, cool to warm.</li>
+    <li><b>Bloom ADY:</b> yeast + the sugar in <b>~90 g of the water at 100&ndash;110&deg;F</b>, 5&ndash;10 min to foam. Over ~115&deg;F kills it.</li>
+    <li><b>Mix:</b> remaining flour (515 g), salt, lard, the cooled tangzhong, the bloom, and the rest of the water. Knead to a <b>smooth, soft, well-developed dough &mdash; near windowpane</b> (more than the free-form Cuban; a fine even sandwich crumb wants full development). ~8&ndash;12 min. Final dough <b>76&ndash;78&deg;F</b>.</li>
+    <li><b>Bulk:</b> <b>~1&ndash;1.5 h to doubled</b> at 70&deg;F &mdash; by the dough, not the clock (tangzhong + 1.5% ADY run fast).</li>
+    <li><b>Shape to the pan:</b> grease pan <b>and lid</b>. Degas gently; roll a <b>tight 13&Prime; cylinder</b>, seam down, to the pan length &mdash; <b>or</b> divide into <b>3 equal pieces</b>, roll each tight, set side-by-side (the evenest crumb). Settle seam-down.</li>
+    <li><b>Proof in the pan</b> to <b>~1&Prime; below the rim (~80&ndash;85% full)</b> at 70&deg;F, ~45&ndash;75 min. <b>Slide the lid on.</b> Don't over-proof &mdash; lidded + over-proof squashes the crumb or blows the lid.</li>
+    <li><b>Bake 375&deg;F, lidded the whole time, ~35&ndash;40 min to 200&ndash;205&deg;F internal.</b> The lid traps steam &mdash; flat top, thin soft crust. (Peek near the end; don't unlid early or the top dries.)</li>
+    <li><b>Turn out immediately</b> onto a rack; optional <b>butter/lard brush</b> on top for a softer crust. <b>Cool COMPLETELY before slicing</b> &mdash; warm sandwich bread gums and tears. Serrated knife.</li>
+  </ol>
+
+  <h2>Read &amp; Fix <span class="note">Soft, tight, sliceable &mdash; cause &rarr; correction</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Dense, squat crumb</td><td>Under-developed or under-proofed. Knead nearer <b>windowpane</b>, and proof to <b>~1&Prime; under the rim</b> before the lid goes on.</td></tr>
+    <tr><td class="sym">Blew the lid / squeezed out the seams</td><td>Over-proofed or too much dough. Proof a touch less; hold dough to <b>~948 g</b> for this pan.</td></tr>
+    <tr><td class="sym">Gummy, tears when sliced</td><td>Cut warm, or under-baked. <b>Cool completely</b> and pull at <b>200&ndash;205&deg;F</b> internal.</td></tr>
+    <tr><td class="sym">Crust too thick / tough</td><td>Baked too hot/long, or unlidded. Keep the <b>lid on</b> at <b>375&deg;F</b>, pull at temp &mdash; don't bake to color. Once cool, <b>wrap airtight</b> (never fridge it).</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Cuban Pullman Loaf &mdash; v1.0 (pre-cook draft)</span><span>Page 1 / 1</span></div>
+</div>
+
+</body>
+</html>
