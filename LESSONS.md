@@ -81,6 +81,13 @@ rule here exists because ignoring it broke something.
 - **Salt by weight is brand-independent.** "2 tsp Diamond Crystal" depends on the
   brand's bulk density; 6 g is 6 g. Convert and note "by weight."
 
+- **Every step names the ingredient AND its amount at the moment it goes in.** Chicken wild
+  rice v1.1 shipped with steps like "dissolve the base", "butter until foaming", "chicken, rice,
+  cream in" &mdash; the cook couldn't tell what went in when without flipping to page 1. Bold the
+  amount inline (<b>360 g onion</b>), use the product's real name (not "the base"), and when a
+  component is made early and used late, say so ("meat &rarr; set aside for step 11"). For
+  multi-phase cooks, group the steps under phase tags (Stock / Rice / Soup) with the vessel.
+
 - **Specify what the gram applies to.** "1.5 g cardamom" must say *seeds, not pods*
   (pods are ~20–25% seed by weight). Ambiguous units are silent errors.
 
