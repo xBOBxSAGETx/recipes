@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --char-black:#1a1714;
+    --broth-gold:#c8941e;
+    --smoke-gray:#6b6560;
+    --paper:#f7f4ee;
+    --line:#d8d0c4;
+  }
+  @page{ size:letter; margin:0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--char-black); background:var(--paper); }
+  .page{ width:8.5in; height:11in; padding:0.55in 0.7in; position:relative; page-break-after:always; overflow:hidden; }
+  .page:last-child{ page-break-after:auto; }
+
+  .kicker{ font-size:8.5pt; letter-spacing:.32em; text-transform:uppercase; color:var(--broth-gold); font-weight:700; }
+  h1{ font-size:28pt; line-height:1.02; letter-spacing:-.01em; margin:5px 0 4px; font-weight:800; }
+  h1.sm{ font-size:23pt; }
+  .sub{ font-size:9pt; color:var(--smoke-gray); letter-spacing:.02em; }
+  .rule{ height:3px; background:var(--char-black); margin:11px 0 0; }
+  .rule.gold{ background:var(--broth-gold); }
+
+  .spec{ display:flex; gap:0; margin:14px 0 4px; border:1px solid var(--line); }
+  .spec div{ flex:1; padding:8px 10px; border-right:1px solid var(--line); }
+  .spec div:last-child{ border-right:none; }
+  .spec .lab{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; color:var(--smoke-gray); font-weight:700; }
+  .spec .val{ font-size:11.5pt; font-weight:800; margin-top:2px; }
+
+  h2{ font-size:10pt; letter-spacing:.2em; text-transform:uppercase; color:var(--char-black);
+      font-weight:800; margin:15px 0 7px; padding-bottom:4px; border-bottom:2px solid var(--broth-gold);
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+  h2 .note{ font-size:7.5pt; letter-spacing:.08em; color:var(--smoke-gray); font-weight:600; text-transform:none; text-align:right; flex:0 1 auto; white-space:normal; }
+  h2 .pt{ flex:0 0 auto; color:var(--broth-gold); }
+
+  .cols{ display:flex; gap:22px; }
+  .col{ flex:1; }
+  .cols3{ display:flex; gap:18px; }
+  .cols3 .col{ flex:1; }
+
+  table.ing{ width:100%; border-collapse:collapse; font-size:9pt; }
+  table.ing td{ padding:3.5px 0; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.ing td.amt{ text-align:right; font-weight:800; white-space:nowrap; width:100px; color:var(--char-black); }
+  table.ing td.pct{ text-align:right; font-weight:700; white-space:nowrap; width:50px; color:var(--smoke-gray); font-size:8pt; }
+  table.ing tr:last-child td{ border-bottom:none; }
+  .ing .mut{ color:var(--smoke-gray); }
+
+  ol.steps{ list-style:none; counter-reset:s; margin-top:4px; }
+  ol.steps li{ counter-increment:s; position:relative; padding:5px 0 5px 26px; font-size:9pt; line-height:1.4; border-bottom:1px solid var(--line); }
+  ol.steps li:last-child{ border-bottom:none; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:5px; width:17px; height:17px;
+      background:var(--broth-gold); color:var(--char-black); font-size:8pt; font-weight:800;
+      border-radius:50%; text-align:center; line-height:17px; }
+  ol.steps b{ font-weight:800; }
+  ol.steps.c6{ counter-reset:s 6; }   /* continue numbering across a column break */
+
+  .callout{ background:#efe9dd; border-left:3px solid var(--broth-gold); padding:9px 12px; margin:10px 0; font-size:8.5pt; line-height:1.45; }
+  .callout b{ font-weight:800; }
+
+  .diag{ width:100%; border-collapse:collapse; font-size:8.5pt; margin-top:4px; }
+  .diag td,.diag th{ padding:5px 8px; border:1px solid var(--line); vertical-align:top; text-align:left; }
+  .diag td.sym{ font-weight:800; width:26%; background:#efe9dd; }
+  .diag th{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; color:var(--smoke-gray); background:#efe9dd; }
+
+  .foot{ position:absolute; bottom:0.4in; left:0.7in; right:0.7in; display:flex; justify-content:space-between;
+         font-size:7pt; letter-spacing:.15em; text-transform:uppercase; color:var(--smoke-gray); border-top:1px solid var(--line); padding-top:6px; }
+
+  p.lead{ font-size:9pt; line-height:1.45; margin:6px 0; }
+  .mut{ color:var(--smoke-gray); }
+  .tag{ display:block; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--broth-gold); margin:9px 0 3px; }
+  .tag:first-child{ margin-top:0; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="kicker">Soup Guide &nbsp;/&nbsp; v1.0</div>
+  <h1>Chicken Wild Rice Soup</h1>
+  <div class="sub">Whole bird &middot; wild rice-forward &middot; thick, spoon-coating, Upper Midwest style</div>
+  <div class="rule"></div>
+
+  <div class="spec">
+    <div><div class="lab">Yield</div><div class="val">~6 L &middot; 10&ndash;12</div></div>
+    <div><div class="lab">Time</div><div class="val">1.5 / 3.5 hr</div></div>
+    <div><div class="lab">Pot</div><div class="val">8 qt+ &middot; 2 vessels</div></div>
+    <div><div class="lab">Stock</div><div class="val">2500 g, no reduction</div></div>
+  </div>
+
+  <h2>Ingredients <span class="note">stock = body + fat &middot; the base = chicken flavor</span></h2>
+  <div class="cols3">
+    <div class="col">
+      <span class="tag">Bird &amp; Stock</span>
+      <table class="ing">
+        <tr><td>Whole chicken <span class="mut">4.5&ndash;5 lb, giblets out</span></td><td class="amt">2.0&ndash;2.3 kg</td></tr>
+        <tr><td>Cold water</td><td class="amt">4000 g</td></tr>
+        <tr><td>Onion <span class="mut">halved, unpeeled</span></td><td class="amt">150 g</td></tr>
+        <tr><td>Carrot <span class="mut">rough chop</span></td><td class="amt">100 g</td></tr>
+        <tr><td>Celery <span class="mut">rough chop</span></td><td class="amt">100 g</td></tr>
+      </table>
+      <span class="tag">Wild Rice</span>
+      <table class="ing">
+        <tr><td>Wild rice <span class="mut">true, not a blend</span></td><td class="amt">325 g</td></tr>
+        <tr><td>Water</td><td class="amt">1800 g</td></tr>
+        <tr><td>Salt <span class="mut">like pasta water</span></td><td class="amt">to taste</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Soup Base</span>
+      <table class="ing">
+        <tr><td>Unsalted butter <span class="mut">up to half as skimmed chicken fat</span></td><td class="amt">150 g</td></tr>
+        <tr><td>Yellow onion <span class="mut">diced</span></td><td class="amt">360 g</td></tr>
+        <tr><td>Carrots <span class="mut">diced</span></td><td class="amt">270 g</td></tr>
+        <tr><td>Celery <span class="mut">diced</span></td><td class="amt">270 g</td></tr>
+        <tr><td>Cremini <span class="mut">sliced</span></td><td class="amt">400 g</td></tr>
+        <tr><td>Garlic <span class="mut">minced</span></td><td class="amt">22 g</td></tr>
+        <tr><td>All-purpose flour</td><td class="amt">110 g</td></tr>
+        <tr><td>Dry sherry</td><td class="amt">55 g</td></tr>
+        <tr><td>Homemade stock <span class="mut">strained</span></td><td class="amt">2500 g</td></tr>
+        <tr><td>Better Than Bouillon <span class="mut">Roasted Chicken</span></td><td class="amt">30 g</td></tr>
+        <tr><td>Dried thyme</td><td class="amt">2 g</td></tr>
+        <tr><td>Bay leaves</td><td class="amt">2</td></tr>
+      </table>
+    </div>
+    <div class="col">
+      <span class="tag">Finish</span>
+      <table class="ing">
+        <tr><td>Pulled chicken <span class="mut">all of it</span></td><td class="amt">~650&ndash;900 g</td></tr>
+        <tr><td>Cooked wild rice <span class="mut">all of it</span></td><td class="amt">~1.1 kg</td></tr>
+        <tr><td>Heavy cream</td><td class="amt">430 g</td></tr>
+        <tr><td>Kosher salt <span class="mut">start; finish to taste</span></td><td class="amt">10 g</td></tr>
+        <tr><td>Black pepper <span class="mut">fresh ground</span></td><td class="amt">4 g</td></tr>
+        <tr><td>Lemon juice <span class="mut">the acid</span></td><td class="amt">18 g</td></tr>
+        <tr><td>Parsley <span class="mut">chopped</span></td><td class="amt">15 g</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Key Targets <span class="note">the cues that decide the pot</span></h2>
+  <table class="diag">
+    <tr><td class="sym">Poach water</td><td>Bare simmer, 180&ndash;195&deg;F &mdash; surface shivers, a stray bubble. A boil clouds the stock and tightens the meat.</td></tr>
+    <tr><td class="sym">Pull the bird</td><td>Thickest thigh <b>175&ndash;180&deg;F</b>, leg wiggles loose &mdash; about 50&ndash;70 min.</td></tr>
+    <tr><td class="sym">Wild rice</td><td>Most kernels split open. Lake/hand-parched ~20&ndash;30 min; glossy black paddy ~45&ndash;60 min.</td></tr>
+    <tr><td class="sym">Sweat &amp; roux</td><td>Butter foaming, never browning; vegetables soft with no color. Roux 2&ndash;3 min &mdash; smells toasty, stays blond.</td></tr>
+    <tr><td class="sym">Thickness</td><td>Coats the back of a spoon before the rice goes in &mdash; the rice thickens it further.</td></tr>
+    <tr><td class="sym">Cream in</td><td>Last, heated through below a boil.</td></tr>
+  </table>
+
+  <div class="callout">
+    <b>Taste only after the chicken and rice are in.</b> About 2 kg of unseasoned meat and rice goes in at the end and soaks up salt &mdash; a base that tastes right before them tastes flat after. Expect to go past the 10 g of salt; add it in small hits.
+  </div>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Wild Rice Soup v1.0 &middot; ingredients + targets</span><span>Page 1 / 2</span></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="kicker">Poach &middot; Stock &middot; Build</div>
+  <h1 class="sm">Execution</h1>
+  <div class="rule gold"></div>
+
+  <h2>Method <span class="note">rice + vegetable prep run during the carcass simmer</span></h2>
+  <ol class="steps">
+    <li><b>Poach:</b> chicken, cold water, and the stock onion, carrot, celery in the pot. Bring up to a <b>bare simmer (180&ndash;195&deg;F)</b>, skim foam for the first 15 min. Poach until the thigh reads <b>175&ndash;180&deg;F</b>, about 50&ndash;70 min.</li>
+    <li><b>Pull:</b> lift the bird out; keep the pot at a bare simmer. Cool 15 min, strip all meat, discard skin, shred bite-size. Bones and cartilage back into the pot.</li>
+    <li><b>Carcass:</b> <b>covered</b>, bare simmer <b>60&ndash;90 min</b>. Covered = no reduction.</li>
+    <li><b>Rice (meanwhile):</b> rinse, then simmer covered in the 1800 g water, salted like pasta water, until most kernels split. Drain.</li>
+    <li><b>Strain:</b> strain the stock, skim the fat and save it. Weigh out <b>2500 g</b> for the soup (short? top up with water); keep the extra for leftovers. Dissolve the base in a ladle of the hot stock.</li>
+    <li><b>Sweat:</b> clean pot, butter (up to half swapped for the chicken fat) until foaming. Onion, carrot, celery until soft with no color, ~10 min.</li>
+    <li><b>Mushrooms:</b> cook until their liquid is gone and the edges brown, ~10 min. Garlic, 1 min.</li>
+    <li><b>Roux:</b> flour over the vegetables, stir <b>2&ndash;3 min</b> until it smells toasty and coats everything. Stays blond.</li>
+    <li><b>Liquid:</b> sherry in, scrape the bottom. Whisk in the stock <b>a ladle at a time</b> (a dump makes lumps), then the dissolved base, thyme, bay, and <b>5 g</b> of the salt. Bring to a simmer.</li>
+    <li><b>Simmer:</b> uncovered <b>20&ndash;30 min</b>, scraping the bottom as you stir (the roux settles and scorches), until the raw-flour taste is gone and it coats a spoon.</li>
+    <li><b>Finish:</b> bay out. Chicken, rice, cream in; heat through below a boil. <b>Now taste</b> &mdash; salt in small hits, pepper, then lemon off the heat. Parsley.</li>
+  </ol>
+
+  <h2>Troubleshooting <span class="note">three dials: base &middot; salt &middot; lemon</span></h2>
+  <table class="diag">
+    <tr><th>Problem</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td class="sym">Weak on chicken</td><td>Poach stock is light by nature</td><td>More base, a little at a time &mdash; <b>before</b> more salt (the base is salty)</td></tr>
+    <tr><td class="sym">Flat overall</td><td>Chicken + rice absorbed the salt</td><td>Salt in small hits, stir, re-taste</td></tr>
+    <tr><td class="sym">Heavy, dull</td><td>Cream + roux with no lift</td><td>More lemon, a little at a time, off the heat</td></tr>
+    <tr><td class="sym">Too thin</td><td>Short simmer / rice not in yet</td><td>Simmer longer; it sets up further as it sits</td></tr>
+    <tr><td class="sym">Scorched bottom</td><td>Roux settled, not scraped</td><td>Move to a clean pot without scraping the burnt layer</td></tr>
+    <tr><td class="sym">Leftovers set solid</td><td>Wild rice keeps absorbing in the fridge</td><td>Thin with the saved stock when reheating</td></tr>
+  </table>
+
+  <div class="foot"><span>Aguillon House Kitchen</span><span>Chicken Wild Rice Soup v1.0 &middot; method + troubleshoot</span><span>Page 2 / 2</span></div>
+</div>
+
+</body>
+</html>

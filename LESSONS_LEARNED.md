@@ -82,3 +82,9 @@ time something bites, even if it feels obvious in the moment.
   contradict the goal, **cut them or hard-flag the conflict BEFORE the user commits** — never
   validate the contradiction by quoting the card back at them. (Root of the "audit every recipe,
   trust nothing unvalidated" project.)
+
+- **`template.html`'s header comment contains the literal string `<style>`** ("uses this exact
+  `<style>` block"). Scripting a new recipe by slicing `t[t.index('<style>'):...]` grabs the
+  comment, not the CSS — the page renders with no palette, rules, or step circles and **still
+  passes every gate** (none check styling). Slice from `<style>\n  :root`, and eyeball page 1
+  against an existing recipe before calling it done.
