@@ -88,3 +88,10 @@ time something bites, even if it feels obvious in the moment.
   comment, not the CSS — the page renders with no palette, rules, or step circles and **still
   passes every gate** (none check styling). Slice from `<style>\n  :root`, and eyeball page 1
   against an existing recipe before calling it done.
+
+- **Revisions only subtract unless the cook asks to add.** Chicken wild rice soup went v1.0 ->
+  v1.1 with Claude *adding* a chicken-fat skim-and-swap, a covered carcass re-simmer, a
+  key-targets table, a callout, and an 11-step phased method to a simple Midwest soup. Every
+  one was "technically sound" and none was load-bearing; the cook had to strip them back out
+  across three angry rounds. Final card: one page, six steps. Before any change, ask "does the
+  soup fail without this?" — if no, it doesn't go on the card.
